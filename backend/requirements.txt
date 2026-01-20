@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+pandas
+numpy
+scipy
+requests
+geopy
+geopandas
+asyncpg
+sqlalchemy
+python-multipart
+polyline

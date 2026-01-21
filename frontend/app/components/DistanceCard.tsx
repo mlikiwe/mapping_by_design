@@ -15,15 +15,29 @@ export default function DistanceCard({ item }: DistanceCardProps) {
       </h4>
 
       <div className="space-y-3">
+        {/* Jarak bongkar ke muat (jika ada) */}
+        {item.JARAK_BONGKAR_MUAT !== undefined && (
+          <div className="flex justify-between items-center">
+            <span className="text-sm text-slate-600">Jarak Bongkar → Muat</span>
+            <span className="font-mono font-bold text-slate-800">
+              {formatNumber(item.JARAK_BONGKAR_MUAT)} km
+            </span>
+          </div>
+        )}
+
         <div className="flex justify-between items-center">
-          <span className="text-sm text-slate-600">JARAK TRIANGULASI</span>
+          <span className="text-sm text-slate-600" title="Port→Bongkar→Muat→Port">
+            Triangulasi (Full)
+          </span>
           <span className="font-mono font-bold text-slate-800">
             {formatNumber(item.JARAK_TRIANGULASI)} km
           </span>
         </div>
 
         <div className="flex justify-between items-center">
-          <span className="text-sm text-slate-600">JARAK VIA PORT</span>
+          <span className="text-sm text-slate-600" title="Port→Bongkar→Port→Muat→Port">
+            Via Port (Full)
+          </span>
           <span className="font-mono font-bold text-slate-800">
             {formatNumber(item.JARAK_VIA_PORT)} km
           </span>

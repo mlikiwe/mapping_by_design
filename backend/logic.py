@@ -56,6 +56,51 @@ CABANG_ALIASES: Dict[str, str] = {
     'JAYAPURA': 'JYP',
 }
 
+TRUCKING_COST_MODEL: Dict[str, Dict[int, Dict[str, int]]] = {
+    'SBY': {
+        20: {'base': 1012092, 'per_km': 13225},   # R²=0.850, n=363
+        40: {'base': 1151394, 'per_km': 15489},   # R²=0.925, n=84
+    },
+    'MKS': {
+        20: {'base': 1191595, 'per_km': 15765},   # R²=0.692, n=449
+        40: {'base': 1650161, 'per_km': 30059},   # R²=0.519, n=145
+    },
+    'SMG': {
+        20: {'base': 1126369, 'per_km': 13724},   # R²=0.847, n=40
+        40: {'base': 1504052, 'per_km': 12384},   # R²=0.635, n=13
+    },
+    'JKT': {
+        20: {'base': 1066635, 'per_km': 15201},   # R²=0.873, n=32
+        40: {'base': 842506, 'per_km': 20348},    # R²=0.966, n=9
+    },
+    'BPN': {
+        20: {'base': 974899, 'per_km': 67692},    # R²=0.646, n=236
+        40: {'base': 2165839, 'per_km': 84821},   # R²=0.459, n=91
+    },
+    'SDA': {
+        20: {'base': 1268345, 'per_km': 68670},   # R²=0.828, n=255
+        40: {'base': 1887260, 'per_km': 91306},   # R²=0.819, n=80
+    },
+    'PNK': {
+        20: {'base': 1720838, 'per_km': 31480},   # R²=0.651, n=183
+        40: {'base': 2715683, 'per_km': 44559},   # R²=0.741, n=68
+    },
+    'KDR': {
+        20: {'base': 1062738, 'per_km': 31920},   # R²=0.718, n=159
+        40: {'base': 1240141, 'per_km': 57552},   # R²=0.840, n=59
+    },
+    'JYP': {
+        20: {'base': 2147488, 'per_km': 13825},   # R²=0.050, n=59
+        40: {'base': 4404528, 'per_km': 277301},  # R²=0.762, n=10
+    },
+}
+
+# Default cost model jika cabang tidak ditemukan
+DEFAULT_COST_MODEL: Dict[int, Dict[str, int]] = {
+    20: {'base': 1200000, 'per_km': 25000},
+    40: {'base': 1800000, 'per_km': 40000},
+}
+
 route_cache: Dict[str, Tuple[float, float, str]] = {}
 geocode_cache: Dict[str, Tuple[Optional[float], Optional[float]]] = {}
 
@@ -197,6 +242,35 @@ def normalize_cabang(cabang: Any) -> Optional[str]:
 
 def get_port_location(cabang: str) -> Dict[str, float]:
     return PORT_LOCATIONS.get(cabang, PORT_LOCATIONS['JKT'])
+
+
+def calculate_trucking_cost(cabang: str, size: int, distance_km: float) -> float:
+    """
+    Hitung biaya trucking berdasarkan cabang, size container, dan jarak.
+    
+    Menggunakan model linear: Cost = base + per_km * distance
+    Berdasarkan analisis regresi data RFQ dengan R² yang baik.
+    
+    Args:
+        cabang: Kode cabang (e.g., 'SBY', 'MKS')
+        size: Ukuran container (20 atau 40)
+        distance_km: Jarak dalam kilometer
+        
+    Returns:
+        Estimasi biaya trucking dalam Rupiah
+    """
+    # Normalisasi size (21 -> 20)
+    normalized_size = 20 if size in [20, 21] else 40
+    
+    # Ambil model cost untuk cabang
+    if cabang in TRUCKING_COST_MODEL:
+        model = TRUCKING_COST_MODEL[cabang].get(normalized_size, DEFAULT_COST_MODEL[normalized_size])
+    else:
+        model = DEFAULT_COST_MODEL[normalized_size]
+    
+    # Hitung cost: base + per_km * distance
+    cost = model['base'] + model['per_km'] * distance_km
+    return cost
 
 
 def is_grade_match(grade_dest: str, grade_orig: str) -> bool:
@@ -374,10 +448,14 @@ def process_optimization(
             print(f"  Warning: DEST {dest_id} memiliki cabang kosong, dilewati.")
             continue
         
-        # Ambil koordinat port
         port = get_port_location(dest_cabang)
         
-        # Hitung jarak destinasi ke port
+        dist_port_to_dest, _, _ = get_valhalla_route(
+            port['lat'], port['lon'],
+            dest_lat, dest_lon
+        )
+        dist_port_to_dest = dist_port_to_dest if dist_port_to_dest else 99999
+        
         dist_dest_to_port, _, _ = get_valhalla_route(
             dest_lat, dest_lon, 
             port['lat'], port['lon']
@@ -390,11 +468,9 @@ def process_optimization(
             if dest_cabang != orig_cabang:
                 continue
             
-            # Constraint 2: Size container harus sama
             if dest_row['SIZE CONT'] != orig_row['SIZE CONT']:
                 continue
             
-            # Constraint 3: Grade container harus cocok
             if not is_grade_match(
                 dest_row.get('GRADE CONT', '-'),
                 orig_row.get('GRADE CONT', '-')
@@ -418,9 +494,28 @@ def process_optimization(
             )
             dist_port_to_orig = dist_port_to_orig if dist_port_to_orig else 99999
             
-            dist_via_port = dist_dest_to_port + dist_port_to_orig
+            dist_orig_to_port, _, _ = get_valhalla_route(
+                orig_lat, orig_lon,
+                port['lat'], port['lon']
+            )
+            dist_orig_to_port = dist_orig_to_port if dist_orig_to_port else 99999
             
-            if dist_direct >= dist_via_port:
+            dist_via_port_full = (
+                dist_port_to_dest +   
+                dist_dest_to_port +   
+                dist_port_to_orig +   
+                dist_orig_to_port     
+            )
+            
+            dist_triangulasi_full = (
+                dist_port_to_dest +   
+                dist_direct +         
+                dist_orig_to_port     
+            )
+            
+            saving_km = dist_via_port_full - dist_triangulasi_full
+            
+            if saving_km <= 0:
                 continue
             
             orig_start_time = orig_row['PICK / DELIV DATE']
@@ -434,8 +529,16 @@ def process_optimization(
             if pool_category == "UNFEASIBLE":
                 continue
             
-            saving_km = dist_via_port - dist_direct
             score = calculate_match_score(saving_km, shift_needed)
+            
+            size_cont = dest_row['SIZE CONT']
+            size_int = 20 if '20' in str(size_cont) or '21' in str(size_cont) else 40
+            
+            cost_via_port = calculate_trucking_cost(dest_cabang, size_int, dist_via_port_full)
+            
+            cost_triangulasi = calculate_trucking_cost(dest_cabang, size_int, dist_triangulasi_full)
+            
+            saving_cost = cost_via_port - cost_triangulasi
             
             cost_matrix[i, j] = 10_000_000 - score
             
@@ -443,11 +546,16 @@ def process_optimization(
                 'dest_id': dest_id,
                 'orig_id': orig_row['NO SOPT'],
                 'cabang': dest_cabang,
+                'size_cont': size_cont,
                 'pool': pool_category,
                 'score': score,
                 'saving_km': saving_km,
-                'dist_triangulasi': dist_direct,
-                'dist_via_port': dist_via_port,
+                'saving_cost': saving_cost,
+                'cost_triangulasi': cost_triangulasi,
+                'cost_via_port': cost_via_port,
+                'dist_triangulasi': dist_triangulasi_full,  
+                'dist_via_port': dist_via_port_full,        
+                'dist_direct': dist_direct,                  
                 'est_travel': time_direct,
                 'shift': shift_needed,
                 'gap': time_gap,
@@ -489,11 +597,16 @@ def process_optimization(
             "DEST_ID": str(details['dest_id']),
             "ORIG_ID": str(details['orig_id']),
             "CABANG": details['cabang'],
+            "SIZE_CONT": str(details['size_cont']),
             "STATUS": "MATCHED",
             "KATEGORI_POOL": details['pool'],
-            "JARAK_TRIANGULASI": round(details['dist_triangulasi'], 2),
-            "JARAK_VIA_PORT": round(details['dist_via_port'], 2),
+            "JARAK_TRIANGULASI": round(details['dist_triangulasi'], 2),  # Port->Bongkar->Muat->Port
+            "JARAK_VIA_PORT": round(details['dist_via_port'], 2),        # Port->Bongkar->Port->Muat->Port
+            "JARAK_BONGKAR_MUAT": round(details['dist_direct'], 2),      # Hanya bongkar->muat
             "SAVING_KM": round(details['saving_km'], 2),
+            "COST_TRIANGULASI": round(details['cost_triangulasi']),
+            "COST_VIA_PORT": round(details['cost_via_port']),
+            "SAVING_COST": round(details['saving_cost']),
             "SCORE_FINAL": round(details['score'], 2),
             "EST_PERJALANAN_JAM": round(details['est_travel'], 2),
             "GAP_WAKTU_ASLI": round(details['gap'], 2),
@@ -508,5 +621,11 @@ def process_optimization(
             "port_coords": [port_loc['lat'], port_loc['lon']]
         })
     
+    total_saving_km = sum(r['SAVING_KM'] for r in results)
+    total_saving_cost = sum(r['SAVING_COST'] for r in results)
+    
     print(f"Selesai! Ditemukan {len(results)} rute optimal.")
+    print(f"Total Penghematan Jarak: {total_saving_km:,.2f} km")
+    print(f"Total Penghematan Biaya: Rp {total_saving_cost:,.0f}")
+    
     return results

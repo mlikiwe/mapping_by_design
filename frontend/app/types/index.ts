@@ -6,8 +6,10 @@ export interface OptimizationResult {
   STATUS: string;
   KATEGORI_POOL: string;
   
-  JARAK_TRIANGULASI: number;
-  JARAK_VIA_PORT: number;
+  // Jarak full round trip (port ke port)
+  JARAK_TRIANGULASI: number;   // Port->Bongkar->Muat->Port
+  JARAK_VIA_PORT: number;       // Port->Bongkar->Port->Muat->Port
+  JARAK_BONGKAR_MUAT?: number;  // Hanya jarak bongkar ke muat
   SAVING_KM: number;
   
   COST_TRIANGULASI?: number;

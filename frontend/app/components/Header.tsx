@@ -12,7 +12,7 @@ interface HeaderProps {
 export default function Header({ stats, hasResults, onLogoClick }: HeaderProps) {
   return (
     <header className="bg-white border-b border-slate-200 px-6 py-4 flex items-center justify-between sticky top-0 z-50 shadow-sm">
-\      <div 
+      <div 
         className="flex items-center gap-2 cursor-pointer" 
         onClick={onLogoClick}
       >

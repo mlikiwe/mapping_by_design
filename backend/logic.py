@@ -94,7 +94,6 @@ TRUCKING_COST_MODEL: Dict[str, Dict[int, Dict[str, int]]] = {
         40: {'base': 4404528, 'per_km': 277301},  # R²=0.762, n=10
     },
 }
-
 # Default cost model jika cabang tidak ditemukan
 DEFAULT_COST_MODEL: Dict[int, Dict[str, int]] = {
     20: {'base': 1200000, 'per_km': 25000},
@@ -141,7 +140,6 @@ def geocode_with_retry(
     geocode_cache[address] = (None, None)
     return (None, None)
 
-
 def geocode_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     if 'ALAMAT_LAT' in df.columns and df['ALAMAT_LAT'].notna().all():
         return df
@@ -180,7 +178,6 @@ def geocode_dataframe(df: pd.DataFrame) -> pd.DataFrame:
 
 def _create_route_cache_key(lat1: float, lon1: float, lat2: float, lon2: float) -> str:
     return f"{round(lat1, 5)},{round(lon1, 5)}|{round(lat2, 5)},{round(lon2, 5)}"
-
 
 def get_valhalla_route(
     lat_start: float,
@@ -239,10 +236,8 @@ def normalize_cabang(cabang: Any) -> Optional[str]:
     cabang_str = str(cabang).strip().upper()
     return CABANG_ALIASES.get(cabang_str, cabang_str)
 
-
 def get_port_location(cabang: str) -> Dict[str, float]:
     return PORT_LOCATIONS.get(cabang, PORT_LOCATIONS['JKT'])
-
 
 def calculate_trucking_cost(cabang: str, size: int, distance_km: float) -> float:
     """
@@ -271,7 +266,6 @@ def calculate_trucking_cost(cabang: str, size: int, distance_km: float) -> float
     # Hitung cost: base + per_km * distance
     cost = model['base'] + model['per_km'] * distance_km
     return cost
-
 
 def is_grade_match(grade_dest: str, grade_orig: str) -> bool:
     invalid_values = ['-', 'nan', 'None', '']
@@ -323,7 +317,6 @@ def evaluate_time_feasibility(
     # Case 3: OPTIMAL
     else:
         return ("OPTIMAL", 0, ["PERFECT"])
-
 
 def calculate_match_score(saving_km: float, shift_hours: float) -> float:
     saving_value = saving_km * WEIGHT_SAVING

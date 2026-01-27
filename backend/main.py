@@ -2,7 +2,7 @@ from fastapi import FastAPI, UploadFile, File, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.ext.asyncio import AsyncSession
 from database import get_db
-from backend.logic import process_optimization
+from logic import process_optimization
 from pydantic import BaseModel
 from typing import List
 import pandas as pd

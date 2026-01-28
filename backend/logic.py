@@ -94,7 +94,7 @@ TRUCKING_COST_MODEL: Dict[str, Dict[int, Dict[str, int]]] = {
         40: {'base': 4404528, 'per_km': 277301},  # R²=0.762, n=10
     },
 }
-# Default cost model jika cabang tidak ditemukan
+
 DEFAULT_COST_MODEL: Dict[int, Dict[str, int]] = {
     20: {'base': 1200000, 'per_km': 25000},
     40: {'base': 1800000, 'per_km': 40000},

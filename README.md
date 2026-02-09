@@ -1,4 +1,4 @@
-# 🚛 E2E Roundtrip Mapping Optimization
+# Roundtrip Mapping Optimization
 
 <div align="center">
 
@@ -17,9 +17,9 @@
 
 ## 📖 Tentang Aplikasi
 
-E2E Roundtrip Mapping adalah aplikasi web yang mengoptimasi rute trucking dengan memetakan kegiatan **bongkar** dan **muat** yang memenuhi syarat untuk dilakukan **roundtrip**. Dengan roundtrip, truk dapat langsung menuju lokasi muat setelah bongkar tanpa harus kembali ke port terlebih dahulu, sehingga menghemat jarak tempuh dan biaya operasional.
+Aplikasi ini merupakan web yang mengoptimasi rute trucking dengan memetakan kegiatan **bongkar** dan **muat** yang memenuhi syarat untuk dilakukan **roundtrip**. Dengan roundtrip, truk dapat langsung menuju lokasi muat setelah bongkar tanpa harus kembali ke port terlebih dahulu, sehingga menghemat jarak tempuh dan biaya operasional.
 
-### 🎯 Tujuan Utama
+### Tujuan Utama
 
 - **Mengurangi jarak tempuh** dengan menghindari perjalanan kosong kembali ke port
 - **Menghemat biaya trucking** melalui triangulasi rute yang efisien  
@@ -28,21 +28,21 @@ E2E Roundtrip Mapping adalah aplikasi web yang mengoptimasi rute trucking dengan
 
 ---
 
-## ✨ Fitur Utama
+## Fitur Utama
 
-### 🗺️ Mapping & Optimization
+### Mapping & Optimization
 - **Hungarian Algorithm** untuk pencocokan optimal antara destinasi dan origin
 - **Geocoding otomatis** alamat menggunakan Nominatim OpenStreetMap
 - **Routing real-time** dengan Valhalla Routing Engine
 - **Cost matrix calculation** dengan constraint multi-dimensi
 
-### 📊 Analisis & Visualisasi  
+### Analisis & Visualisasi  
 - **Dashboard interaktif** dengan statistik saving jarak dan biaya
 - **Peta visualisasi** rute triangulasi menggunakan Leaflet
 - **Filter by cabang** untuk analisis per lokasi
 - **Detail view** dengan informasi lengkap setiap match
 
-### 💾 Data Management
+### Data Management
 - **Upload Excel** untuk data bongkar dan muat (.xlsx)
 - **Export hasil** ke Excel untuk dokumentasi
 - **Mode Simulasi** untuk membuka kembali hasil mapping sebelumnya
@@ -50,7 +50,7 @@ E2E Roundtrip Mapping adalah aplikasi web yang mengoptimasi rute trucking dengan
 
 ---
 
-## 🏗️ Arsitektur Sistem
+## Arsitektur Sistem
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -77,7 +77,7 @@ E2E Roundtrip Mapping adalah aplikasi web yang mengoptimasi rute trucking dengan
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Backend
 | Technology | Purpose |
@@ -101,7 +101,7 @@ E2E Roundtrip Mapping adalah aplikasi web yang mengoptimasi rute trucking dengan
 
 ---
 
-## 📦 Instalasi
+## Instalasi
 
 ### Prerequisites
 
@@ -160,7 +160,7 @@ docker run -d --name valhalla \
 
 ---
 
-## 🚀 Penggunaan
+## Penggunaan
 
 ### Menjalankan Aplikasi
 
@@ -218,7 +218,7 @@ npm run dev
 
 ---
 
-## 📡 API Documentation
+## API Documentation
 
 ### Base URL
 ```
@@ -267,7 +267,7 @@ Proxy untuk Valhalla routing.
 
 ---
 
-## 🗂️ Struktur Project
+## Struktur Project
 
 ```
 mapping_by_design/
@@ -296,7 +296,7 @@ mapping_by_design/
 
 ---
 
-## 📊 Cabang yang Didukung
+## Cabang yang Didukung
 
 | Code | Lokasi | Port Coordinates |
 |------|--------|------------------|
@@ -312,7 +312,7 @@ mapping_by_design/
 
 ---
 
-## ⚙️ Konfigurasi
+## Konfigurasi
 
 ### Environment Variables (Backend)
 
@@ -333,7 +333,7 @@ MAX_MAJUKAN_MUAT = 12        # Maks maju jadwal muat (jam)
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Mapping stuck di "Membangun cost matrix..."
 - Pastikan Valhalla server berjalan di port 8002

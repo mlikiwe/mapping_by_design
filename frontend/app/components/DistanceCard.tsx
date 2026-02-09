@@ -1,7 +1,7 @@
 "use client";
 
-import { OptimizationResult } from '@/app/types';
-import { formatNumber } from '@/app/utils/formatters';
+import { OptimizationResult } from '@/types';
+import { formatNumber } from '@/utils/formatters';
 
 interface DistanceCardProps {
   item: OptimizationResult;

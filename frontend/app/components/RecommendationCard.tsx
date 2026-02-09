@@ -1,6 +1,6 @@
 "use client";
 
-import { OptimizationResult } from '@/app/types';
+import { OptimizationResult } from '@/types';
 
 interface RecommendationCardProps {
   item: OptimizationResult;

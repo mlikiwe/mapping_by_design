@@ -9,3 +9,6 @@ export { default as CostCard } from './CostCard';
 export { default as TimeCard } from './TimeCard';
 export { default as RecommendationCard } from './RecommendationCard';
 export { default as DetailView } from './DetailView';
+export { default as LandingView } from './LandingView';
+export { default as DownloadView } from './DownloadView';
+export { default as SimulationUploadView } from './SimulationUploadView';

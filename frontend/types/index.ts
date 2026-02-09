@@ -45,4 +45,7 @@ export interface CabangStats {
   savingCost?: number;
 }
 
-export type ViewState = 'upload' | 'list' | 'detail';
+// Route-based views (for Header display)
+export type ViewState = 'landing' | 'upload' | 'simulation-upload' | 'download' | 'list' | 'detail';
+
+export type AppMode = 'mapping' | 'simulation';

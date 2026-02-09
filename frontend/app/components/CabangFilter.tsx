@@ -1,7 +1,7 @@
 "use client";
 
-import { CabangStats } from '@/app/types';
-import { formatNumber } from '@/app/utils/formatters';
+import { CabangStats } from '@/types';
+import { formatNumber } from '@/utils/formatters';
 
 interface CabangFilterProps {
   cabangStats: CabangStats[];

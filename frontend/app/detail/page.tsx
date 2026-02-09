@@ -1,43 +1,40 @@
 "use client";
 
-import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { useMappingContext } from '@/context';
-import { Header, LandingView } from '@/app/components';
-import { AppMode } from '@/types';
+import { Header, DetailView } from '@/app/components';
 
-export default function Home() {
+export default function DetailPage() {
   const router = useRouter();
   const { 
     stats, 
     results, 
-    appMode, 
-    isHydrated, 
+    appMode,
+    selectedItem,
+    isHydrated,
     isDBLoading,
-    setAppMode,
+    setSelectedItem,
     handleReset 
   } = useMappingContext();
 
-  // Redirect to results if there are existing results
+  // Redirect if no selected item or no results
   useEffect(() => {
-    if (isHydrated && !isDBLoading && results.length > 0) {
-      router.push('/results');
+    if (isHydrated && !isDBLoading) {
+      if (!selectedItem || results.length === 0) {
+        router.push('/results');
+      }
     }
-  }, [isHydrated, isDBLoading, results.length, router]);
-
-  const handleSelectMode = (mode: AppMode) => {
-    setAppMode(mode);
-    
-    if (mode === 'mapping') {
-      router.push('/mapping');
-    } else {
-      router.push('/simulation');
-    }
-  };
+  }, [isHydrated, isDBLoading, selectedItem, results.length, router]);
 
   const handleLogoClick = async () => {
     await handleReset();
     router.push('/');
+  };
+
+  const handleBackToList = () => {
+    setSelectedItem(null);
+    router.push('/results');
   };
 
   // Loading state
@@ -49,18 +46,26 @@ export default function Home() {
     );
   }
 
+  // No selected item guard
+  if (!selectedItem) {
+    return null;
+  }
+
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 flex flex-col">
       <Header
         stats={stats}
         hasResults={results.length > 0}
         onLogoClick={handleLogoClick}
-        currentView="landing"
+        currentView="detail"
         appMode={appMode}
       />
 
       <main className="flex-1 p-6 w-full max-w-480 mx-auto">
-        <LandingView onSelectMode={handleSelectMode} />
+        <DetailView
+          item={selectedItem}
+          onBackToList={handleBackToList}
+        />
       </main>
     </div>
   );

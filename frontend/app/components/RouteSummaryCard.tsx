@@ -1,6 +1,6 @@
 "use client";
 
-import { OptimizationResult } from '@/app/types';
+import { OptimizationResult } from '@/types';
 import StatusBadge from './StatusBadge';
 
 interface RouteSummaryCardProps {

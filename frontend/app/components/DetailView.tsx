@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from 'next/dynamic';
-import { OptimizationResult } from '@/app/types';
+import { OptimizationResult } from '@/types';
 import RouteSummaryCard from './RouteSummaryCard';
 import DistanceCard from './DistanceCard';
 import CostCard from './CostCard';

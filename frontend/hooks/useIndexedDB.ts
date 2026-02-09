@@ -189,6 +189,7 @@ export const STORAGE_KEYS = {
   MAPPING_RESULTS: 'roundtrip_mapping_results',
   MAPPING_STATS: 'roundtrip_mapping_stats',
   VIEW_STATE: 'roundtrip_view_state',
+  APP_MODE: 'roundtrip_app_mode',
 } as const;
 
 /**

@@ -1,24 +1,45 @@
 "use client";
 
-import { OptimizationStats } from '@/app/types';
-import { formatNumber, formatRupiah } from '@/app/utils/formatters';
+import { OptimizationStats, ViewState, AppMode } from '@/types';
+import { formatNumber, formatRupiah } from '@/utils/formatters';
 
 interface HeaderProps {
   stats: OptimizationStats;
   hasResults: boolean;
   onLogoClick: () => void;
+  currentView?: ViewState;
+  appMode?: AppMode | null;
 }
 
-export default function Header({ stats, hasResults, onLogoClick }: HeaderProps) {
+export default function Header({ stats, hasResults, onLogoClick, currentView, appMode }: HeaderProps) {
+  // Determine mode badge
+  const getModeBadge = () => {
+    if (!appMode) return null;
+    
+    if (appMode === 'mapping') {
+      return (
+        <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium border border-blue-200">
+          Mode: Mapping
+        </span>
+      );
+    }
+    return (
+      <span className="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-xs font-medium border border-emerald-200">
+        Mode: Simulasi
+      </span>
+    );
+  };
+
   return (
     <header className="bg-white border-b border-slate-200 px-6 py-4 flex items-center justify-between sticky top-0 z-50 shadow-sm">
       <div 
-        className="flex items-center gap-2 cursor-pointer" 
+        className="flex items-center gap-3 cursor-pointer" 
         onClick={onLogoClick}
       >
         <h1 className="text-xl font-bold tracking-tight text-slate-800">
           <span className="text-blue-600">E2E</span> Roundtrip
         </h1>
+        {currentView !== 'landing' && getModeBadge()}
       </div>
 
       {hasResults && (

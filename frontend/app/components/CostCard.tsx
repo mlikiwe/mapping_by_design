@@ -1,7 +1,7 @@
 "use client";
 
-import { OptimizationResult } from '@/app/types';
-import { formatRupiah } from '@/app/utils/formatters';
+import { OptimizationResult } from '@/types';
+import { formatRupiah } from '@/utils/formatters';
 
 interface CostCardProps {
   item: OptimizationResult;

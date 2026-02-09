@@ -6,7 +6,5 @@ scipy
 requests
 geopy
 geopandas
-asyncpg
-sqlalchemy
 python-multipart
 polyline

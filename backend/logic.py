@@ -21,10 +21,10 @@ GEOCODE_RETRY_DELAY = 2
 PREP_TIME_HOURS = 2.0       
 MAX_IDLE_HOURS = 4.0        
 
-MAX_MUNDURKAN_BONGKAR = 8   # Maksimal mundur jadwal bongkar
-MAX_MUNDURKAN_MUAT = 8      # Maksimal mundur jadwal muat
-MAX_MAJUKAN_BONGKAR = 24    # Maksimal maju jadwal bongkar
-MAX_MAJUKAN_MUAT = 12       # Maksimal maju jadwal muat
+MAX_MUNDURKAN_BONGKAR = 8   # Max waktu jadwal bongkar mundur
+MAX_MUNDURKAN_MUAT = 8      # Max waktu jadwal muat mundur
+MAX_MAJUKAN_BONGKAR = 24    # Max waktu jadwal bongkar maju
+MAX_MAJUKAN_MUAT = 12       # Max waktu jadwal muat maju
 
 WEIGHT_SAVING = 1000        
 PENALTY_PER_HOUR = 500      
@@ -58,40 +58,40 @@ CABANG_ALIASES: Dict[str, str] = {
 
 TRUCKING_COST_MODEL: Dict[str, Dict[int, Dict[str, int]]] = {
     'SBY': {
-        20: {'base': 1012092, 'per_km': 13225},   # R²=0.850, n=363
-        40: {'base': 1151394, 'per_km': 15489},   # R²=0.925, n=84
+        20: {'base': 1012092, 'per_km': 13225},   
+        40: {'base': 1151394, 'per_km': 15489},   
     },
     'MKS': {
-        20: {'base': 1191595, 'per_km': 15765},   # R²=0.692, n=449
-        40: {'base': 1650161, 'per_km': 30059},   # R²=0.519, n=145
+        20: {'base': 1191595, 'per_km': 15765},   
+        40: {'base': 1650161, 'per_km': 30059},   
     },
     'SMG': {
-        20: {'base': 1126369, 'per_km': 13724},   # R²=0.847, n=40
-        40: {'base': 1504052, 'per_km': 12384},   # R²=0.635, n=13
+        20: {'base': 1126369, 'per_km': 13724},   
+        40: {'base': 1504052, 'per_km': 12384},   
     },
     'JKT': {
-        20: {'base': 1066635, 'per_km': 15201},   # R²=0.873, n=32
-        40: {'base': 842506, 'per_km': 20348},    # R²=0.966, n=9
+        20: {'base': 1066635, 'per_km': 15201},   
+        40: {'base': 842506, 'per_km': 20348},    
     },
     'BPN': {
-        20: {'base': 974899, 'per_km': 67692},    # R²=0.646, n=236
-        40: {'base': 2165839, 'per_km': 84821},   # R²=0.459, n=91
+        20: {'base': 974899, 'per_km': 67692},    
+        40: {'base': 2165839, 'per_km': 84821},   
     },
     'SDA': {
-        20: {'base': 1268345, 'per_km': 68670},   # R²=0.828, n=255
-        40: {'base': 1887260, 'per_km': 91306},   # R²=0.819, n=80
+        20: {'base': 1268345, 'per_km': 68670},   
+        40: {'base': 1887260, 'per_km': 91306},   
     },
     'PNK': {
-        20: {'base': 1720838, 'per_km': 31480},   # R²=0.651, n=183
-        40: {'base': 2715683, 'per_km': 44559},   # R²=0.741, n=68
+        20: {'base': 1720838, 'per_km': 31480},   
+        40: {'base': 2715683, 'per_km': 44559},   
     },
     'KDR': {
-        20: {'base': 1062738, 'per_km': 31920},   # R²=0.718, n=159
-        40: {'base': 1240141, 'per_km': 57552},   # R²=0.840, n=59
+        20: {'base': 1062738, 'per_km': 31920},   
+        40: {'base': 1240141, 'per_km': 57552},   
     },
     'JYP': {
-        20: {'base': 2147488, 'per_km': 13825},   # R²=0.050, n=59
-        40: {'base': 4404528, 'per_km': 277301},  # R²=0.762, n=10
+        20: {'base': 2147488, 'per_km': 13825},   
+        40: {'base': 4404528, 'per_km': 277301},  
     },
 }
 
@@ -103,7 +103,7 @@ DEFAULT_COST_MODEL: Dict[int, Dict[str, int]] = {
 route_cache: Dict[str, Tuple[float, float, str]] = {}
 geocode_cache: Dict[str, Tuple[Optional[float], Optional[float]]] = {}
 
-def geocode_with_retry(
+def geocode_helper(
     geolocator: Nominatim,
     address: str,
     max_retries: int = GEOCODE_MAX_RETRIES
@@ -148,7 +148,7 @@ def geocode_dataframe(df: pd.DataFrame) -> pd.DataFrame:
         return df
     
     geolocator = Nominatim(
-        user_agent="dooring_optimizer_final_v10_refactored",
+        user_agent="mapping_dooring",
         timeout=GEOCODE_TIMEOUT
     )
     
@@ -162,7 +162,7 @@ def geocode_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     
     for idx, addr in enumerate(unique_addresses):
         print(f"  [{idx + 1}/{total}] Geocoding: {addr[:50]}...")
-        coords = geocode_with_retry(geolocator, addr)
+        coords = geocode_helper(geolocator, addr)
         address_coords[addr] = coords
         
         sleep_time = 1.2 if coords != (None, None) else 0.5
@@ -187,7 +187,6 @@ def get_valhalla_route(
 ) -> Tuple[Optional[float], Optional[float], Optional[str]]:
     cache_key = _create_route_cache_key(lat_start, lon_start, lat_end, lon_end)
     
-    # Check cache
     if cache_key in route_cache:
         return route_cache[cache_key]
     
@@ -240,30 +239,13 @@ def get_port_location(cabang: str) -> Dict[str, float]:
     return PORT_LOCATIONS.get(cabang, PORT_LOCATIONS['JKT'])
 
 def calculate_trucking_cost(cabang: str, size: int, distance_km: float) -> float:
-    """
-    Hitung biaya trucking berdasarkan cabang, size container, dan jarak.
-    
-    Menggunakan model linear: Cost = base + per_km * distance
-    Berdasarkan analisis regresi data RFQ dengan R² yang baik.
-    
-    Args:
-        cabang: Kode cabang (e.g., 'SBY', 'MKS')
-        size: Ukuran container (20 atau 40)
-        distance_km: Jarak dalam kilometer
-        
-    Returns:
-        Estimasi biaya trucking dalam Rupiah
-    """
-    # Normalisasi size (21 -> 20)
     normalized_size = 20 if size in [20, 21] else 40
     
-    # Ambil model cost untuk cabang
     if cabang in TRUCKING_COST_MODEL:
         model = TRUCKING_COST_MODEL[cabang].get(normalized_size, DEFAULT_COST_MODEL[normalized_size])
     else:
         model = DEFAULT_COST_MODEL[normalized_size]
     
-    # Hitung cost: base + per_km * distance
     cost = model['base'] + model['per_km'] * distance_km
     return cost
 
@@ -273,7 +255,6 @@ def is_grade_match(grade_dest: str, grade_orig: str) -> bool:
     d_grade = str(grade_dest).strip()
     o_grade = str(grade_orig).strip()
     
-    # Jika salah satu tidak terdefinisi, anggap cocok
     if d_grade in invalid_values or o_grade in invalid_values:
         return True
     
@@ -282,7 +263,6 @@ def is_grade_match(grade_dest: str, grade_orig: str) -> bool:
 def evaluate_time_feasibility(
     time_gap: float
 ) -> Tuple[str, float, List[str]]:
-    # Case 1: TERLAMBAT (gap < 0)
     if time_gap < 0:
         shortage = abs(time_gap)
         can_delay_load = shortage <= MAX_MUNDURKAN_MUAT
@@ -298,7 +278,6 @@ def evaluate_time_feasibility(
         else:
             return ("UNFEASIBLE", 0, [])
     
-    # Case 2: IDLE TINGGI (gap > MAX_IDLE)
     elif time_gap > MAX_IDLE_HOURS:
         excess = time_gap - MAX_IDLE_HOURS
         can_advance_load = excess <= MAX_MAJUKAN_MUAT
@@ -314,7 +293,6 @@ def evaluate_time_feasibility(
         else:
             return ("UNFEASIBLE", 0, [])
     
-    # Case 3: OPTIMAL
     else:
         return ("OPTIMAL", 0, ["PERFECT"])
 
@@ -585,7 +563,6 @@ def process_optimization(
             load_time=details['waktu_muat']
         )
         
-        # Append result
         results.append({
             "DEST_ID": str(details['dest_id']),
             "ORIG_ID": str(details['orig_id']),
@@ -593,9 +570,9 @@ def process_optimization(
             "SIZE_CONT": str(details['size_cont']),
             "STATUS": "MATCHED",
             "KATEGORI_POOL": details['pool'],
-            "JARAK_TRIANGULASI": round(details['dist_triangulasi'], 2),  # Port->Bongkar->Muat->Port
-            "JARAK_VIA_PORT": round(details['dist_via_port'], 2),        # Port->Bongkar->Port->Muat->Port
-            "JARAK_BONGKAR_MUAT": round(details['dist_direct'], 2),      # Hanya bongkar->muat
+            "JARAK_TRIANGULASI": round(details['dist_triangulasi'], 2),  
+            "JARAK_VIA_PORT": round(details['dist_via_port'], 2),        
+            "JARAK_BONGKAR_MUAT": round(details['dist_direct'], 2),      
             "SAVING_KM": round(details['saving_km'], 2),
             "COST_TRIANGULASI": round(details['cost_triangulasi']),
             "COST_VIA_PORT": round(details['cost_via_port']),

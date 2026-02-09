@@ -1,7 +1,5 @@
-from fastapi import FastAPI, UploadFile, File, Depends, HTTPException
+from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy.ext.asyncio import AsyncSession
-from database import get_db
 from logic import process_optimization
 from pydantic import BaseModel
 from typing import List
@@ -11,10 +9,8 @@ import requests
 
 app = FastAPI()
 
-# Valhalla Configuration
 VALHALLA_URL = "http://localhost:8002/route"
 
-# Model untuk request Valhalla proxy
 class ValhallaLocation(BaseModel):
     lat: float
     lon: float
@@ -31,13 +27,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# --- ENDPOINT PROXY VALHALLA ---
 @app.post("/api/valhalla/route")
 async def valhalla_proxy(request: ValhallaRequest):
-    """
-    Proxy endpoint untuk mengakses Valhalla dari frontend.
-    Ini menghindari masalah CORS karena browser tidak bisa langsung akses Valhalla.
-    """
     try:
         payload = {
             "locations": [{"lat": loc.lat, "lon": loc.lon} for loc in request.locations],
@@ -70,8 +61,7 @@ async def valhalla_proxy(request: ValhallaRequest):
 @app.post("/api/optimize")
 async def optimize_endpoint(
     file_dest: UploadFile = File(...),
-    file_orig: UploadFile = File(...),
-    db: AsyncSession = Depends(get_db)
+    file_orig: UploadFile = File(...)
 ):
     try:
         content_dest = await file_dest.read()
@@ -80,11 +70,8 @@ async def optimize_endpoint(
         df_d = pd.read_excel(io.BytesIO(content_dest))
         df_o = pd.read_excel(io.BytesIO(content_orig))
         
-        # Validasi Kolom Wajib (SESUAI INPUT EXCEL RAW ANDA)
-        # HAPUS LAT/LON DARI WAJIB, TAMBAH ALAMAT
         required = ['NO SOPT', 'ALAMAT', 'CABANG'] 
         
-        # Cek kelengkapan kolom
         missing_d = [col for col in required if col not in df_d.columns]
         missing_o = [col for col in required if col not in df_o.columns]
         
@@ -93,7 +80,6 @@ async def optimize_endpoint(
         if missing_o:
             raise HTTPException(400, f"File Origin kurang kolom: {missing_o}")
         
-        # Jalankan
         results = process_optimization(df_d, df_o)
         return results
         

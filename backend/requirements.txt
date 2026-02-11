@@ -5,6 +5,5 @@ numpy
 scipy
 requests
 geopy
-geopandas
 python-multipart
 polyline

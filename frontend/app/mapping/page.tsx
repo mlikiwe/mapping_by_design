@@ -47,7 +47,8 @@ export default function MappingPage() {
     fd.append('file_orig', fileOrig);
 
     try {
-      const res = await axios.post('http://127.0.0.1:8000/api/optimize', fd);
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
+      const res = await axios.post(`${apiUrl}/api/optimize`, fd);
       const data: OptimizationResult[] = res.data;
 
       const totalSaving = data.reduce(

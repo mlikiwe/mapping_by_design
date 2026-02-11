@@ -5,11 +5,12 @@ from pydantic import BaseModel
 from typing import List
 import pandas as pd
 import io
+import os
 import requests
 
 app = FastAPI()
 
-VALHALLA_URL = "http://localhost:8002/route"
+VALHALLA_URL = os.getenv("VALHALLA_URL", "http://localhost:8002/route")
 
 class ValhallaLocation(BaseModel):
     lat: float

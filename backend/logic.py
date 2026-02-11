@@ -1,3 +1,4 @@
+import os
 import time
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Tuple, Any
@@ -12,7 +13,7 @@ from geopy.exc import GeocoderTimedOut, GeocoderUnavailable, GeocoderServiceErro
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-VALHALLA_URL = "http://localhost:8002/route"
+VALHALLA_URL = os.getenv("VALHALLA_URL", "http://localhost:8002/route")
 
 GEOCODE_TIMEOUT = 10        
 GEOCODE_MAX_RETRIES = 3

@@ -5,7 +5,8 @@ import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from 'react-
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
-const VALHALLA_PROXY_URL = "http://127.0.0.1:8000/api/valhalla/route";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
+const VALHALLA_PROXY_URL = `${API_URL}/api/valhalla/route`;
 
 const destIcon = L.divIcon({
     className: 'custom-icon',

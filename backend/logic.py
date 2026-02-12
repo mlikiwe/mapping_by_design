@@ -8,8 +8,6 @@ import pandas as pd
 import requests
 import urllib3
 from scipy.optimize import linear_sum_assignment
-from geopy.geocoders import Nominatim
-from geopy.exc import GeocoderTimedOut, GeocoderUnavailable, GeocoderServiceError
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -104,8 +102,10 @@ DEFAULT_COST_MODEL: Dict[int, Dict[str, int]] = {
 route_cache: Dict[str, Tuple[float, float, str]] = {}
 geocode_cache: Dict[str, Tuple[Optional[float], Optional[float]]] = {}
 
+NOMINATIM_URL = "https://nominatim.openstreetmap.org/search"
+NOMINATIM_USER_AGENT = "roundtrip_mapping_optimization_v2"
+
 def geocode_helper(
-    geolocator: Nominatim,
     address: str,
     max_retries: int = GEOCODE_MAX_RETRIES
 ) -> Tuple[Optional[float], Optional[float]]:
@@ -118,18 +118,34 @@ def geocode_helper(
             if "indonesia" not in query.lower():
                 query += ", Indonesia"
             
-            location = geolocator.geocode(query, timeout=GEOCODE_TIMEOUT)
+            response = requests.get(
+                NOMINATIM_URL,
+                params={"q": query, "format": "json", "limit": 1},
+                headers={"User-Agent": NOMINATIM_USER_AGENT},
+                timeout=GEOCODE_TIMEOUT
+            )
             
-            if location:
-                result = (location.latitude, location.longitude)
+            if response.status_code == 200:
+                data = response.json()
+                if data:
+                    result = (float(data[0]["lat"]), float(data[0]["lon"]))
+                else:
+                    result = (None, None)
+                geocode_cache[address] = result
+                return result
+            elif response.status_code == 429 or response.status_code == 509:
+                print(f"Geocoding attempt {attempt + 1}/{max_retries} rate-limited for '{address}': HTTP {response.status_code}")
+                if attempt < max_retries - 1:
+                    time.sleep(GEOCODE_RETRY_DELAY * (attempt + 1))
+                continue
             else:
-                result = (None, None)
-            
-            geocode_cache[address] = result
-            return result
-            
-        except (GeocoderTimedOut, GeocoderUnavailable, GeocoderServiceError) as e:
-            print(f"Geocoding attempt {attempt + 1}/{max_retries} failed for '{address}': {type(e).__name__}")
+                print(f"Geocoding attempt {attempt + 1}/{max_retries} failed for '{address}': HTTP {response.status_code}")
+                if attempt < max_retries - 1:
+                    time.sleep(GEOCODE_RETRY_DELAY * (attempt + 1))
+                continue
+                
+        except requests.exceptions.Timeout:
+            print(f"Geocoding attempt {attempt + 1}/{max_retries} timed out for '{address}'")
             if attempt < max_retries - 1:
                 time.sleep(GEOCODE_RETRY_DELAY * (attempt + 1))
             continue
@@ -148,11 +164,6 @@ def geocode_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     if 'ALAMAT' not in df.columns:
         return df
     
-    geolocator = Nominatim(
-        user_agent="mapping_dooring",
-        timeout=GEOCODE_TIMEOUT
-    )
-    
     df['SEARCH_QUERY'] = df['ALAMAT'].astype(str)
     unique_addresses = df['SEARCH_QUERY'].unique()
     
@@ -163,7 +174,7 @@ def geocode_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     
     for idx, addr in enumerate(unique_addresses):
         print(f"  [{idx + 1}/{total}] Geocoding: {addr[:50]}...")
-        coords = geocode_helper(geolocator, addr)
+        coords = geocode_helper(addr)
         address_coords[addr] = coords
         
         sleep_time = 1.2 if coords != (None, None) else 0.5
@@ -379,8 +390,8 @@ def process_optimization(
         df_dest['ACT. FINISH DATE'], 
         errors='coerce'
     )
-    df_origin['PICK / DELIV DATE'] = pd.to_datetime(
-        df_origin['PICK / DELIV DATE'], 
+    df_origin['ACT. FINISH DATE'] = pd.to_datetime(
+        df_origin['ACT. FINISH DATE'], 
         errors='coerce'
     )
     
@@ -394,7 +405,7 @@ def process_optimization(
     ).reset_index(drop=True)
     
     df_origin = df_origin.dropna(
-        subset=['ALAMAT_LAT', 'ALAMAT_LONG', 'PICK / DELIV DATE']
+        subset=['ALAMAT_LAT', 'ALAMAT_LONG', 'ACT. FINISH DATE']
     ).reset_index(drop=True)
     
     num_dest = len(df_dest)
@@ -490,7 +501,7 @@ def process_optimization(
             if saving_km <= 0:
                 continue
             
-            orig_start_time = orig_row['PICK / DELIV DATE']
+            orig_start_time = orig_row['ACT. FINISH DATE']
             
             time_window_available = (orig_start_time - dest_finish_time).total_seconds() / 3600.0
             time_travel_required = time_direct + PREP_TIME_HOURS

@@ -4,6 +4,5 @@ pandas
 numpy
 scipy
 requests
-geopy
 python-multipart
 polyline

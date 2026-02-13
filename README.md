@@ -15,14 +15,14 @@
 
 ---
 
-## 📖 Tentang Aplikasi
+## Tentang Aplikasi
 
 Aplikasi ini merupakan web yang mengoptimasi rute trucking dengan memetakan kegiatan **bongkar** dan **muat** yang memenuhi syarat untuk dilakukan **roundtrip**. Dengan roundtrip, truk dapat langsung menuju lokasi muat setelah bongkar tanpa harus kembali ke port terlebih dahulu, sehingga menghemat jarak tempuh dan biaya operasional.
 
 ### Tujuan Utama
 
 - **Mengurangi jarak tempuh** dengan menghindari perjalanan kosong kembali ke port
-- **Menghemat biaya trucking** melalui triangulasi rute yang efisien  
+- **Menghemat biaya trucking** melalui triangulasi rute yang efisien
 - **Mengoptimasi penjadwalan** dengan mempertimbangkan constraint waktu bongkar dan muat
 - **Menyediakan visualisasi** hasil mapping untuk analisis dan pengambilan keputusan
 
@@ -31,18 +31,21 @@ Aplikasi ini merupakan web yang mengoptimasi rute trucking dengan memetakan kegi
 ## Fitur Utama
 
 ### Mapping & Optimization
+
 - **Hungarian Algorithm** untuk pencocokan optimal antara destinasi dan origin
 - **Geocoding otomatis** alamat menggunakan Nominatim OpenStreetMap
 - **Routing real-time** dengan Valhalla Routing Engine
 - **Cost matrix calculation** dengan constraint multi-dimensi
 
-### Analisis & Visualisasi  
+### Analisis & Visualisasi
+
 - **Dashboard interaktif** dengan statistik saving jarak dan biaya
 - **Peta visualisasi** rute triangulasi menggunakan Leaflet
 - **Filter by cabang** untuk analisis per lokasi
 - **Detail view** dengan informasi lengkap setiap match
 
 ### Data Management
+
 - **Upload Excel** untuk data bongkar dan muat (.xlsx)
 - **Export hasil** ke Excel untuk dokumentasi
 - **Mode Simulasi** untuk membuka kembali hasil mapping sebelumnya
@@ -54,7 +57,7 @@ Aplikasi ini merupakan web yang mengoptimasi rute trucking dengan memetakan kegi
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                        Frontend (Next.js)                        │
+│                        Frontend (Next.js)                       │
 │  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────────┐  │
 │  │   Landing   │  │   Mapping   │  │   Results & Detail      │  │
 │  │    Page     │→ │   Upload    │→ │   Visualization         │  │
@@ -62,7 +65,7 @@ Aplikasi ini merupakan web yang mengoptimasi rute trucking dengan memetakan kegi
 └─────────────────────────────────────────────────────────────────┘
                               ↓ API Calls
 ┌─────────────────────────────────────────────────────────────────┐
-│                       Backend (FastAPI)                          │
+│                       Backend (FastAPI)                         │
 │  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────────┐  │
 │  │  Geocoding  │  │   Routing   │  │   Hungarian Algorithm   │  │
 │  │  (Nominatim)│  │  (Valhalla) │  │   Optimization          │  │
@@ -70,8 +73,8 @@ Aplikasi ini merupakan web yang mengoptimasi rute trucking dengan memetakan kegi
 └─────────────────────────────────────────────────────────────────┘
                               ↓
 ┌─────────────────────────────────────────────────────────────────┐
-│              Valhalla Routing Engine (Docker)                    │
-│                    Map: Indonesia OSM                            │
+│              Valhalla Routing Engine (Docker)                   │
+│                    Map: Indonesia OSM                           │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -80,24 +83,26 @@ Aplikasi ini merupakan web yang mengoptimasi rute trucking dengan memetakan kegi
 ## Tech Stack
 
 ### Backend
-| Technology | Purpose |
-|------------|---------|
-| **FastAPI** | REST API Framework |
-| **Python 3.10+** | Core Language |
-| **Pandas & NumPy** | Data Processing |
-| **SciPy** | Hungarian Algorithm (linear_sum_assignment) |
-| **GeoPy** | Geocoding Service |
-| **Valhalla** | Self-hosted Routing Engine |
+
+| Technology         | Purpose                                     |
+| ------------------ | ------------------------------------------- |
+| **FastAPI**        | REST API Framework                          |
+| **Python 3.10+**   | Core Language                               |
+| **Pandas & NumPy** | Data Processing                             |
+| **SciPy**          | Hungarian Algorithm (linear_sum_assignment) |
+| **GeoPy**          | Geocoding Service                           |
+| **Valhalla**       | Self-hosted Routing Engine                  |
 
 ### Frontend
-| Technology | Purpose |
-|------------|---------|
-| **Next.js 16** | React Framework (App Router) |
-| **TypeScript** | Type Safety |
-| **Tailwind CSS** | Styling |
-| **Leaflet** | Map Visualization |
-| **Axios** | HTTP Client |
-| **XLSX** | Excel Import/Export |
+
+| Technology       | Purpose                      |
+| ---------------- | ---------------------------- |
+| **Next.js 16**   | React Framework (App Router) |
+| **TypeScript**   | Type Safety                  |
+| **Tailwind CSS** | Styling                      |
+| **Leaflet**      | Map Visualization            |
+| **Axios**        | HTTP Client                  |
+| **XLSX**         | Excel Import/Export          |
 
 ---
 
@@ -157,7 +162,6 @@ docker run -d --name valhalla \
   ghcr.io/gis-ops/docker-valhalla/valhalla:latest
 ```
 
-
 ---
 
 ## Penggunaan
@@ -165,12 +169,14 @@ docker run -d --name valhalla \
 ### Menjalankan Aplikasi
 
 **Terminal 1 - Backend:**
+
 ```bash
 cd backend
 python -m uvicorn main:app --reload --host 127.0.0.1 --port 8000
 ```
 
 **Terminal 2 - Frontend:**
+
 ```bash
 cd frontend
 npm run dev
@@ -203,16 +209,17 @@ npm run dev
 
 **Required Columns:**
 
-| Column | Description |
-|--------|-------------|
-| `NO SOPT` | ID unik shipment |
-| `ALAMAT` | Alamat lengkap untuk geocoding |
-| `CABANG` | Kode cabang (SBY, JKT, SMG, MKS, etc.) |
-| `SIZE CONT` | Ukuran container (20/40 feet) |
-| `ACT. FINISH DATE` | Waktu selesai bongkar (untuk destinasi) |
-| `PICK / DELIV DATE` | Waktu mulai muat (untuk origin) |
+| Column              | Description                             |
+| ------------------- | --------------------------------------- |
+| `NO SOPT`           | ID unik shipment                        |
+| `ALAMAT`            | Alamat lengkap untuk geocoding          |
+| `CABANG`            | Kode cabang (SBY, JKT, SMG, MKS, etc.)  |
+| `SIZE CONT`         | Ukuran container (20/40 feet)           |
+| `ACT. FINISH DATE`  | Waktu selesai bongkar (untuk destinasi) |
+| `PICK / DELIV DATE` | Waktu mulai muat (untuk origin)         |
 
 **Optional Columns:**
+
 - `GRADE CONT` - Grade container untuk matching
 - `ALAMAT_LAT`, `ALAMAT_LONG` - Koordinat (jika sudah tersedia)
 
@@ -221,6 +228,7 @@ npm run dev
 ## API Documentation
 
 ### Base URL
+
 ```
 http://127.0.0.1:8000
 ```
@@ -228,13 +236,16 @@ http://127.0.0.1:8000
 ### Endpoints
 
 #### POST `/api/optimize`
+
 Upload dan proses optimasi mapping roundtrip.
 
 **Request:**
+
 - `file_dest`: File Excel data bongkar (multipart/form-data)
 - `file_orig`: File Excel data muat (multipart/form-data)
 
 **Response:**
+
 ```json
 [
   {
@@ -251,14 +262,16 @@ Upload dan proses optimasi mapping roundtrip.
 ```
 
 #### POST `/api/valhalla/route`
+
 Proxy untuk Valhalla routing.
 
 **Request:**
+
 ```json
 {
   "locations": [
-    {"lat": -7.25, "lon": 112.75},
-    {"lat": -7.30, "lon": 112.80}
+    { "lat": -7.25, "lon": 112.75 },
+    { "lat": -7.3, "lon": 112.8 }
   ],
   "costing": "auto",
   "units": "km"
@@ -298,17 +311,17 @@ mapping_by_design/
 
 ## Cabang yang Didukung
 
-| Code | Lokasi | Port Coordinates |
-|------|--------|------------------|
-| SBY | Surabaya | -7.218, 112.728 |
-| JKT | Jakarta | -6.108, 106.875 |
-| SMG | Semarang | -6.943, 110.425 |
-| MKS | Makassar | -5.114, 119.410 |
-| BPN | Balikpapan | -1.157, 116.785 |
-| SDA | Samarinda | -0.576, 117.207 |
-| PNK | Pontianak | -0.019, 109.334 |
-| KDR | Kendari | -3.990, 122.619 |
-| JYP | Jayapura | -2.545, 140.713 |
+| Code | Lokasi     | Port Coordinates |
+| ---- | ---------- | ---------------- |
+| SBY  | Surabaya   | -7.218, 112.728  |
+| JKT  | Jakarta    | -6.108, 106.875  |
+| SMG  | Semarang   | -6.943, 110.425  |
+| MKS  | Makassar   | -5.114, 119.410  |
+| BPN  | Balikpapan | -1.157, 116.785  |
+| SDA  | Samarinda  | -0.576, 117.207  |
+| PNK  | Pontianak  | -0.019, 109.334  |
+| KDR  | Kendari    | -3.990, 122.619  |
+| JYP  | Jayapura   | -2.545, 140.713  |
 
 ---
 
@@ -316,8 +329,8 @@ mapping_by_design/
 
 ### Environment Variables (Backend)
 
-| Variable | Default | Description |
-|----------|---------|-------------|
+| Variable       | Default                       | Description           |
+| -------------- | ----------------------------- | --------------------- |
 | `VALHALLA_URL` | `http://localhost:8002/route` | Valhalla API endpoint |
 
 ### Constraint Parameters (logic.py)
@@ -336,17 +349,30 @@ MAX_MAJUKAN_MUAT = 12        # Maks maju jadwal muat (jam)
 ## Troubleshooting
 
 ### Mapping stuck di "Membangun cost matrix..."
+
 - Pastikan Valhalla server berjalan di port 8002
 - Cek koneksi ke Valhalla: `curl http://localhost:8002/status`
 - Periksa log backend untuk timeout errors
 
 ### Geocoding gagal
+
 - Rate limit Nominatim: aplikasi sudah menghandle dengan retry + delay
 - Pastikan format alamat valid dan mengandung informasi lokasi yang jelas
 
 ### Frontend tidak terhubung ke backend
+
 - Pastikan backend berjalan di port 8000
 - Cek CORS settings di `main.py`
+
+---
+
+## 🌐 Deployment
+
+| Item                   | Link                                                                                                 |
+| ---------------------- | ---------------------------------------------------------------------------------------------------- |
+| **URL Website**        | [https://mapping-by-design.vercel.app/](https://mapping-by-design.vercel.app/)                       |
+| **Source Code GitHub** | [https://github.com/mlikiwe/mapping_by_design](https://github.com/mlikiwe/mapping_by_design)         |
+| **Data Testing**       | [Google Drive](https://drive.google.com/drive/folders/13gIlUDpNNBPpIPec-GVL8ye9MstrCzGB?usp=sharing) |
 
 ---
 

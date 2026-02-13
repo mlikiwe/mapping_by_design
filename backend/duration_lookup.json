@@ -1,0 +1,3005 @@
+{
+  "generated_at": "2026-02-13T08:14:32.735577",
+  "total_rows_processed": 3062,
+  "total_customers": 323,
+  "global_default": 4.0,
+  "customers": {
+    "67100__BPN": {
+      "cust_id": "67100",
+      "cabang": "BPN",
+      "median_bongkar_hours": 4.8,
+      "mean_bongkar_hours": 5.94,
+      "count_bongkar": 77,
+      "min_bongkar_hours": 1.24,
+      "max_bongkar_hours": 23.34
+    },
+    "59157__MKS": {
+      "cust_id": "59157",
+      "cabang": "MKS",
+      "median_bongkar_hours": 3.17,
+      "mean_bongkar_hours": 4.13,
+      "count_bongkar": 26,
+      "min_bongkar_hours": 2.21,
+      "max_bongkar_hours": 8.75
+    },
+    "70384__PNK": {
+      "cust_id": "70384",
+      "cabang": "PNK",
+      "median_bongkar_hours": 3.49,
+      "mean_bongkar_hours": 3.51,
+      "count_bongkar": 17,
+      "min_bongkar_hours": 1.29,
+      "max_bongkar_hours": 9.43
+    },
+    "86424__JYP": {
+      "cust_id": "86424",
+      "cabang": "JYP",
+      "median_bongkar_hours": 1.8,
+      "mean_bongkar_hours": 2.49,
+      "count_bongkar": 4,
+      "min_bongkar_hours": 1.38,
+      "max_bongkar_hours": 4.98
+    },
+    "67289__JYP": {
+      "cust_id": "67289",
+      "cabang": "JYP",
+      "median_bongkar_hours": 2.52,
+      "mean_bongkar_hours": 2.25,
+      "count_bongkar": 11,
+      "min_bongkar_hours": 0.99,
+      "max_bongkar_hours": 4.22
+    },
+    "50891__JYP": {
+      "cust_id": "50891",
+      "cabang": "JYP",
+      "median_bongkar_hours": 2.52,
+      "mean_bongkar_hours": 2.47,
+      "count_bongkar": 4,
+      "min_bongkar_hours": 1.43,
+      "max_bongkar_hours": 3.43
+    },
+    "49996__BPN": {
+      "cust_id": "49996",
+      "cabang": "BPN",
+      "median_bongkar_hours": 5.13,
+      "mean_bongkar_hours": 5.13,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 5.13,
+      "max_bongkar_hours": 5.13
+    },
+    "55500__JYP": {
+      "cust_id": "55500",
+      "cabang": "JYP",
+      "median_bongkar_hours": 2.24,
+      "mean_bongkar_hours": 3.09,
+      "count_bongkar": 4,
+      "min_bongkar_hours": 1.78,
+      "max_bongkar_hours": 6.1
+    },
+    "56287__JYP": {
+      "cust_id": "56287",
+      "cabang": "JYP",
+      "median_bongkar_hours": 2.46,
+      "mean_bongkar_hours": 3.78,
+      "count_bongkar": 12,
+      "min_bongkar_hours": 1.25,
+      "max_bongkar_hours": 12.92
+    },
+    "105155__BPN": {
+      "cust_id": "105155",
+      "cabang": "BPN",
+      "median_bongkar_hours": 11.96,
+      "mean_bongkar_hours": 11.96,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 5.53,
+      "max_bongkar_hours": 18.38
+    },
+    "59139__MKS": {
+      "cust_id": "59139",
+      "cabang": "MKS",
+      "median_bongkar_hours": 5.25,
+      "mean_bongkar_hours": 5.17,
+      "count_bongkar": 10,
+      "min_bongkar_hours": 1.58,
+      "max_bongkar_hours": 7.86
+    },
+    "76983__MKS": {
+      "cust_id": "76983",
+      "cabang": "MKS",
+      "median_bongkar_hours": 5.32,
+      "mean_bongkar_hours": 6.64,
+      "count_bongkar": 21,
+      "min_bongkar_hours": 2.39,
+      "max_bongkar_hours": 15.89
+    },
+    "109736__MKS": {
+      "cust_id": "109736",
+      "cabang": "MKS",
+      "median_bongkar_hours": 4.36,
+      "mean_bongkar_hours": 4.36,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 4.32,
+      "max_bongkar_hours": 4.39
+    },
+    "105982__BPN": {
+      "cust_id": "105982",
+      "cabang": "BPN",
+      "median_bongkar_hours": 6.99,
+      "mean_bongkar_hours": 8.62,
+      "count_bongkar": 30,
+      "min_bongkar_hours": 0.92,
+      "max_bongkar_hours": 22.17
+    },
+    "59157__BPN": {
+      "cust_id": "59157",
+      "cabang": "BPN",
+      "median_bongkar_hours": 15.06,
+      "mean_bongkar_hours": 12.96,
+      "count_bongkar": 30,
+      "min_bongkar_hours": 0.83,
+      "max_bongkar_hours": 23.9
+    },
+    "87335__MKS": {
+      "cust_id": "87335",
+      "cabang": "MKS",
+      "median_bongkar_hours": 3.4,
+      "mean_bongkar_hours": 3.34,
+      "count_bongkar": 14,
+      "min_bongkar_hours": 1.75,
+      "max_bongkar_hours": 4.44
+    },
+    "91788__MKS": {
+      "cust_id": "91788",
+      "cabang": "MKS",
+      "median_bongkar_hours": 4.06,
+      "mean_bongkar_hours": 4.62,
+      "count_bongkar": 13,
+      "min_bongkar_hours": 2.87,
+      "max_bongkar_hours": 8.44
+    },
+    "63029__MKS": {
+      "cust_id": "63029",
+      "cabang": "MKS",
+      "median_bongkar_hours": 3.83,
+      "mean_bongkar_hours": 3.84,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 3.57,
+      "max_bongkar_hours": 4.1
+    },
+    "95836__PNK": {
+      "cust_id": "95836",
+      "cabang": "PNK",
+      "median_bongkar_hours": 6.61,
+      "mean_bongkar_hours": 6.61,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 2.62,
+      "max_bongkar_hours": 10.6
+    },
+    "19960__BPN": {
+      "cust_id": "19960",
+      "cabang": "BPN",
+      "median_bongkar_hours": 18.61,
+      "mean_bongkar_hours": 15.4,
+      "count_bongkar": 17,
+      "min_bongkar_hours": 2.41,
+      "max_bongkar_hours": 23.23
+    },
+    "148__PNK": {
+      "cust_id": "148",
+      "cabang": "PNK",
+      "median_bongkar_hours": 11.53,
+      "mean_bongkar_hours": 11.47,
+      "count_bongkar": 15,
+      "min_bongkar_hours": 2.47,
+      "max_bongkar_hours": 22.0
+    },
+    "95369__BPN": {
+      "cust_id": "95369",
+      "cabang": "BPN",
+      "median_bongkar_hours": 16.13,
+      "mean_bongkar_hours": 13.31,
+      "count_bongkar": 22,
+      "min_bongkar_hours": 2.27,
+      "max_bongkar_hours": 23.35
+    },
+    "49995__MKS": {
+      "cust_id": "49995",
+      "cabang": "MKS",
+      "median_bongkar_hours": 4.46,
+      "mean_bongkar_hours": 4.91,
+      "count_bongkar": 40,
+      "min_bongkar_hours": 2.33,
+      "max_bongkar_hours": 9.38
+    },
+    "68339__MKS": {
+      "cust_id": "68339",
+      "cabang": "MKS",
+      "median_bongkar_hours": 4.46,
+      "mean_bongkar_hours": 4.17,
+      "count_bongkar": 7,
+      "min_bongkar_hours": 1.01,
+      "max_bongkar_hours": 6.56
+    },
+    "106668__JYP": {
+      "cust_id": "106668",
+      "cabang": "JYP",
+      "median_bongkar_hours": 2.48,
+      "mean_bongkar_hours": 2.94,
+      "count_bongkar": 29,
+      "min_bongkar_hours": 1.18,
+      "max_bongkar_hours": 6.18
+    },
+    "31041__BPN": {
+      "cust_id": "31041",
+      "cabang": "BPN",
+      "median_bongkar_hours": 5.5,
+      "mean_bongkar_hours": 5.62,
+      "count_bongkar": 27,
+      "min_bongkar_hours": 0.57,
+      "max_bongkar_hours": 19.33
+    },
+    "79613__MKS": {
+      "cust_id": "79613",
+      "cabang": "MKS",
+      "median_bongkar_hours": 4.7,
+      "mean_bongkar_hours": 4.42,
+      "count_bongkar": 18,
+      "min_bongkar_hours": 1.59,
+      "max_bongkar_hours": 8.34
+    },
+    "27027__PNK": {
+      "cust_id": "27027",
+      "cabang": "PNK",
+      "median_bongkar_hours": 10.41,
+      "mean_bongkar_hours": 9.97,
+      "count_bongkar": 39,
+      "min_bongkar_hours": 1.41,
+      "max_bongkar_hours": 21.02
+    },
+    "55514__MKS": {
+      "cust_id": "55514",
+      "cabang": "MKS",
+      "median_bongkar_hours": 3.96,
+      "mean_bongkar_hours": 4.48,
+      "count_bongkar": 75,
+      "min_bongkar_hours": 1.1,
+      "max_bongkar_hours": 9.43
+    },
+    "104982__MKS": {
+      "cust_id": "104982",
+      "cabang": "MKS",
+      "median_bongkar_hours": 4.39,
+      "mean_bongkar_hours": 5.16,
+      "count_bongkar": 11,
+      "min_bongkar_hours": 2.79,
+      "max_bongkar_hours": 13.18
+    },
+    "49996__PNK": {
+      "cust_id": "49996",
+      "cabang": "PNK",
+      "median_bongkar_hours": 7.44,
+      "mean_bongkar_hours": 6.76,
+      "count_bongkar": 17,
+      "min_bongkar_hours": 2.42,
+      "max_bongkar_hours": 14.14
+    },
+    "55681__MKS": {
+      "cust_id": "55681",
+      "cabang": "MKS",
+      "median_bongkar_hours": 2.42,
+      "mean_bongkar_hours": 2.97,
+      "count_bongkar": 5,
+      "min_bongkar_hours": 2.02,
+      "max_bongkar_hours": 4.47,
+      "median_muat_hours": 1.27,
+      "mean_muat_hours": 1.27,
+      "count_muat": 4,
+      "min_muat_hours": 0.82,
+      "max_muat_hours": 1.72
+    },
+    "32791__PNK": {
+      "cust_id": "32791",
+      "cabang": "PNK",
+      "median_bongkar_hours": 16.38,
+      "mean_bongkar_hours": 14.86,
+      "count_bongkar": 8,
+      "min_bongkar_hours": 4.39,
+      "max_bongkar_hours": 20.82
+    },
+    "107158__BPN": {
+      "cust_id": "107158",
+      "cabang": "BPN",
+      "median_bongkar_hours": 8.79,
+      "mean_bongkar_hours": 10.04,
+      "count_bongkar": 26,
+      "min_bongkar_hours": 2.59,
+      "max_bongkar_hours": 21.58,
+      "median_muat_hours": 3.56,
+      "mean_muat_hours": 3.56,
+      "count_muat": 1,
+      "min_muat_hours": 3.56,
+      "max_muat_hours": 3.56
+    },
+    "74926__BPN": {
+      "cust_id": "74926",
+      "cabang": "BPN",
+      "median_bongkar_hours": 6.26,
+      "mean_bongkar_hours": 9.36,
+      "count_bongkar": 29,
+      "min_bongkar_hours": 2.13,
+      "max_bongkar_hours": 22.08
+    },
+    "49995__PNK": {
+      "cust_id": "49995",
+      "cabang": "PNK",
+      "median_bongkar_hours": 2.93,
+      "mean_bongkar_hours": 3.15,
+      "count_bongkar": 21,
+      "min_bongkar_hours": 0.83,
+      "max_bongkar_hours": 5.49
+    },
+    "69515__BPN": {
+      "cust_id": "69515",
+      "cabang": "BPN",
+      "median_bongkar_hours": 6.1,
+      "mean_bongkar_hours": 6.66,
+      "count_bongkar": 12,
+      "min_bongkar_hours": 2.57,
+      "max_bongkar_hours": 15.75
+    },
+    "20890__BPN": {
+      "cust_id": "20890",
+      "cabang": "BPN",
+      "median_bongkar_hours": 10.84,
+      "mean_bongkar_hours": 10.84,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 5.68,
+      "max_bongkar_hours": 16.0
+    },
+    "106668__MKS": {
+      "cust_id": "106668",
+      "cabang": "MKS",
+      "median_bongkar_hours": 2.81,
+      "mean_bongkar_hours": 2.9,
+      "count_bongkar": 6,
+      "min_bongkar_hours": 2.07,
+      "max_bongkar_hours": 4.44
+    },
+    "50289__MKS": {
+      "cust_id": "50289",
+      "cabang": "MKS",
+      "median_bongkar_hours": 3.8,
+      "mean_bongkar_hours": 3.8,
+      "count_bongkar": 3,
+      "min_bongkar_hours": 3.8,
+      "max_bongkar_hours": 3.8
+    },
+    "95709__MKS": {
+      "cust_id": "95709",
+      "cabang": "MKS",
+      "median_bongkar_hours": 3.94,
+      "mean_bongkar_hours": 3.59,
+      "count_bongkar": 7,
+      "min_bongkar_hours": 2.02,
+      "max_bongkar_hours": 4.44
+    },
+    "59139__PNK": {
+      "cust_id": "59139",
+      "cabang": "PNK",
+      "median_bongkar_hours": 5.1,
+      "mean_bongkar_hours": 6.57,
+      "count_bongkar": 14,
+      "min_bongkar_hours": 2.98,
+      "max_bongkar_hours": 21.68
+    },
+    "109616__MKS": {
+      "cust_id": "109616",
+      "cabang": "MKS",
+      "median_bongkar_hours": 4.67,
+      "mean_bongkar_hours": 4.84,
+      "count_bongkar": 4,
+      "min_bongkar_hours": 2.2,
+      "max_bongkar_hours": 7.82
+    },
+    "256__PNK": {
+      "cust_id": "256",
+      "cabang": "PNK",
+      "median_bongkar_hours": 3.12,
+      "mean_bongkar_hours": 3.39,
+      "count_bongkar": 48,
+      "min_bongkar_hours": 1.01,
+      "max_bongkar_hours": 5.69
+    },
+    "101070__MKS": {
+      "cust_id": "101070",
+      "cabang": "MKS",
+      "median_bongkar_hours": 3.44,
+      "mean_bongkar_hours": 3.21,
+      "count_bongkar": 3,
+      "min_bongkar_hours": 2.3,
+      "max_bongkar_hours": 3.9
+    },
+    "80695__BPN": {
+      "cust_id": "80695",
+      "cabang": "BPN",
+      "median_bongkar_hours": 5.09,
+      "mean_bongkar_hours": 5.09,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 5.09,
+      "max_bongkar_hours": 5.09
+    },
+    "21377__BPN": {
+      "cust_id": "21377",
+      "cabang": "BPN",
+      "median_bongkar_hours": 5.55,
+      "mean_bongkar_hours": 7.07,
+      "count_bongkar": 28,
+      "min_bongkar_hours": 0.92,
+      "max_bongkar_hours": 18.27
+    },
+    "49996__JYP": {
+      "cust_id": "49996",
+      "cabang": "JYP",
+      "median_bongkar_hours": 2.85,
+      "mean_bongkar_hours": 2.98,
+      "count_bongkar": 5,
+      "min_bongkar_hours": 1.35,
+      "max_bongkar_hours": 4.3
+    },
+    "109554__MKS": {
+      "cust_id": "109554",
+      "cabang": "MKS",
+      "median_bongkar_hours": 3.34,
+      "mean_bongkar_hours": 3.47,
+      "count_bongkar": 6,
+      "min_bongkar_hours": 2.22,
+      "max_bongkar_hours": 4.37
+    },
+    "16707__MKS": {
+      "cust_id": "16707",
+      "cabang": "MKS",
+      "median_bongkar_hours": 4.61,
+      "mean_bongkar_hours": 4.93,
+      "count_bongkar": 14,
+      "min_bongkar_hours": 2.43,
+      "max_bongkar_hours": 7.83
+    },
+    "69515__MKS": {
+      "cust_id": "69515",
+      "cabang": "MKS",
+      "median_bongkar_hours": 3.35,
+      "mean_bongkar_hours": 3.96,
+      "count_bongkar": 12,
+      "min_bongkar_hours": 1.46,
+      "max_bongkar_hours": 6.75
+    },
+    "85974__MKS": {
+      "cust_id": "85974",
+      "cabang": "MKS",
+      "median_bongkar_hours": 5.57,
+      "mean_bongkar_hours": 5.63,
+      "count_bongkar": 17,
+      "min_bongkar_hours": 2.62,
+      "max_bongkar_hours": 8.07
+    },
+    "97117__MKS": {
+      "cust_id": "97117",
+      "cabang": "MKS",
+      "median_bongkar_hours": 5.12,
+      "mean_bongkar_hours": 5.31,
+      "count_bongkar": 9,
+      "min_bongkar_hours": 2.7,
+      "max_bongkar_hours": 10.04
+    },
+    "105533__MKS": {
+      "cust_id": "105533",
+      "cabang": "MKS",
+      "median_bongkar_hours": 12.34,
+      "mean_bongkar_hours": 11.23,
+      "count_bongkar": 3,
+      "min_bongkar_hours": 6.04,
+      "max_bongkar_hours": 15.3
+    },
+    "73334__BPN": {
+      "cust_id": "73334",
+      "cabang": "BPN",
+      "median_bongkar_hours": 4.87,
+      "mean_bongkar_hours": 4.73,
+      "count_bongkar": 5,
+      "min_bongkar_hours": 1.6,
+      "max_bongkar_hours": 8.33
+    },
+    "94109__MKS": {
+      "cust_id": "94109",
+      "cabang": "MKS",
+      "median_bongkar_hours": 2.96,
+      "mean_bongkar_hours": 3.4,
+      "count_bongkar": 46,
+      "min_bongkar_hours": 1.44,
+      "max_bongkar_hours": 8.47,
+      "median_muat_hours": 3.67,
+      "mean_muat_hours": 3.67,
+      "count_muat": 2,
+      "min_muat_hours": 2.94,
+      "max_muat_hours": 4.4
+    },
+    "59158__JYP": {
+      "cust_id": "59158",
+      "cabang": "JYP",
+      "median_bongkar_hours": 3.38,
+      "mean_bongkar_hours": 3.38,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 3.38,
+      "max_bongkar_hours": 3.38
+    },
+    "100798__MKS": {
+      "cust_id": "100798",
+      "cabang": "MKS",
+      "median_bongkar_hours": 5.14,
+      "mean_bongkar_hours": 4.66,
+      "count_bongkar": 5,
+      "min_bongkar_hours": 2.44,
+      "max_bongkar_hours": 6.5,
+      "median_muat_hours": 19.05,
+      "mean_muat_hours": 19.05,
+      "count_muat": 1,
+      "min_muat_hours": 19.05,
+      "max_muat_hours": 19.05
+    },
+    "49995__BPN": {
+      "cust_id": "49995",
+      "cabang": "BPN",
+      "median_bongkar_hours": 7.2,
+      "mean_bongkar_hours": 6.23,
+      "count_bongkar": 4,
+      "min_bongkar_hours": 2.55,
+      "max_bongkar_hours": 7.97
+    },
+    "104360__PNK": {
+      "cust_id": "104360",
+      "cabang": "PNK",
+      "median_bongkar_hours": 11.87,
+      "mean_bongkar_hours": 11.46,
+      "count_bongkar": 11,
+      "min_bongkar_hours": 2.99,
+      "max_bongkar_hours": 21.45
+    },
+    "87798__MKS": {
+      "cust_id": "87798",
+      "cabang": "MKS",
+      "median_bongkar_hours": 4.61,
+      "mean_bongkar_hours": 4.64,
+      "count_bongkar": 14,
+      "min_bongkar_hours": 2.34,
+      "max_bongkar_hours": 7.21
+    },
+    "94978__MKS": {
+      "cust_id": "94978",
+      "cabang": "MKS",
+      "median_bongkar_hours": 3.46,
+      "mean_bongkar_hours": 4.14,
+      "count_bongkar": 17,
+      "min_bongkar_hours": 1.11,
+      "max_bongkar_hours": 12.95,
+      "median_muat_hours": 11.78,
+      "mean_muat_hours": 10.56,
+      "count_muat": 79,
+      "min_muat_hours": 1.45,
+      "max_muat_hours": 19.91
+    },
+    "109611__MKS": {
+      "cust_id": "109611",
+      "cabang": "MKS",
+      "median_bongkar_hours": 4.25,
+      "mean_bongkar_hours": 5.42,
+      "count_bongkar": 10,
+      "min_bongkar_hours": 3.8,
+      "max_bongkar_hours": 10.47
+    },
+    "101067__BPN": {
+      "cust_id": "101067",
+      "cabang": "BPN",
+      "median_bongkar_hours": 4.48,
+      "mean_bongkar_hours": 4.48,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 3.88,
+      "max_bongkar_hours": 5.08
+    },
+    "106086__MKS": {
+      "cust_id": "106086",
+      "cabang": "MKS",
+      "median_bongkar_hours": 3.7,
+      "mean_bongkar_hours": 3.7,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 3.7,
+      "max_bongkar_hours": 3.7
+    },
+    "22105__PNK": {
+      "cust_id": "22105",
+      "cabang": "PNK",
+      "median_bongkar_hours": 4.5,
+      "mean_bongkar_hours": 8.94,
+      "count_bongkar": 11,
+      "min_bongkar_hours": 1.63,
+      "max_bongkar_hours": 21.73
+    },
+    "32791__MKS": {
+      "cust_id": "32791",
+      "cabang": "MKS",
+      "median_bongkar_hours": 3.69,
+      "mean_bongkar_hours": 4.2,
+      "count_bongkar": 18,
+      "min_bongkar_hours": 2.27,
+      "max_bongkar_hours": 7.33,
+      "median_muat_hours": 10.03,
+      "mean_muat_hours": 10.17,
+      "count_muat": 9,
+      "min_muat_hours": 1.3,
+      "max_muat_hours": 15.02
+    },
+    "59239__PNK": {
+      "cust_id": "59239",
+      "cabang": "PNK",
+      "median_bongkar_hours": 11.36,
+      "mean_bongkar_hours": 11.7,
+      "count_bongkar": 14,
+      "min_bongkar_hours": 3.08,
+      "max_bongkar_hours": 22.34
+    },
+    "62986__PNK": {
+      "cust_id": "62986",
+      "cabang": "PNK",
+      "median_bongkar_hours": 3.07,
+      "mean_bongkar_hours": 9.07,
+      "count_bongkar": 3,
+      "min_bongkar_hours": 3.05,
+      "max_bongkar_hours": 21.08
+    },
+    "90379__MKS": {
+      "cust_id": "90379",
+      "cabang": "MKS",
+      "median_bongkar_hours": 5.55,
+      "mean_bongkar_hours": 5.16,
+      "count_bongkar": 17,
+      "min_bongkar_hours": 2.15,
+      "max_bongkar_hours": 8.95
+    },
+    "109157__MKS": {
+      "cust_id": "109157",
+      "cabang": "MKS",
+      "median_bongkar_hours": 3.46,
+      "mean_bongkar_hours": 3.46,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 3.46,
+      "max_bongkar_hours": 3.46
+    },
+    "148__MKS": {
+      "cust_id": "148",
+      "cabang": "MKS",
+      "median_bongkar_hours": 4.72,
+      "mean_bongkar_hours": 4.82,
+      "count_bongkar": 67,
+      "min_bongkar_hours": 0.54,
+      "max_bongkar_hours": 10.14
+    },
+    "59239__MKS": {
+      "cust_id": "59239",
+      "cabang": "MKS",
+      "median_bongkar_hours": 4.45,
+      "mean_bongkar_hours": 5.08,
+      "count_bongkar": 29,
+      "min_bongkar_hours": 2.6,
+      "max_bongkar_hours": 8.49
+    },
+    "94109__PNK": {
+      "cust_id": "94109",
+      "cabang": "PNK",
+      "median_bongkar_hours": 4.27,
+      "mean_bongkar_hours": 10.0,
+      "count_bongkar": 13,
+      "min_bongkar_hours": 1.65,
+      "max_bongkar_hours": 21.7
+    },
+    "21373__PNK": {
+      "cust_id": "21373",
+      "cabang": "PNK",
+      "median_bongkar_hours": 10.82,
+      "mean_bongkar_hours": 11.2,
+      "count_bongkar": 27,
+      "min_bongkar_hours": 2.33,
+      "max_bongkar_hours": 22.28
+    },
+    "89659__MKS": {
+      "cust_id": "89659",
+      "cabang": "MKS",
+      "median_bongkar_hours": 8.16,
+      "mean_bongkar_hours": 8.16,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 3.42,
+      "max_bongkar_hours": 12.9
+    },
+    "108716__MKS": {
+      "cust_id": "108716",
+      "cabang": "MKS",
+      "median_bongkar_hours": 3.51,
+      "mean_bongkar_hours": 3.55,
+      "count_bongkar": 4,
+      "min_bongkar_hours": 2.68,
+      "max_bongkar_hours": 4.5
+    },
+    "109608__MKS": {
+      "cust_id": "109608",
+      "cabang": "MKS",
+      "median_bongkar_hours": 3.63,
+      "mean_bongkar_hours": 3.72,
+      "count_bongkar": 8,
+      "min_bongkar_hours": 2.14,
+      "max_bongkar_hours": 4.66
+    },
+    "51494__PNK": {
+      "cust_id": "51494",
+      "cabang": "PNK",
+      "median_bongkar_hours": 7.96,
+      "mean_bongkar_hours": 7.96,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 3.8,
+      "max_bongkar_hours": 12.11
+    },
+    "62986__MKS": {
+      "cust_id": "62986",
+      "cabang": "MKS",
+      "median_bongkar_hours": 3.49,
+      "mean_bongkar_hours": 4.04,
+      "count_bongkar": 6,
+      "min_bongkar_hours": 2.42,
+      "max_bongkar_hours": 8.23
+    },
+    "88036__BPN": {
+      "cust_id": "88036",
+      "cabang": "BPN",
+      "median_bongkar_hours": 7.19,
+      "mean_bongkar_hours": 9.01,
+      "count_bongkar": 13,
+      "min_bongkar_hours": 1.65,
+      "max_bongkar_hours": 17.65
+    },
+    "101067__PNK": {
+      "cust_id": "101067",
+      "cabang": "PNK",
+      "median_bongkar_hours": 5.21,
+      "mean_bongkar_hours": 4.91,
+      "count_bongkar": 3,
+      "min_bongkar_hours": 2.36,
+      "max_bongkar_hours": 7.17
+    },
+    "109059__MKS": {
+      "cust_id": "109059",
+      "cabang": "MKS",
+      "median_bongkar_hours": 4.8,
+      "mean_bongkar_hours": 4.8,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 3.74,
+      "max_bongkar_hours": 5.87
+    },
+    "56869__MKS": {
+      "cust_id": "56869",
+      "cabang": "MKS",
+      "median_bongkar_hours": 3.07,
+      "mean_bongkar_hours": 2.93,
+      "count_bongkar": 4,
+      "min_bongkar_hours": 1.46,
+      "max_bongkar_hours": 4.11
+    },
+    "56630__MKS": {
+      "cust_id": "56630",
+      "cabang": "MKS",
+      "median_bongkar_hours": 2.83,
+      "mean_bongkar_hours": 2.84,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 2.02,
+      "max_bongkar_hours": 3.65
+    },
+    "55500__BPN": {
+      "cust_id": "55500",
+      "cabang": "BPN",
+      "median_bongkar_hours": 5.61,
+      "mean_bongkar_hours": 5.46,
+      "count_bongkar": 8,
+      "min_bongkar_hours": 0.58,
+      "max_bongkar_hours": 10.43
+    },
+    "79200__MKS": {
+      "cust_id": "79200",
+      "cabang": "MKS",
+      "median_bongkar_hours": 6.03,
+      "mean_bongkar_hours": 6.07,
+      "count_bongkar": 23,
+      "min_bongkar_hours": 1.95,
+      "max_bongkar_hours": 16.13
+    },
+    "107158__PNK": {
+      "cust_id": "107158",
+      "cabang": "PNK",
+      "median_bongkar_hours": 6.46,
+      "mean_bongkar_hours": 9.33,
+      "count_bongkar": 9,
+      "min_bongkar_hours": 2.06,
+      "max_bongkar_hours": 20.58,
+      "median_muat_hours": 14.54,
+      "mean_muat_hours": 14.54,
+      "count_muat": 2,
+      "min_muat_hours": 13.91,
+      "max_muat_hours": 15.16
+    },
+    "95524__MKS": {
+      "cust_id": "95524",
+      "cabang": "MKS",
+      "median_bongkar_hours": 1.99,
+      "mean_bongkar_hours": 1.99,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 1.99,
+      "max_bongkar_hours": 1.99
+    },
+    "107270__BPN": {
+      "cust_id": "107270",
+      "cabang": "BPN",
+      "median_bongkar_hours": 5.03,
+      "mean_bongkar_hours": 4.99,
+      "count_bongkar": 5,
+      "min_bongkar_hours": 1.71,
+      "max_bongkar_hours": 7.86
+    },
+    "91788__PNK": {
+      "cust_id": "91788",
+      "cabang": "PNK",
+      "median_bongkar_hours": 11.38,
+      "mean_bongkar_hours": 10.85,
+      "count_bongkar": 10,
+      "min_bongkar_hours": 2.37,
+      "max_bongkar_hours": 21.72
+    },
+    "100442__MKS": {
+      "cust_id": "100442",
+      "cabang": "MKS",
+      "median_bongkar_hours": 3.01,
+      "mean_bongkar_hours": 3.5,
+      "count_bongkar": 6,
+      "min_bongkar_hours": 2.52,
+      "max_bongkar_hours": 6.22
+    },
+    "75937__PNK": {
+      "cust_id": "75937",
+      "cabang": "PNK",
+      "median_bongkar_hours": 0.63,
+      "mean_bongkar_hours": 0.92,
+      "count_bongkar": 105,
+      "min_bongkar_hours": 0.63,
+      "max_bongkar_hours": 1.63
+    },
+    "70492__MKS": {
+      "cust_id": "70492",
+      "cabang": "MKS",
+      "median_bongkar_hours": 2.18,
+      "mean_bongkar_hours": 2.75,
+      "count_bongkar": 3,
+      "min_bongkar_hours": 1.68,
+      "max_bongkar_hours": 4.38
+    },
+    "106668__BPN": {
+      "cust_id": "106668",
+      "cabang": "BPN",
+      "median_bongkar_hours": 6.35,
+      "mean_bongkar_hours": 5.78,
+      "count_bongkar": 11,
+      "min_bongkar_hours": 3.22,
+      "max_bongkar_hours": 7.37
+    },
+    "44934__MKS": {
+      "cust_id": "44934",
+      "cabang": "MKS",
+      "median_bongkar_hours": 4.75,
+      "mean_bongkar_hours": 4.75,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 4.75,
+      "max_bongkar_hours": 4.75
+    },
+    "72362__BPN": {
+      "cust_id": "72362",
+      "cabang": "BPN",
+      "median_bongkar_hours": 1.15,
+      "mean_bongkar_hours": 1.15,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 1.15,
+      "max_bongkar_hours": 1.15
+    },
+    "83461__BPN": {
+      "cust_id": "83461",
+      "cabang": "BPN",
+      "median_bongkar_hours": 15.81,
+      "mean_bongkar_hours": 15.81,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 14.62,
+      "max_bongkar_hours": 17.0
+    },
+    "31041__MKS": {
+      "cust_id": "31041",
+      "cabang": "MKS",
+      "median_bongkar_hours": 4.65,
+      "mean_bongkar_hours": 4.79,
+      "count_bongkar": 14,
+      "min_bongkar_hours": 1.56,
+      "max_bongkar_hours": 7.72
+    },
+    "74926__MKS": {
+      "cust_id": "74926",
+      "cabang": "MKS",
+      "median_bongkar_hours": 5.36,
+      "mean_bongkar_hours": 5.39,
+      "count_bongkar": 18,
+      "min_bongkar_hours": 2.89,
+      "max_bongkar_hours": 7.1,
+      "median_muat_hours": 2.41,
+      "mean_muat_hours": 2.41,
+      "count_muat": 3,
+      "min_muat_hours": 2.41,
+      "max_muat_hours": 2.41
+    },
+    "104040__BPN": {
+      "cust_id": "104040",
+      "cabang": "BPN",
+      "median_bongkar_hours": 3.88,
+      "mean_bongkar_hours": 3.92,
+      "count_bongkar": 4,
+      "min_bongkar_hours": 3.33,
+      "max_bongkar_hours": 4.61
+    },
+    "78935__PNK": {
+      "cust_id": "78935",
+      "cabang": "PNK",
+      "median_bongkar_hours": 7.45,
+      "mean_bongkar_hours": 7.45,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 7.45,
+      "max_bongkar_hours": 7.45
+    },
+    "68339__PNK": {
+      "cust_id": "68339",
+      "cabang": "PNK",
+      "median_bongkar_hours": 16.13,
+      "mean_bongkar_hours": 13.74,
+      "count_bongkar": 8,
+      "min_bongkar_hours": 1.99,
+      "max_bongkar_hours": 20.78
+    },
+    "51431__MKS": {
+      "cust_id": "51431",
+      "cabang": "MKS",
+      "median_bongkar_hours": 2.49,
+      "mean_bongkar_hours": 2.7,
+      "count_bongkar": 6,
+      "min_bongkar_hours": 2.0,
+      "max_bongkar_hours": 3.75
+    },
+    "50020__BPN": {
+      "cust_id": "50020",
+      "cabang": "BPN",
+      "median_bongkar_hours": 5.3,
+      "mean_bongkar_hours": 5.21,
+      "count_bongkar": 19,
+      "min_bongkar_hours": 1.71,
+      "max_bongkar_hours": 8.13
+    },
+    "21373__MKS": {
+      "cust_id": "21373",
+      "cabang": "MKS",
+      "median_bongkar_hours": 2.57,
+      "mean_bongkar_hours": 2.57,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 2.57,
+      "max_bongkar_hours": 2.57
+    },
+    "94109__BPN": {
+      "cust_id": "94109",
+      "cabang": "BPN",
+      "median_bongkar_hours": 5.52,
+      "mean_bongkar_hours": 7.1,
+      "count_bongkar": 10,
+      "min_bongkar_hours": 2.25,
+      "max_bongkar_hours": 19.17
+    },
+    "55366__BPN": {
+      "cust_id": "55366",
+      "cabang": "BPN",
+      "median_bongkar_hours": 11.48,
+      "mean_bongkar_hours": 9.96,
+      "count_bongkar": 8,
+      "min_bongkar_hours": 0.8,
+      "max_bongkar_hours": 21.42
+    },
+    "71713__BPN": {
+      "cust_id": "71713",
+      "cabang": "BPN",
+      "median_bongkar_hours": 7.55,
+      "mean_bongkar_hours": 9.36,
+      "count_bongkar": 14,
+      "min_bongkar_hours": 3.5,
+      "max_bongkar_hours": 21.5
+    },
+    "74288__BPN": {
+      "cust_id": "74288",
+      "cabang": "BPN",
+      "median_bongkar_hours": 8.39,
+      "mean_bongkar_hours": 9.24,
+      "count_bongkar": 6,
+      "min_bongkar_hours": 3.64,
+      "max_bongkar_hours": 18.11
+    },
+    "109871__MKS": {
+      "cust_id": "109871",
+      "cabang": "MKS",
+      "median_bongkar_hours": 2.37,
+      "mean_bongkar_hours": 2.37,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 2.37,
+      "max_bongkar_hours": 2.37
+    },
+    "68134__MKS": {
+      "cust_id": "68134",
+      "cabang": "MKS",
+      "median_bongkar_hours": 3.3,
+      "mean_bongkar_hours": 3.3,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 3.3,
+      "max_bongkar_hours": 3.3
+    },
+    "91059__PNK": {
+      "cust_id": "91059",
+      "cabang": "PNK",
+      "median_bongkar_hours": 5.01,
+      "mean_bongkar_hours": 4.79,
+      "count_bongkar": 3,
+      "min_bongkar_hours": 4.31,
+      "max_bongkar_hours": 5.06
+    },
+    "67475__BPN": {
+      "cust_id": "67475",
+      "cabang": "BPN",
+      "median_bongkar_hours": 6.25,
+      "mean_bongkar_hours": 5.7,
+      "count_bongkar": 3,
+      "min_bongkar_hours": 3.75,
+      "max_bongkar_hours": 7.1
+    },
+    "110009__PNK": {
+      "cust_id": "110009",
+      "cabang": "PNK",
+      "median_bongkar_hours": 2.13,
+      "mean_bongkar_hours": 7.85,
+      "count_bongkar": 11,
+      "min_bongkar_hours": 1.18,
+      "max_bongkar_hours": 18.95
+    },
+    "56869__PNK": {
+      "cust_id": "56869",
+      "cabang": "PNK",
+      "median_bongkar_hours": 21.3,
+      "mean_bongkar_hours": 21.3,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 21.29,
+      "max_bongkar_hours": 21.31
+    },
+    "50039__MKS": {
+      "cust_id": "50039",
+      "cabang": "MKS",
+      "median_bongkar_hours": 2.82,
+      "mean_bongkar_hours": 3.03,
+      "count_bongkar": 9,
+      "min_bongkar_hours": 2.48,
+      "max_bongkar_hours": 3.77
+    },
+    "83537__BPN": {
+      "cust_id": "83537",
+      "cabang": "BPN",
+      "median_bongkar_hours": 11.87,
+      "mean_bongkar_hours": 11.78,
+      "count_bongkar": 4,
+      "min_bongkar_hours": 4.92,
+      "max_bongkar_hours": 18.47
+    },
+    "55304__MKS": {
+      "cust_id": "55304",
+      "cabang": "MKS",
+      "median_bongkar_hours": 4.53,
+      "mean_bongkar_hours": 4.11,
+      "count_bongkar": 3,
+      "min_bongkar_hours": 3.25,
+      "max_bongkar_hours": 4.55
+    },
+    "78554__MKS": {
+      "cust_id": "78554",
+      "cabang": "MKS",
+      "median_bongkar_hours": 6.22,
+      "mean_bongkar_hours": 6.65,
+      "count_bongkar": 10,
+      "min_bongkar_hours": 3.57,
+      "max_bongkar_hours": 10.01
+    },
+    "84305__PNK": {
+      "cust_id": "84305",
+      "cabang": "PNK",
+      "median_bongkar_hours": 2.46,
+      "mean_bongkar_hours": 5.02,
+      "count_bongkar": 6,
+      "min_bongkar_hours": 1.47,
+      "max_bongkar_hours": 11.12
+    },
+    "59179__PNK": {
+      "cust_id": "59179",
+      "cabang": "PNK",
+      "median_bongkar_hours": 11.71,
+      "mean_bongkar_hours": 13.06,
+      "count_bongkar": 9,
+      "min_bongkar_hours": 2.98,
+      "max_bongkar_hours": 22.38
+    },
+    "104040__MKS": {
+      "cust_id": "104040",
+      "cabang": "MKS",
+      "median_bongkar_hours": 3.75,
+      "mean_bongkar_hours": 4.11,
+      "count_bongkar": 9,
+      "min_bongkar_hours": 2.04,
+      "max_bongkar_hours": 7.54
+    },
+    "57018__MKS": {
+      "cust_id": "57018",
+      "cabang": "MKS",
+      "median_bongkar_hours": 4.56,
+      "mean_bongkar_hours": 4.91,
+      "count_bongkar": 5,
+      "min_bongkar_hours": 3.69,
+      "max_bongkar_hours": 6.25
+    },
+    "90643__PNK": {
+      "cust_id": "90643",
+      "cabang": "PNK",
+      "median_bongkar_hours": 0.63,
+      "mean_bongkar_hours": 0.99,
+      "count_bongkar": 18,
+      "min_bongkar_hours": 0.63,
+      "max_bongkar_hours": 1.63
+    },
+    "104560__BPN": {
+      "cust_id": "104560",
+      "cabang": "BPN",
+      "median_bongkar_hours": 6.76,
+      "mean_bongkar_hours": 7.3,
+      "count_bongkar": 10,
+      "min_bongkar_hours": 3.55,
+      "max_bongkar_hours": 14.68
+    },
+    "87335__BPN": {
+      "cust_id": "87335",
+      "cabang": "BPN",
+      "median_bongkar_hours": 5.04,
+      "mean_bongkar_hours": 7.56,
+      "count_bongkar": 8,
+      "min_bongkar_hours": 0.5,
+      "max_bongkar_hours": 19.65
+    },
+    "50020__JYP": {
+      "cust_id": "50020",
+      "cabang": "JYP",
+      "median_bongkar_hours": 2.63,
+      "mean_bongkar_hours": 2.22,
+      "count_bongkar": 3,
+      "min_bongkar_hours": 1.2,
+      "max_bongkar_hours": 2.82
+    },
+    "20625__PNK": {
+      "cust_id": "20625",
+      "cabang": "PNK",
+      "median_bongkar_hours": 16.38,
+      "mean_bongkar_hours": 13.58,
+      "count_bongkar": 10,
+      "min_bongkar_hours": 2.6,
+      "max_bongkar_hours": 21.05
+    },
+    "101157__MKS": {
+      "cust_id": "101157",
+      "cabang": "MKS",
+      "median_bongkar_hours": 2.67,
+      "mean_bongkar_hours": 2.93,
+      "count_bongkar": 4,
+      "min_bongkar_hours": 2.04,
+      "max_bongkar_hours": 4.34
+    },
+    "148__BPN": {
+      "cust_id": "148",
+      "cabang": "BPN",
+      "median_bongkar_hours": 3.98,
+      "mean_bongkar_hours": 5.16,
+      "count_bongkar": 29,
+      "min_bongkar_hours": 1.19,
+      "max_bongkar_hours": 17.53
+    },
+    "109599__BPN": {
+      "cust_id": "109599",
+      "cabang": "BPN",
+      "median_bongkar_hours": 18.27,
+      "mean_bongkar_hours": 16.47,
+      "count_bongkar": 5,
+      "min_bongkar_hours": 4.52,
+      "max_bongkar_hours": 22.1
+    },
+    "32011__MKS": {
+      "cust_id": "32011",
+      "cabang": "MKS",
+      "median_bongkar_hours": 3.48,
+      "mean_bongkar_hours": 3.48,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 3.48,
+      "max_bongkar_hours": 3.48
+    },
+    "83461__PNK": {
+      "cust_id": "83461",
+      "cabang": "PNK",
+      "median_bongkar_hours": 12.77,
+      "mean_bongkar_hours": 12.4,
+      "count_bongkar": 4,
+      "min_bongkar_hours": 2.52,
+      "max_bongkar_hours": 21.54
+    },
+    "59179__MKS": {
+      "cust_id": "59179",
+      "cabang": "MKS",
+      "median_bongkar_hours": 6.74,
+      "mean_bongkar_hours": 6.08,
+      "count_bongkar": 3,
+      "min_bongkar_hours": 3.72,
+      "max_bongkar_hours": 7.79
+    },
+    "102894__BPN": {
+      "cust_id": "102894",
+      "cabang": "BPN",
+      "median_bongkar_hours": 1.1,
+      "mean_bongkar_hours": 2.01,
+      "count_bongkar": 4,
+      "min_bongkar_hours": 0.55,
+      "max_bongkar_hours": 5.27
+    },
+    "86424__MKS": {
+      "cust_id": "86424",
+      "cabang": "MKS",
+      "median_bongkar_hours": 2.77,
+      "mean_bongkar_hours": 2.77,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 2.73,
+      "max_bongkar_hours": 2.81
+    },
+    "107181__BPN": {
+      "cust_id": "107181",
+      "cabang": "BPN",
+      "median_bongkar_hours": 5.55,
+      "mean_bongkar_hours": 6.15,
+      "count_bongkar": 12,
+      "min_bongkar_hours": 2.14,
+      "max_bongkar_hours": 19.08
+    },
+    "94070__PNK": {
+      "cust_id": "94070",
+      "cabang": "PNK",
+      "median_bongkar_hours": 20.77,
+      "mean_bongkar_hours": 20.77,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 20.77,
+      "max_bongkar_hours": 20.77
+    },
+    "66931__PNK": {
+      "cust_id": "66931",
+      "cabang": "PNK",
+      "median_bongkar_hours": 4.67,
+      "mean_bongkar_hours": 7.44,
+      "count_bongkar": 15,
+      "min_bongkar_hours": 2.33,
+      "max_bongkar_hours": 21.19
+    },
+    "55376__BPN": {
+      "cust_id": "55376",
+      "cabang": "BPN",
+      "median_bongkar_hours": 5.22,
+      "mean_bongkar_hours": 6.63,
+      "count_bongkar": 11,
+      "min_bongkar_hours": 1.6,
+      "max_bongkar_hours": 16.1
+    },
+    "103338__MKS": {
+      "cust_id": "103338",
+      "cabang": "MKS",
+      "median_bongkar_hours": 4.92,
+      "mean_bongkar_hours": 4.74,
+      "count_bongkar": 10,
+      "min_bongkar_hours": 3.14,
+      "max_bongkar_hours": 6.34
+    },
+    "63029__PNK": {
+      "cust_id": "63029",
+      "cabang": "PNK",
+      "median_bongkar_hours": 4.03,
+      "mean_bongkar_hours": 7.34,
+      "count_bongkar": 4,
+      "min_bongkar_hours": 1.69,
+      "max_bongkar_hours": 19.62
+    },
+    "56654__PNK": {
+      "cust_id": "56654",
+      "cabang": "PNK",
+      "median_bongkar_hours": 5.96,
+      "mean_bongkar_hours": 5.96,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 5.1,
+      "max_bongkar_hours": 6.83
+    },
+    "59295__BPN": {
+      "cust_id": "59295",
+      "cabang": "BPN",
+      "median_bongkar_hours": 3.68,
+      "mean_bongkar_hours": 3.68,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 3.68,
+      "max_bongkar_hours": 3.68
+    },
+    "108467__BPN": {
+      "cust_id": "108467",
+      "cabang": "BPN",
+      "median_bongkar_hours": 19.55,
+      "mean_bongkar_hours": 17.59,
+      "count_bongkar": 4,
+      "min_bongkar_hours": 8.17,
+      "max_bongkar_hours": 23.1
+    },
+    "92725__PNK": {
+      "cust_id": "92725",
+      "cabang": "PNK",
+      "median_bongkar_hours": 20.37,
+      "mean_bongkar_hours": 20.37,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 20.37,
+      "max_bongkar_hours": 20.37
+    },
+    "59295__MKS": {
+      "cust_id": "59295",
+      "cabang": "MKS",
+      "median_bongkar_hours": 7.56,
+      "mean_bongkar_hours": 7.56,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 7.56,
+      "max_bongkar_hours": 7.56
+    },
+    "91059__MKS": {
+      "cust_id": "91059",
+      "cabang": "MKS",
+      "median_bongkar_hours": 4.97,
+      "mean_bongkar_hours": 5.16,
+      "count_bongkar": 5,
+      "min_bongkar_hours": 3.22,
+      "max_bongkar_hours": 7.47
+    },
+    "51431__PNK": {
+      "cust_id": "51431",
+      "cabang": "PNK",
+      "median_bongkar_hours": 11.36,
+      "mean_bongkar_hours": 11.36,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 10.88,
+      "max_bongkar_hours": 11.83
+    },
+    "56430__MKS": {
+      "cust_id": "56430",
+      "cabang": "MKS",
+      "median_bongkar_hours": 4.94,
+      "mean_bongkar_hours": 5.19,
+      "count_bongkar": 3,
+      "min_bongkar_hours": 4.57,
+      "max_bongkar_hours": 6.06
+    },
+    "110199__JYP": {
+      "cust_id": "110199",
+      "cabang": "JYP",
+      "median_bongkar_hours": 1.62,
+      "mean_bongkar_hours": 1.62,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 1.62,
+      "max_bongkar_hours": 1.62
+    },
+    "56346__MKS": {
+      "cust_id": "56346",
+      "cabang": "MKS",
+      "median_bongkar_hours": 6.1,
+      "mean_bongkar_hours": 6.1,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 6.1,
+      "max_bongkar_hours": 6.1
+    },
+    "104040__PNK": {
+      "cust_id": "104040",
+      "cabang": "PNK",
+      "median_bongkar_hours": 12.39,
+      "mean_bongkar_hours": 12.39,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 2.48,
+      "max_bongkar_hours": 22.3
+    },
+    "72137__BPN": {
+      "cust_id": "72137",
+      "cabang": "BPN",
+      "median_bongkar_hours": 4.29,
+      "mean_bongkar_hours": 6.89,
+      "count_bongkar": 5,
+      "min_bongkar_hours": 3.84,
+      "max_bongkar_hours": 15.83,
+      "median_muat_hours": 1.73,
+      "mean_muat_hours": 1.73,
+      "count_muat": 1,
+      "min_muat_hours": 1.73,
+      "max_muat_hours": 1.73
+    },
+    "65974__PNK": {
+      "cust_id": "65974",
+      "cabang": "PNK",
+      "median_bongkar_hours": 10.88,
+      "mean_bongkar_hours": 11.91,
+      "count_bongkar": 5,
+      "min_bongkar_hours": 2.39,
+      "max_bongkar_hours": 21.04
+    },
+    "148__JYP": {
+      "cust_id": "148",
+      "cabang": "JYP",
+      "median_bongkar_hours": 1.75,
+      "mean_bongkar_hours": 2.03,
+      "count_bongkar": 15,
+      "min_bongkar_hours": 1.3,
+      "max_bongkar_hours": 4.0
+    },
+    "55212__JYP": {
+      "cust_id": "55212",
+      "cabang": "JYP",
+      "median_bongkar_hours": 2.71,
+      "mean_bongkar_hours": 3.08,
+      "count_bongkar": 3,
+      "min_bongkar_hours": 1.52,
+      "max_bongkar_hours": 5.02
+    },
+    "94040__MKS": {
+      "cust_id": "94040",
+      "cabang": "MKS",
+      "median_bongkar_hours": 7.72,
+      "mean_bongkar_hours": 7.72,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 7.72,
+      "max_bongkar_hours": 7.72
+    },
+    "73742__BPN": {
+      "cust_id": "73742",
+      "cabang": "BPN",
+      "median_bongkar_hours": 4.35,
+      "mean_bongkar_hours": 4.35,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 4.35,
+      "max_bongkar_hours": 4.35
+    },
+    "90770__BPN": {
+      "cust_id": "90770",
+      "cabang": "BPN",
+      "median_bongkar_hours": 5.23,
+      "mean_bongkar_hours": 5.23,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 3.68,
+      "max_bongkar_hours": 6.78
+    },
+    "23904__BPN": {
+      "cust_id": "23904",
+      "cabang": "BPN",
+      "median_bongkar_hours": 14.82,
+      "mean_bongkar_hours": 13.87,
+      "count_bongkar": 6,
+      "min_bongkar_hours": 5.32,
+      "max_bongkar_hours": 21.47
+    },
+    "36945__MKS": {
+      "cust_id": "36945",
+      "cabang": "MKS",
+      "median_bongkar_hours": 2.98,
+      "mean_bongkar_hours": 2.98,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 2.98,
+      "max_bongkar_hours": 2.98
+    },
+    "59172__BPN": {
+      "cust_id": "59172",
+      "cabang": "BPN",
+      "median_bongkar_hours": 3.38,
+      "mean_bongkar_hours": 3.38,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 3.38,
+      "max_bongkar_hours": 3.38
+    },
+    "96813__PNK": {
+      "cust_id": "96813",
+      "cabang": "PNK",
+      "median_bongkar_hours": 11.76,
+      "mean_bongkar_hours": 12.34,
+      "count_bongkar": 4,
+      "min_bongkar_hours": 11.37,
+      "max_bongkar_hours": 14.47
+    },
+    "104733__PNK": {
+      "cust_id": "104733",
+      "cabang": "PNK",
+      "median_bongkar_hours": 2.32,
+      "mean_bongkar_hours": 2.32,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 2.32,
+      "max_bongkar_hours": 2.32
+    },
+    "19960__MKS": {
+      "cust_id": "19960",
+      "cabang": "MKS",
+      "median_bongkar_hours": 7.09,
+      "mean_bongkar_hours": 7.09,
+      "count_bongkar": 5,
+      "min_bongkar_hours": 4.84,
+      "max_bongkar_hours": 9.01
+    },
+    "70355__JYP": {
+      "cust_id": "70355",
+      "cabang": "JYP",
+      "median_bongkar_hours": 3.77,
+      "mean_bongkar_hours": 3.77,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 2.07,
+      "max_bongkar_hours": 5.47
+    },
+    "63029__BPN": {
+      "cust_id": "63029",
+      "cabang": "BPN",
+      "median_bongkar_hours": 8.0,
+      "mean_bongkar_hours": 9.04,
+      "count_bongkar": 4,
+      "min_bongkar_hours": 5.2,
+      "max_bongkar_hours": 14.96
+    },
+    "82314__MKS": {
+      "cust_id": "82314",
+      "cabang": "MKS",
+      "median_bongkar_hours": 2.4,
+      "mean_bongkar_hours": 2.4,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 2.4,
+      "max_bongkar_hours": 2.4
+    },
+    "95209__JYP": {
+      "cust_id": "95209",
+      "cabang": "JYP",
+      "median_bongkar_hours": 2.71,
+      "mean_bongkar_hours": 2.71,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 2.15,
+      "max_bongkar_hours": 3.27
+    },
+    "109708__MKS": {
+      "cust_id": "109708",
+      "cabang": "MKS",
+      "median_bongkar_hours": 2.11,
+      "mean_bongkar_hours": 2.19,
+      "count_bongkar": 5,
+      "min_bongkar_hours": 1.84,
+      "max_bongkar_hours": 2.49
+    },
+    "93839__PNK": {
+      "cust_id": "93839",
+      "cabang": "PNK",
+      "median_bongkar_hours": 16.39,
+      "mean_bongkar_hours": 16.39,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 13.98,
+      "max_bongkar_hours": 18.8
+    },
+    "106921__BPN": {
+      "cust_id": "106921",
+      "cabang": "BPN",
+      "median_bongkar_hours": 7.5,
+      "mean_bongkar_hours": 9.44,
+      "count_bongkar": 3,
+      "min_bongkar_hours": 6.0,
+      "max_bongkar_hours": 14.83
+    },
+    "92612__PNK": {
+      "cust_id": "92612",
+      "cabang": "PNK",
+      "median_bongkar_hours": 11.28,
+      "mean_bongkar_hours": 11.28,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 3.75,
+      "max_bongkar_hours": 18.8
+    },
+    "101017__MKS": {
+      "cust_id": "101017",
+      "cabang": "MKS",
+      "median_bongkar_hours": 3.07,
+      "mean_bongkar_hours": 3.07,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 3.05,
+      "max_bongkar_hours": 3.09
+    },
+    "95999__MKS": {
+      "cust_id": "95999",
+      "cabang": "MKS",
+      "median_bongkar_hours": 2.61,
+      "mean_bongkar_hours": 2.61,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 2.45,
+      "max_bongkar_hours": 2.77
+    },
+    "93839__MKS": {
+      "cust_id": "93839",
+      "cabang": "MKS",
+      "median_bongkar_hours": 2.96,
+      "mean_bongkar_hours": 2.96,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 2.96,
+      "max_bongkar_hours": 2.96
+    },
+    "102605__MKS": {
+      "cust_id": "102605",
+      "cabang": "MKS",
+      "median_bongkar_hours": 2.36,
+      "mean_bongkar_hours": 2.36,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 2.02,
+      "max_bongkar_hours": 2.7
+    },
+    "102894__SDA": {
+      "cust_id": "102894",
+      "cabang": "SDA",
+      "median_bongkar_hours": 1.09,
+      "mean_bongkar_hours": 1.09,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 1.09,
+      "max_bongkar_hours": 1.09
+    },
+    "57584__BPN": {
+      "cust_id": "57584",
+      "cabang": "BPN",
+      "median_bongkar_hours": 6.47,
+      "mean_bongkar_hours": 6.47,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 6.47,
+      "max_bongkar_hours": 6.47
+    },
+    "55514__BPN": {
+      "cust_id": "55514",
+      "cabang": "BPN",
+      "median_bongkar_hours": 5.13,
+      "mean_bongkar_hours": 6.93,
+      "count_bongkar": 3,
+      "min_bongkar_hours": 4.97,
+      "max_bongkar_hours": 10.68
+    },
+    "81047__PNK": {
+      "cust_id": "81047",
+      "cabang": "PNK",
+      "median_bongkar_hours": 20.51,
+      "mean_bongkar_hours": 15.85,
+      "count_bongkar": 3,
+      "min_bongkar_hours": 6.47,
+      "max_bongkar_hours": 20.57
+    },
+    "86345__MKS": {
+      "cust_id": "86345",
+      "cabang": "MKS",
+      "median_bongkar_hours": 2.79,
+      "mean_bongkar_hours": 2.54,
+      "count_bongkar": 4,
+      "min_bongkar_hours": 1.47,
+      "max_bongkar_hours": 3.13
+    },
+    "50039__PNK": {
+      "cust_id": "50039",
+      "cabang": "PNK",
+      "median_bongkar_hours": 3.73,
+      "mean_bongkar_hours": 6.31,
+      "count_bongkar": 11,
+      "min_bongkar_hours": 1.45,
+      "max_bongkar_hours": 21.07
+    },
+    "110441__MKS": {
+      "cust_id": "110441",
+      "cabang": "MKS",
+      "median_bongkar_hours": 1.11,
+      "mean_bongkar_hours": 1.11,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 1.11,
+      "max_bongkar_hours": 1.11
+    },
+    "49625__BPN": {
+      "cust_id": "49625",
+      "cabang": "BPN",
+      "median_bongkar_hours": 2.05,
+      "mean_bongkar_hours": 2.05,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 2.05,
+      "max_bongkar_hours": 2.05
+    },
+    "96232__MKS": {
+      "cust_id": "96232",
+      "cabang": "MKS",
+      "median_bongkar_hours": 3.11,
+      "mean_bongkar_hours": 3.11,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 3.11,
+      "max_bongkar_hours": 3.11
+    },
+    "91005__BPN": {
+      "cust_id": "91005",
+      "cabang": "BPN",
+      "median_bongkar_hours": 3.26,
+      "mean_bongkar_hours": 3.26,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 1.26,
+      "max_bongkar_hours": 5.26
+    },
+    "20890__MKS": {
+      "cust_id": "20890",
+      "cabang": "MKS",
+      "median_bongkar_hours": 2.9,
+      "mean_bongkar_hours": 2.78,
+      "count_bongkar": 6,
+      "min_bongkar_hours": 1.92,
+      "max_bongkar_hours": 3.33
+    },
+    "55681__SDA": {
+      "cust_id": "55681",
+      "cabang": "SDA",
+      "median_bongkar_hours": 1.93,
+      "mean_bongkar_hours": 1.93,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 1.93,
+      "max_bongkar_hours": 1.93
+    },
+    "109289__BPN": {
+      "cust_id": "109289",
+      "cabang": "BPN",
+      "median_bongkar_hours": 10.8,
+      "mean_bongkar_hours": 10.8,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 10.8,
+      "max_bongkar_hours": 10.8
+    },
+    "101065__BPN": {
+      "cust_id": "101065",
+      "cabang": "BPN",
+      "median_bongkar_hours": 15.46,
+      "mean_bongkar_hours": 15.46,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 9.63,
+      "max_bongkar_hours": 21.3
+    },
+    "106418__PNK": {
+      "cust_id": "106418",
+      "cabang": "PNK",
+      "median_bongkar_hours": 13.75,
+      "mean_bongkar_hours": 13.75,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 13.75,
+      "max_bongkar_hours": 13.75
+    },
+    "70384__MKS": {
+      "cust_id": "70384",
+      "cabang": "MKS",
+      "median_bongkar_hours": 5.39,
+      "mean_bongkar_hours": 5.39,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 4.92,
+      "max_bongkar_hours": 5.86
+    },
+    "98736__BPN": {
+      "cust_id": "98736",
+      "cabang": "BPN",
+      "median_bongkar_hours": 3.38,
+      "mean_bongkar_hours": 3.63,
+      "count_bongkar": 4,
+      "min_bongkar_hours": 1.85,
+      "max_bongkar_hours": 5.9
+    },
+    "50020__SDA": {
+      "cust_id": "50020",
+      "cabang": "SDA",
+      "median_bongkar_hours": 3.78,
+      "mean_bongkar_hours": 3.78,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 3.78,
+      "max_bongkar_hours": 3.78
+    },
+    "108467__MKS": {
+      "cust_id": "108467",
+      "cabang": "MKS",
+      "median_bongkar_hours": 9.0,
+      "mean_bongkar_hours": 9.0,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 9.0,
+      "max_bongkar_hours": 9.0
+    },
+    "89684__MKS": {
+      "cust_id": "89684",
+      "cabang": "MKS",
+      "median_bongkar_hours": 2.41,
+      "mean_bongkar_hours": 2.46,
+      "count_bongkar": 3,
+      "min_bongkar_hours": 2.4,
+      "max_bongkar_hours": 2.58
+    },
+    "81047__MKS": {
+      "cust_id": "81047",
+      "cabang": "MKS",
+      "median_bongkar_hours": 3.22,
+      "mean_bongkar_hours": 2.88,
+      "count_bongkar": 3,
+      "min_bongkar_hours": 2.05,
+      "max_bongkar_hours": 3.37
+    },
+    "99053__BPN": {
+      "cust_id": "99053",
+      "cabang": "BPN",
+      "median_bongkar_hours": 7.18,
+      "mean_bongkar_hours": 9.04,
+      "count_bongkar": 3,
+      "min_bongkar_hours": 5.19,
+      "max_bongkar_hours": 14.76
+    },
+    "103299__BPN": {
+      "cust_id": "103299",
+      "cabang": "BPN",
+      "median_bongkar_hours": 3.77,
+      "mean_bongkar_hours": 3.77,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 3.77,
+      "max_bongkar_hours": 3.77
+    },
+    "83855__MKS": {
+      "cust_id": "83855",
+      "cabang": "MKS",
+      "median_bongkar_hours": 6.25,
+      "mean_bongkar_hours": 6.26,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 4.92,
+      "max_bongkar_hours": 7.59
+    },
+    "110220__MKS": {
+      "cust_id": "110220",
+      "cabang": "MKS",
+      "median_bongkar_hours": 6.8,
+      "mean_bongkar_hours": 8.33,
+      "count_bongkar": 12,
+      "min_bongkar_hours": 3.27,
+      "max_bongkar_hours": 23.36
+    },
+    "21373__SDA": {
+      "cust_id": "21373",
+      "cabang": "SDA",
+      "median_bongkar_hours": 2.07,
+      "mean_bongkar_hours": 2.07,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 2.07,
+      "max_bongkar_hours": 2.07
+    },
+    "30107__PNK": {
+      "cust_id": "30107",
+      "cabang": "PNK",
+      "median_bongkar_hours": 8.94,
+      "mean_bongkar_hours": 8.94,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 2.6,
+      "max_bongkar_hours": 15.28
+    },
+    "74926__PNK": {
+      "cust_id": "74926",
+      "cabang": "PNK",
+      "median_bongkar_hours": 12.55,
+      "mean_bongkar_hours": 11.81,
+      "count_bongkar": 4,
+      "min_bongkar_hours": 1.82,
+      "max_bongkar_hours": 20.33
+    },
+    "109811__MKS": {
+      "cust_id": "109811",
+      "cabang": "MKS",
+      "median_bongkar_hours": 2.41,
+      "mean_bongkar_hours": 2.41,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 2.41,
+      "max_bongkar_hours": 2.41
+    },
+    "21377__SDA": {
+      "cust_id": "21377",
+      "cabang": "SDA",
+      "median_bongkar_hours": 2.01,
+      "mean_bongkar_hours": 2.01,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 2.01,
+      "max_bongkar_hours": 2.01
+    },
+    "55377__BPN": {
+      "cust_id": "55377",
+      "cabang": "BPN",
+      "median_bongkar_hours": 1.15,
+      "mean_bongkar_hours": 1.15,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 1.15,
+      "max_bongkar_hours": 1.15
+    },
+    "82563__JYP": {
+      "cust_id": "82563",
+      "cabang": "JYP",
+      "median_bongkar_hours": 0.87,
+      "mean_bongkar_hours": 0.87,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 0.87,
+      "max_bongkar_hours": 0.87
+    },
+    "95524__JYP": {
+      "cust_id": "95524",
+      "cabang": "JYP",
+      "median_bongkar_hours": 1.13,
+      "mean_bongkar_hours": 1.13,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 1.13,
+      "max_bongkar_hours": 1.13
+    },
+    "34410__PNK": {
+      "cust_id": "34410",
+      "cabang": "PNK",
+      "median_bongkar_hours": 3.59,
+      "mean_bongkar_hours": 3.59,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 3.59,
+      "max_bongkar_hours": 3.59
+    },
+    "90712__BPN": {
+      "cust_id": "90712",
+      "cabang": "BPN",
+      "median_bongkar_hours": 6.79,
+      "mean_bongkar_hours": 6.79,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 3.15,
+      "max_bongkar_hours": 10.43
+    },
+    "148__SDA": {
+      "cust_id": "148",
+      "cabang": "SDA",
+      "median_bongkar_hours": 1.87,
+      "mean_bongkar_hours": 1.87,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 1.87,
+      "max_bongkar_hours": 1.87
+    },
+    "103299__PNK": {
+      "cust_id": "103299",
+      "cabang": "PNK",
+      "median_bongkar_hours": 9.55,
+      "mean_bongkar_hours": 10.78,
+      "count_bongkar": 4,
+      "min_bongkar_hours": 3.01,
+      "max_bongkar_hours": 21.01
+    },
+    "20160__BPN": {
+      "cust_id": "20160",
+      "cabang": "BPN",
+      "median_bongkar_hours": 2.13,
+      "mean_bongkar_hours": 2.13,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 2.13,
+      "max_bongkar_hours": 2.13
+    },
+    "91592__BPN": {
+      "cust_id": "91592",
+      "cabang": "BPN",
+      "median_bongkar_hours": 3.56,
+      "mean_bongkar_hours": 5.74,
+      "count_bongkar": 4,
+      "min_bongkar_hours": 1.89,
+      "max_bongkar_hours": 13.97
+    },
+    "27027__MKS": {
+      "cust_id": "27027",
+      "cabang": "MKS",
+      "median_bongkar_hours": 3.92,
+      "mean_bongkar_hours": 3.63,
+      "count_bongkar": 3,
+      "min_bongkar_hours": 2.65,
+      "max_bongkar_hours": 4.32
+    },
+    "108462__MKS": {
+      "cust_id": "108462",
+      "cabang": "MKS",
+      "median_bongkar_hours": 5.71,
+      "mean_bongkar_hours": 5.8,
+      "count_bongkar": 4,
+      "min_bongkar_hours": 5.06,
+      "max_bongkar_hours": 6.72
+    },
+    "110709__MKS": {
+      "cust_id": "110709",
+      "cabang": "MKS",
+      "median_bongkar_hours": 2.1,
+      "mean_bongkar_hours": 2.1,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 2.1,
+      "max_bongkar_hours": 2.1,
+      "median_muat_hours": 3.73,
+      "mean_muat_hours": 3.73,
+      "count_muat": 2,
+      "min_muat_hours": 3.73,
+      "max_muat_hours": 3.73
+    },
+    "107158__MKS": {
+      "cust_id": "107158",
+      "cabang": "MKS",
+      "median_bongkar_hours": 4.83,
+      "mean_bongkar_hours": 4.85,
+      "count_bongkar": 3,
+      "min_bongkar_hours": 3.8,
+      "max_bongkar_hours": 5.92
+    },
+    "101070__BPN": {
+      "cust_id": "101070",
+      "cabang": "BPN",
+      "median_bongkar_hours": 4.71,
+      "mean_bongkar_hours": 4.49,
+      "count_bongkar": 3,
+      "min_bongkar_hours": 3.97,
+      "max_bongkar_hours": 4.79
+    },
+    "109708__BPN": {
+      "cust_id": "109708",
+      "cabang": "BPN",
+      "median_bongkar_hours": 14.63,
+      "mean_bongkar_hours": 11.12,
+      "count_bongkar": 3,
+      "min_bongkar_hours": 2.18,
+      "max_bongkar_hours": 16.56
+    },
+    "110704__MKS": {
+      "cust_id": "110704",
+      "cabang": "MKS",
+      "median_bongkar_hours": 1.73,
+      "mean_bongkar_hours": 1.73,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 1.73,
+      "max_bongkar_hours": 1.73
+    },
+    "76455__PNK": {
+      "cust_id": "76455",
+      "cabang": "PNK",
+      "median_bongkar_hours": 1.62,
+      "mean_bongkar_hours": 1.62,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 1.62,
+      "max_bongkar_hours": 1.62
+    },
+    "78935__MKS": {
+      "cust_id": "78935",
+      "cabang": "MKS",
+      "median_bongkar_hours": 4.74,
+      "mean_bongkar_hours": 4.74,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 4.74,
+      "max_bongkar_hours": 4.74
+    },
+    "15725__MKS": {
+      "cust_id": "15725",
+      "cabang": "MKS",
+      "median_bongkar_hours": 2.29,
+      "mean_bongkar_hours": 2.29,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 2.29,
+      "max_bongkar_hours": 2.29
+    },
+    "103414__MKS": {
+      "cust_id": "103414",
+      "cabang": "MKS",
+      "median_bongkar_hours": 3.23,
+      "mean_bongkar_hours": 3.23,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 3.23,
+      "max_bongkar_hours": 3.23
+    },
+    "87302__SMG": {
+      "cust_id": "87302",
+      "cabang": "SMG",
+      "median_bongkar_hours": 4.3,
+      "mean_bongkar_hours": 4.3,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 2.3,
+      "max_bongkar_hours": 6.3
+    },
+    "43619__MKS": {
+      "cust_id": "43619",
+      "cabang": "MKS",
+      "median_bongkar_hours": 1.91,
+      "mean_bongkar_hours": 1.91,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 1.52,
+      "max_bongkar_hours": 2.3
+    },
+    "109616__BPN": {
+      "cust_id": "109616",
+      "cabang": "BPN",
+      "median_bongkar_hours": 5.08,
+      "mean_bongkar_hours": 8.28,
+      "count_bongkar": 7,
+      "min_bongkar_hours": 4.3,
+      "max_bongkar_hours": 18.27
+    },
+    "86127__PNK": {
+      "cust_id": "86127",
+      "cabang": "PNK",
+      "median_bongkar_hours": 4.45,
+      "mean_bongkar_hours": 4.45,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 4.45,
+      "max_bongkar_hours": 4.45
+    },
+    "75169__BPN": {
+      "cust_id": "75169",
+      "cabang": "BPN",
+      "median_bongkar_hours": 5.0,
+      "mean_bongkar_hours": 5.0,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 5.0,
+      "max_bongkar_hours": 5.0
+    },
+    "110844__MKS": {
+      "cust_id": "110844",
+      "cabang": "MKS",
+      "median_bongkar_hours": 5.2,
+      "mean_bongkar_hours": 5.2,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 5.2,
+      "max_bongkar_hours": 5.2
+    },
+    "100974__MKS": {
+      "cust_id": "100974",
+      "cabang": "MKS",
+      "median_bongkar_hours": 5.26,
+      "mean_bongkar_hours": 5.26,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 5.26,
+      "max_bongkar_hours": 5.26
+    },
+    "100502__PNK": {
+      "cust_id": "100502",
+      "cabang": "PNK",
+      "median_bongkar_hours": 2.62,
+      "mean_bongkar_hours": 2.62,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 2.62,
+      "max_bongkar_hours": 2.62
+    },
+    "190__SMG": {
+      "cust_id": "190",
+      "cabang": "SMG",
+      "median_bongkar_hours": 2.27,
+      "mean_bongkar_hours": 2.27,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 2.02,
+      "max_bongkar_hours": 2.52
+    },
+    "75965__MKS": {
+      "cust_id": "75965",
+      "cabang": "MKS",
+      "median_bongkar_hours": 2.79,
+      "mean_bongkar_hours": 2.79,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 2.79,
+      "max_bongkar_hours": 2.79
+    },
+    "51331__MKS": {
+      "cust_id": "51331",
+      "cabang": "MKS",
+      "median_bongkar_hours": 7.17,
+      "mean_bongkar_hours": 7.17,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 7.17,
+      "max_bongkar_hours": 7.17
+    },
+    "98846__PNK": {
+      "cust_id": "98846",
+      "cabang": "PNK",
+      "median_bongkar_hours": 3.28,
+      "mean_bongkar_hours": 3.28,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 3.28,
+      "max_bongkar_hours": 3.28
+    },
+    "55212__MKS": {
+      "cust_id": "55212",
+      "cabang": "MKS",
+      "median_bongkar_hours": 2.97,
+      "mean_bongkar_hours": 2.97,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 2.97,
+      "max_bongkar_hours": 2.97
+    },
+    "59239__JYP": {
+      "cust_id": "59239",
+      "cabang": "JYP",
+      "median_bongkar_hours": 1.67,
+      "mean_bongkar_hours": 1.67,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 1.67,
+      "max_bongkar_hours": 1.67
+    },
+    "106612__PNK": {
+      "cust_id": "106612",
+      "cabang": "PNK",
+      "median_bongkar_hours": 3.78,
+      "mean_bongkar_hours": 3.78,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 3.78,
+      "max_bongkar_hours": 3.78
+    },
+    "94537__PNK": {
+      "cust_id": "94537",
+      "cabang": "PNK",
+      "median_bongkar_hours": 0.77,
+      "mean_bongkar_hours": 0.77,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 0.77,
+      "max_bongkar_hours": 0.77
+    },
+    "81663__PNK": {
+      "cust_id": "81663",
+      "cabang": "PNK",
+      "median_bongkar_hours": 4.55,
+      "mean_bongkar_hours": 4.56,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 4.12,
+      "max_bongkar_hours": 4.99
+    },
+    "6195__MKS": {
+      "cust_id": "6195",
+      "cabang": "MKS",
+      "median_bongkar_hours": 4.19,
+      "mean_bongkar_hours": 4.19,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 4.19,
+      "max_bongkar_hours": 4.19
+    },
+    "111088__BPN": {
+      "cust_id": "111088",
+      "cabang": "BPN",
+      "median_bongkar_hours": 3.84,
+      "mean_bongkar_hours": 3.84,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 3.84,
+      "max_bongkar_hours": 3.84
+    },
+    "94537__MKS": {
+      "cust_id": "94537",
+      "cabang": "MKS",
+      "median_bongkar_hours": 3.52,
+      "mean_bongkar_hours": 3.52,
+      "count_bongkar": 2,
+      "min_bongkar_hours": 1.74,
+      "max_bongkar_hours": 5.29
+    },
+    "70355__MKS": {
+      "cust_id": "70355",
+      "cabang": "MKS",
+      "median_bongkar_hours": 2.54,
+      "mean_bongkar_hours": 2.54,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 2.54,
+      "max_bongkar_hours": 2.54
+    },
+    "90178__BPN": {
+      "cust_id": "90178",
+      "cabang": "BPN",
+      "median_bongkar_hours": 19.37,
+      "mean_bongkar_hours": 19.37,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 19.37,
+      "max_bongkar_hours": 19.37
+    },
+    "22105__MKS": {
+      "cust_id": "22105",
+      "cabang": "MKS",
+      "median_bongkar_hours": 2.83,
+      "mean_bongkar_hours": 2.83,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 2.83,
+      "max_bongkar_hours": 2.83
+    },
+    "69515__PNK": {
+      "cust_id": "69515",
+      "cabang": "PNK",
+      "median_bongkar_hours": 1.81,
+      "mean_bongkar_hours": 1.81,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 1.81,
+      "max_bongkar_hours": 1.81
+    },
+    "111139__BPN": {
+      "cust_id": "111139",
+      "cabang": "BPN",
+      "median_bongkar_hours": 1.75,
+      "mean_bongkar_hours": 1.75,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 1.75,
+      "max_bongkar_hours": 1.75
+    },
+    "55681__BPN": {
+      "cust_id": "55681",
+      "cabang": "BPN",
+      "median_bongkar_hours": 21.85,
+      "mean_bongkar_hours": 21.85,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 21.85,
+      "max_bongkar_hours": 21.85
+    },
+    "59239__BPN": {
+      "cust_id": "59239",
+      "cabang": "BPN",
+      "median_bongkar_hours": 5.26,
+      "mean_bongkar_hours": 5.26,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 5.26,
+      "max_bongkar_hours": 5.26
+    },
+    "55321__BPN": {
+      "cust_id": "55321",
+      "cabang": "BPN",
+      "median_bongkar_hours": 3.43,
+      "mean_bongkar_hours": 3.43,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 3.43,
+      "max_bongkar_hours": 3.43
+    },
+    "89197__BPN": {
+      "cust_id": "89197",
+      "cabang": "BPN",
+      "median_bongkar_hours": 13.74,
+      "mean_bongkar_hours": 13.74,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 13.74,
+      "max_bongkar_hours": 13.74
+    },
+    "86441__PNK": {
+      "cust_id": "86441",
+      "cabang": "PNK",
+      "median_bongkar_hours": 20.59,
+      "mean_bongkar_hours": 20.59,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 20.59,
+      "max_bongkar_hours": 20.59
+    },
+    "55500__PNK": {
+      "cust_id": "55500",
+      "cabang": "PNK",
+      "median_bongkar_hours": 8.08,
+      "mean_bongkar_hours": 8.08,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 8.08,
+      "max_bongkar_hours": 8.08
+    },
+    "74594__MKS": {
+      "cust_id": "74594",
+      "cabang": "MKS",
+      "median_bongkar_hours": 1.63,
+      "mean_bongkar_hours": 1.63,
+      "count_bongkar": 1,
+      "min_bongkar_hours": 1.63,
+      "max_bongkar_hours": 1.63
+    },
+    "85974__SMG": {
+      "cust_id": "85974",
+      "cabang": "SMG",
+      "median_muat_hours": 1.52,
+      "mean_muat_hours": 3.19,
+      "count_muat": 117,
+      "min_muat_hours": 0.52,
+      "max_muat_hours": 17.6
+    },
+    "82301__MKS": {
+      "cust_id": "82301",
+      "cabang": "MKS",
+      "median_muat_hours": 12.29,
+      "mean_muat_hours": 11.37,
+      "count_muat": 71,
+      "min_muat_hours": 2.66,
+      "max_muat_hours": 19.24
+    },
+    "81528__PNK": {
+      "cust_id": "81528",
+      "cabang": "PNK",
+      "median_muat_hours": 9.58,
+      "mean_muat_hours": 9.77,
+      "count_muat": 281,
+      "min_muat_hours": 0.6,
+      "max_muat_hours": 22.03
+    },
+    "50028__MKS": {
+      "cust_id": "50028",
+      "cabang": "MKS",
+      "median_muat_hours": 4.68,
+      "mean_muat_hours": 6.66,
+      "count_muat": 57,
+      "min_muat_hours": 1.05,
+      "max_muat_hours": 15.28
+    },
+    "107698__BPN": {
+      "cust_id": "107698",
+      "cabang": "BPN",
+      "median_muat_hours": 13.17,
+      "mean_muat_hours": 13.42,
+      "count_muat": 5,
+      "min_muat_hours": 6.02,
+      "max_muat_hours": 21.84
+    },
+    "88141__MKS": {
+      "cust_id": "88141",
+      "cabang": "MKS",
+      "median_muat_hours": 11.51,
+      "mean_muat_hours": 11.21,
+      "count_muat": 87,
+      "min_muat_hours": 1.89,
+      "max_muat_hours": 19.82
+    },
+    "59179__SMG": {
+      "cust_id": "59179",
+      "cabang": "SMG",
+      "median_muat_hours": 2.43,
+      "mean_muat_hours": 3.96,
+      "count_muat": 15,
+      "min_muat_hours": 1.29,
+      "max_muat_hours": 10.29
+    },
+    "49996__SMG": {
+      "cust_id": "49996",
+      "cabang": "SMG",
+      "median_muat_hours": 0.98,
+      "mean_muat_hours": 1.28,
+      "count_muat": 9,
+      "min_muat_hours": 0.7,
+      "max_muat_hours": 1.98
+    },
+    "108930__KDR": {
+      "cust_id": "108930",
+      "cabang": "KDR",
+      "median_muat_hours": 2.81,
+      "mean_muat_hours": 2.81,
+      "count_muat": 1,
+      "min_muat_hours": 2.81,
+      "max_muat_hours": 2.81
+    },
+    "78742__MKS": {
+      "cust_id": "78742",
+      "cabang": "MKS",
+      "median_muat_hours": 15.54,
+      "mean_muat_hours": 15.54,
+      "count_muat": 1,
+      "min_muat_hours": 15.54,
+      "max_muat_hours": 15.54
+    },
+    "73953__MKS": {
+      "cust_id": "73953",
+      "cabang": "MKS",
+      "median_muat_hours": 4.14,
+      "mean_muat_hours": 5.66,
+      "count_muat": 6,
+      "min_muat_hours": 1.73,
+      "max_muat_hours": 16.27
+    },
+    "21373__SMG": {
+      "cust_id": "21373",
+      "cabang": "SMG",
+      "median_muat_hours": 1.96,
+      "mean_muat_hours": 2.12,
+      "count_muat": 6,
+      "min_muat_hours": 0.95,
+      "max_muat_hours": 4.03
+    },
+    "103486__MKS": {
+      "cust_id": "103486",
+      "cabang": "MKS",
+      "median_muat_hours": 10.98,
+      "mean_muat_hours": 11.51,
+      "count_muat": 28,
+      "min_muat_hours": 1.67,
+      "max_muat_hours": 17.47
+    },
+    "76734__MKS": {
+      "cust_id": "76734",
+      "cabang": "MKS",
+      "median_muat_hours": 14.84,
+      "mean_muat_hours": 14.37,
+      "count_muat": 9,
+      "min_muat_hours": 2.52,
+      "max_muat_hours": 21.71
+    },
+    "97117__SMG": {
+      "cust_id": "97117",
+      "cabang": "SMG",
+      "median_muat_hours": 0.66,
+      "mean_muat_hours": 0.66,
+      "count_muat": 1,
+      "min_muat_hours": 0.66,
+      "max_muat_hours": 0.66
+    },
+    "86424__SMG": {
+      "cust_id": "86424",
+      "cabang": "SMG",
+      "median_muat_hours": 0.85,
+      "mean_muat_hours": 1.52,
+      "count_muat": 4,
+      "min_muat_hours": 0.85,
+      "max_muat_hours": 3.53
+    },
+    "94040__SMG": {
+      "cust_id": "94040",
+      "cabang": "SMG",
+      "median_muat_hours": 1.29,
+      "mean_muat_hours": 1.29,
+      "count_muat": 2,
+      "min_muat_hours": 1.29,
+      "max_muat_hours": 1.29
+    },
+    "82314__SMG": {
+      "cust_id": "82314",
+      "cabang": "SMG",
+      "median_muat_hours": 1.3,
+      "mean_muat_hours": 1.3,
+      "count_muat": 2,
+      "min_muat_hours": 1.29,
+      "max_muat_hours": 1.31
+    },
+    "79200__SMG": {
+      "cust_id": "79200",
+      "cabang": "SMG",
+      "median_muat_hours": 1.43,
+      "mean_muat_hours": 2.39,
+      "count_muat": 16,
+      "min_muat_hours": 1.38,
+      "max_muat_hours": 5.93
+    },
+    "59239__SMG": {
+      "cust_id": "59239",
+      "cabang": "SMG",
+      "median_muat_hours": 0.54,
+      "mean_muat_hours": 1.43,
+      "count_muat": 63,
+      "min_muat_hours": 0.54,
+      "max_muat_hours": 7.54
+    },
+    "59182__SMG": {
+      "cust_id": "59182",
+      "cabang": "SMG",
+      "median_muat_hours": 0.77,
+      "mean_muat_hours": 0.77,
+      "count_muat": 3,
+      "min_muat_hours": 0.77,
+      "max_muat_hours": 0.77
+    },
+    "90425__SMG": {
+      "cust_id": "90425",
+      "cabang": "SMG",
+      "median_muat_hours": 4.54,
+      "mean_muat_hours": 4.54,
+      "count_muat": 2,
+      "min_muat_hours": 4.13,
+      "max_muat_hours": 4.96
+    },
+    "13071__MKS": {
+      "cust_id": "13071",
+      "cabang": "MKS",
+      "median_muat_hours": 2.7,
+      "mean_muat_hours": 4.3,
+      "count_muat": 6,
+      "min_muat_hours": 1.54,
+      "max_muat_hours": 12.91
+    },
+    "99076__SDA": {
+      "cust_id": "99076",
+      "cabang": "SDA",
+      "median_muat_hours": 11.16,
+      "mean_muat_hours": 11.16,
+      "count_muat": 1,
+      "min_muat_hours": 11.16,
+      "max_muat_hours": 11.16
+    },
+    "77791__MKS": {
+      "cust_id": "77791",
+      "cabang": "MKS",
+      "median_muat_hours": 2.57,
+      "mean_muat_hours": 2.85,
+      "count_muat": 5,
+      "min_muat_hours": 1.71,
+      "max_muat_hours": 4.14
+    },
+    "44021__BPN": {
+      "cust_id": "44021",
+      "cabang": "BPN",
+      "median_muat_hours": 3.48,
+      "mean_muat_hours": 4.77,
+      "count_muat": 8,
+      "min_muat_hours": 0.79,
+      "max_muat_hours": 14.83
+    },
+    "88647__KDR": {
+      "cust_id": "88647",
+      "cabang": "KDR",
+      "median_muat_hours": 9.85,
+      "mean_muat_hours": 11.52,
+      "count_muat": 3,
+      "min_muat_hours": 6.47,
+      "max_muat_hours": 18.25
+    },
+    "103500__MKS": {
+      "cust_id": "103500",
+      "cabang": "MKS",
+      "median_muat_hours": 3.58,
+      "mean_muat_hours": 3.23,
+      "count_muat": 13,
+      "min_muat_hours": 1.98,
+      "max_muat_hours": 4.27
+    },
+    "96194__MKS": {
+      "cust_id": "96194",
+      "cabang": "MKS",
+      "median_muat_hours": 15.75,
+      "mean_muat_hours": 13.29,
+      "count_muat": 8,
+      "min_muat_hours": 3.76,
+      "max_muat_hours": 18.61
+    },
+    "110403__SMG": {
+      "cust_id": "110403",
+      "cabang": "SMG",
+      "median_muat_hours": 1.8,
+      "mean_muat_hours": 1.8,
+      "count_muat": 1,
+      "min_muat_hours": 1.8,
+      "max_muat_hours": 1.8
+    },
+    "86142__MKS": {
+      "cust_id": "86142",
+      "cabang": "MKS",
+      "median_muat_hours": 2.11,
+      "mean_muat_hours": 2.05,
+      "count_muat": 12,
+      "min_muat_hours": 1.33,
+      "max_muat_hours": 2.63
+    },
+    "87809__BPN": {
+      "cust_id": "87809",
+      "cabang": "BPN",
+      "median_muat_hours": 3.5,
+      "mean_muat_hours": 3.5,
+      "count_muat": 1,
+      "min_muat_hours": 3.5,
+      "max_muat_hours": 3.5
+    },
+    "82817__SMG": {
+      "cust_id": "82817",
+      "cabang": "SMG",
+      "median_muat_hours": 1.66,
+      "mean_muat_hours": 1.66,
+      "count_muat": 3,
+      "min_muat_hours": 1.66,
+      "max_muat_hours": 1.66
+    },
+    "105160__SMG": {
+      "cust_id": "105160",
+      "cabang": "SMG",
+      "median_muat_hours": 1.48,
+      "mean_muat_hours": 1.83,
+      "count_muat": 6,
+      "min_muat_hours": 0.51,
+      "max_muat_hours": 4.43
+    },
+    "86039__SMG": {
+      "cust_id": "86039",
+      "cabang": "SMG",
+      "median_muat_hours": 19.59,
+      "mean_muat_hours": 19.59,
+      "count_muat": 1,
+      "min_muat_hours": 19.59,
+      "max_muat_hours": 19.59
+    },
+    "49030__MKS": {
+      "cust_id": "49030",
+      "cabang": "MKS",
+      "median_muat_hours": 1.11,
+      "mean_muat_hours": 5.22,
+      "count_muat": 5,
+      "min_muat_hours": 1.08,
+      "max_muat_hours": 11.43
+    },
+    "109973__MKS": {
+      "cust_id": "109973",
+      "cabang": "MKS",
+      "median_muat_hours": 9.07,
+      "mean_muat_hours": 10.85,
+      "count_muat": 3,
+      "min_muat_hours": 9.06,
+      "max_muat_hours": 14.42
+    },
+    "98729__MKS": {
+      "cust_id": "98729",
+      "cabang": "MKS",
+      "median_muat_hours": 2.59,
+      "mean_muat_hours": 2.59,
+      "count_muat": 1,
+      "min_muat_hours": 2.59,
+      "max_muat_hours": 2.59
+    },
+    "81383__SMG": {
+      "cust_id": "81383",
+      "cabang": "SMG",
+      "median_muat_hours": 0.72,
+      "mean_muat_hours": 2.46,
+      "count_muat": 6,
+      "min_muat_hours": 0.72,
+      "max_muat_hours": 6.31
+    },
+    "110591__SMG": {
+      "cust_id": "110591",
+      "cabang": "SMG",
+      "median_muat_hours": 1.52,
+      "mean_muat_hours": 1.52,
+      "count_muat": 2,
+      "min_muat_hours": 1.52,
+      "max_muat_hours": 1.52
+    },
+    "57094__SMG": {
+      "cust_id": "57094",
+      "cabang": "SMG",
+      "median_muat_hours": 4.14,
+      "mean_muat_hours": 9.07,
+      "count_muat": 3,
+      "min_muat_hours": 4.13,
+      "max_muat_hours": 18.94
+    },
+    "89705__MKS": {
+      "cust_id": "89705",
+      "cabang": "MKS",
+      "median_muat_hours": 3.39,
+      "mean_muat_hours": 3.46,
+      "count_muat": 3,
+      "min_muat_hours": 3.21,
+      "max_muat_hours": 3.79
+    },
+    "110702__MKS": {
+      "cust_id": "110702",
+      "cabang": "MKS",
+      "median_muat_hours": 11.25,
+      "mean_muat_hours": 11.25,
+      "count_muat": 2,
+      "min_muat_hours": 4.92,
+      "max_muat_hours": 17.58
+    },
+    "91990__BPN": {
+      "cust_id": "91990",
+      "cabang": "BPN",
+      "median_muat_hours": 9.73,
+      "mean_muat_hours": 9.73,
+      "count_muat": 1,
+      "min_muat_hours": 9.73,
+      "max_muat_hours": 9.73
+    },
+    "17323__BPN": {
+      "cust_id": "17323",
+      "cabang": "BPN",
+      "median_muat_hours": 13.96,
+      "mean_muat_hours": 13.96,
+      "count_muat": 1,
+      "min_muat_hours": 13.96,
+      "max_muat_hours": 13.96
+    },
+    "83745__MKS": {
+      "cust_id": "83745",
+      "cabang": "MKS",
+      "median_muat_hours": 20.4,
+      "mean_muat_hours": 20.4,
+      "count_muat": 1,
+      "min_muat_hours": 20.4,
+      "max_muat_hours": 20.4
+    },
+    "105311__SDA": {
+      "cust_id": "105311",
+      "cabang": "SDA",
+      "median_muat_hours": 1.4,
+      "mean_muat_hours": 1.4,
+      "count_muat": 1,
+      "min_muat_hours": 1.4,
+      "max_muat_hours": 1.4
+    },
+    "91788__BPN": {
+      "cust_id": "91788",
+      "cabang": "BPN",
+      "median_muat_hours": 2.73,
+      "mean_muat_hours": 2.73,
+      "count_muat": 1,
+      "min_muat_hours": 2.73,
+      "max_muat_hours": 2.73
+    },
+    "100954__SMG": {
+      "cust_id": "100954",
+      "cabang": "SMG",
+      "median_muat_hours": 15.51,
+      "mean_muat_hours": 15.51,
+      "count_muat": 1,
+      "min_muat_hours": 15.51,
+      "max_muat_hours": 15.51
+    },
+    "110783__SMG": {
+      "cust_id": "110783",
+      "cabang": "SMG",
+      "median_muat_hours": 13.9,
+      "mean_muat_hours": 13.9,
+      "count_muat": 1,
+      "min_muat_hours": 13.9,
+      "max_muat_hours": 13.9
+    },
+    "34990__MKS": {
+      "cust_id": "34990",
+      "cabang": "MKS",
+      "median_muat_hours": 3.98,
+      "mean_muat_hours": 3.98,
+      "count_muat": 10,
+      "min_muat_hours": 3.95,
+      "max_muat_hours": 4.0
+    },
+    "111041__MKS": {
+      "cust_id": "111041",
+      "cabang": "MKS",
+      "median_muat_hours": 4.82,
+      "mean_muat_hours": 4.82,
+      "count_muat": 1,
+      "min_muat_hours": 4.82,
+      "max_muat_hours": 4.82
+    },
+    "67996__MKS": {
+      "cust_id": "67996",
+      "cabang": "MKS",
+      "median_muat_hours": 1.88,
+      "mean_muat_hours": 1.87,
+      "count_muat": 10,
+      "min_muat_hours": 1.83,
+      "max_muat_hours": 1.88
+    },
+    "109719__MKS": {
+      "cust_id": "109719",
+      "cabang": "MKS",
+      "median_muat_hours": 2.61,
+      "mean_muat_hours": 2.61,
+      "count_muat": 1,
+      "min_muat_hours": 2.61,
+      "max_muat_hours": 2.61
+    },
+    "29779__MKS": {
+      "cust_id": "29779",
+      "cabang": "MKS",
+      "median_muat_hours": 14.12,
+      "mean_muat_hours": 13.38,
+      "count_muat": 5,
+      "min_muat_hours": 9.06,
+      "max_muat_hours": 20.49
+    },
+    "46303__MKS": {
+      "cust_id": "46303",
+      "cabang": "MKS",
+      "median_muat_hours": 3.34,
+      "mean_muat_hours": 3.34,
+      "count_muat": 1,
+      "min_muat_hours": 3.34,
+      "max_muat_hours": 3.34
+    },
+    "109231__MKS": {
+      "cust_id": "109231",
+      "cabang": "MKS",
+      "median_muat_hours": 10.09,
+      "mean_muat_hours": 10.09,
+      "count_muat": 1,
+      "min_muat_hours": 10.09,
+      "max_muat_hours": 10.09
+    },
+    "100962__SMG": {
+      "cust_id": "100962",
+      "cabang": "SMG",
+      "median_muat_hours": 1.77,
+      "mean_muat_hours": 1.77,
+      "count_muat": 1,
+      "min_muat_hours": 1.77,
+      "max_muat_hours": 1.77
+    },
+    "64591__MKS": {
+      "cust_id": "64591",
+      "cabang": "MKS",
+      "median_muat_hours": 20.27,
+      "mean_muat_hours": 20.27,
+      "count_muat": 2,
+      "min_muat_hours": 19.57,
+      "max_muat_hours": 20.97
+    },
+    "109105__MKS": {
+      "cust_id": "109105",
+      "cabang": "MKS",
+      "median_muat_hours": 13.95,
+      "mean_muat_hours": 13.95,
+      "count_muat": 1,
+      "min_muat_hours": 13.95,
+      "max_muat_hours": 13.95
+    },
+    "104291__SDA": {
+      "cust_id": "104291",
+      "cabang": "SDA",
+      "median_muat_hours": 1.48,
+      "mean_muat_hours": 1.5,
+      "count_muat": 7,
+      "min_muat_hours": 1.46,
+      "max_muat_hours": 1.64
+    },
+    "59238__MKS": {
+      "cust_id": "59238",
+      "cabang": "MKS",
+      "median_muat_hours": 11.95,
+      "mean_muat_hours": 11.95,
+      "count_muat": 1,
+      "min_muat_hours": 11.95,
+      "max_muat_hours": 11.95
+    }
+  },
+  "cabang_defaults": {
+    "BPN": {
+      "median_bongkar_hours": 6.09,
+      "count_bongkar": 576,
+      "median_muat_hours": 3.56,
+      "count_muat": 19
+    },
+    "MKS": {
+      "median_bongkar_hours": 4.1,
+      "count_bongkar": 807,
+      "median_muat_hours": 10.57,
+      "count_muat": 451
+    },
+    "PNK": {
+      "median_bongkar_hours": 3.78,
+      "count_bongkar": 539,
+      "median_muat_hours": 9.58,
+      "count_muat": 283
+    },
+    "JYP": {
+      "median_bongkar_hours": 2.28,
+      "count_bongkar": 99
+    },
+    "SDA": {
+      "median_bongkar_hours": 1.97,
+      "count_bongkar": 6,
+      "median_muat_hours": 1.48,
+      "count_muat": 9
+    },
+    "SMG": {
+      "median_bongkar_hours": 2.41,
+      "count_bongkar": 4,
+      "median_muat_hours": 1.52,
+      "count_muat": 265
+    },
+    "KDR": {
+      "median_muat_hours": 8.16,
+      "count_muat": 4
+    }
+  }
+}

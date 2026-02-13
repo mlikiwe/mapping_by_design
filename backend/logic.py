@@ -1,6 +1,8 @@
+import json
 import os
 import time
 from datetime import datetime, timedelta
+from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Any
 
 import numpy as np
@@ -101,6 +103,41 @@ DEFAULT_COST_MODEL: Dict[int, Dict[str, int]] = {
 
 route_cache: Dict[str, Tuple[float, float, str]] = {}
 geocode_cache: Dict[str, Tuple[Optional[float], Optional[float]]] = {}
+
+DEFAULT_DURASI_BONGKAR_JAM = 5.0
+DEFAULT_DURASI_MUAT_JAM = 5.0
+
+DURATION_LOOKUP_PATH = Path(__file__).parent / "duration_lookup.json"
+DURATION_LOOKUP: Dict[str, Any] = {}
+
+if DURATION_LOOKUP_PATH.exists():
+    with open(DURATION_LOOKUP_PATH, "r", encoding="utf-8") as _f:
+        DURATION_LOOKUP = json.load(_f)
+    print(f"Duration lookup loaded: {len(DURATION_LOOKUP.get('customers', {}))} customers")
+else:
+    print("Warning: duration_lookup.json not found. Using global defaults.")
+
+
+def get_customer_duration(
+    customer_id: str,
+    cabang: str,
+    tipe: str = "bongkar"
+) -> float:
+    key = f"median_{tipe}_hours"
+
+    composite = f"{customer_id}__{cabang}"
+    cust_data = DURATION_LOOKUP.get("customers", {}).get(composite)
+    if cust_data and key in cust_data:
+        return cust_data[key]
+    cabang_data = DURATION_LOOKUP.get("cabang_defaults", {}).get(cabang)
+    if cabang_data and key in cabang_data:
+        return cabang_data[key]
+
+    if tipe == "bongkar":
+        return DURATION_LOOKUP.get("global_default", DEFAULT_DURASI_BONGKAR_JAM)
+    else:
+        return DURATION_LOOKUP.get("global_default", DEFAULT_DURASI_MUAT_JAM)
+
 
 NOMINATIM_URL = "https://nominatim.openstreetmap.org/search"
 NOMINATIM_USER_AGENT = "roundtrip_mapping_optimization_v2"

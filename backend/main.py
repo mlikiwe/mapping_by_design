@@ -71,7 +71,7 @@ async def optimize_endpoint(
         df_d = pd.read_excel(io.BytesIO(content_dest))
         df_o = pd.read_excel(io.BytesIO(content_orig))
         
-        required = ['NO SOPT', 'ALAMAT', 'CABANG'] 
+        required = ['NO SOPT', 'ALAMAT', 'CABANG', 'ACT. LOAD DATE', 'CUST ID'] 
         
         missing_d = [col for col in required if col not in df_d.columns]
         missing_o = [col for col in required if col not in df_o.columns]

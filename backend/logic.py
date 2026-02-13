@@ -22,6 +22,9 @@ GEOCODE_RETRY_DELAY = 2
 PREP_TIME_HOURS = 2.0       
 MAX_IDLE_HOURS = 4.0        
 
+TRUCK_SPEED_FULL_KMH = 25.0    # Truk bermuatan (port→bongkar, muat→port)
+TRUCK_SPEED_EMPTY_KMH = 40.0   # Truk kosong (bongkar→muat)
+
 MAX_MUNDURKAN_BONGKAR = 8   # Max waktu jadwal bongkar mundur
 MAX_MUNDURKAN_MUAT = 8      # Max waktu jadwal muat mundur
 MAX_MAJUKAN_BONGKAR = 24    # Max waktu jadwal bongkar maju
@@ -423,12 +426,12 @@ def process_optimization(
     df_origin: pd.DataFrame
 ) -> List[Dict[str, Any]]:
 
-    df_dest['ACT. FINISH DATE'] = pd.to_datetime(
-        df_dest['ACT. FINISH DATE'], 
+    df_dest['ACT. LOAD DATE'] = pd.to_datetime(
+        df_dest['ACT. LOAD DATE'], 
         errors='coerce'
     )
-    df_origin['ACT. FINISH DATE'] = pd.to_datetime(
-        df_origin['ACT. FINISH DATE'], 
+    df_origin['ACT. LOAD DATE'] = pd.to_datetime(
+        df_origin['ACT. LOAD DATE'], 
         errors='coerce'
     )
     
@@ -438,11 +441,11 @@ def process_optimization(
         df_origin = geocode_dataframe(df_origin)
     
     df_dest = df_dest.dropna(
-        subset=['ALAMAT_LAT', 'ALAMAT_LONG', 'ACT. FINISH DATE']
+        subset=['ALAMAT_LAT', 'ALAMAT_LONG', 'ACT. LOAD DATE']
     ).reset_index(drop=True)
     
     df_origin = df_origin.dropna(
-        subset=['ALAMAT_LAT', 'ALAMAT_LONG', 'ACT. FINISH DATE']
+        subset=['ALAMAT_LAT', 'ALAMAT_LONG', 'ACT. LOAD DATE']
     ).reset_index(drop=True)
     
     num_dest = len(df_dest)
@@ -461,7 +464,7 @@ def process_optimization(
         dest_id = dest_row['NO SOPT']
         dest_lat = float(dest_row['ALAMAT_LAT'])
         dest_lon = float(dest_row['ALAMAT_LONG'])
-        dest_finish_time = dest_row['ACT. FINISH DATE']
+        dest_load_time = dest_row['ACT. LOAD DATE']
         dest_cabang = normalize_cabang(dest_row['CABANG'])
         
         if dest_cabang is None:
@@ -475,6 +478,10 @@ def process_optimization(
             dest_lat, dest_lon
         )
         dist_port_to_dest = dist_port_to_dest if dist_port_to_dest else 99999
+        time_port_to_dest = dist_port_to_dest / TRUCK_SPEED_FULL_KMH
+
+        # ACT. LOAD DATE + waktu tempuh port → customer bongkar
+        dest_arrival = dest_load_time + timedelta(hours=time_port_to_dest)
         
         dist_dest_to_port, _, _ = get_valhalla_route(
             dest_lat, dest_lon, 
@@ -500,7 +507,7 @@ def process_optimization(
             orig_lat = float(orig_row['ALAMAT_LAT'])
             orig_lon = float(orig_row['ALAMAT_LONG'])
             
-            dist_direct, time_direct, route_shape = get_valhalla_route(
+            dist_direct, _, route_shape = get_valhalla_route(
                 dest_lat, dest_lon,
                 orig_lat, orig_lon
             )
@@ -513,6 +520,10 @@ def process_optimization(
                 orig_lat, orig_lon
             )
             dist_port_to_orig = dist_port_to_orig if dist_port_to_orig else 99999
+            time_port_to_orig = dist_port_to_orig / TRUCK_SPEED_FULL_KMH
+
+            # ACT. LOAD DATE + waktu tempuh port → customer muat
+            orig_arrival = orig_row['ACT. LOAD DATE'] + timedelta(hours=time_port_to_orig)
             
             dist_orig_to_port, _, _ = get_valhalla_route(
                 orig_lat, orig_lon,
@@ -538,11 +549,19 @@ def process_optimization(
             if saving_km <= 0:
                 continue
             
-            orig_start_time = orig_row['ACT. FINISH DATE']
-            
-            time_window_available = (orig_start_time - dest_finish_time).total_seconds() / 3600.0
-            time_travel_required = time_direct + PREP_TIME_HOURS
-            time_gap = time_window_available - time_travel_required
+            # Lookup durasi bongkar dari duration_lookup.json
+            dest_cust_id = str(dest_row.get('CUST ID', '')).strip()
+            durasi_bongkar = get_customer_duration(dest_cust_id, dest_cabang, tipe='bongkar')
+
+            # Waktu selesai bongkar = tiba di customer + durasi bongkar
+            selesai_bongkar = dest_arrival + timedelta(hours=durasi_bongkar)
+
+            # Estimasi waktu tiba di lokasi muat
+            time_bongkar_to_muat = dist_direct / TRUCK_SPEED_EMPTY_KMH
+            est_tiba_muat = selesai_bongkar + timedelta(hours=PREP_TIME_HOURS + time_bongkar_to_muat)
+
+            # Time gap = deadline muat - estimasi tiba
+            time_gap = (orig_arrival - est_tiba_muat).total_seconds() / 3600.0
             
             pool_category, shift_needed, options = evaluate_time_feasibility(time_gap)
             
@@ -576,13 +595,15 @@ def process_optimization(
                 'dist_triangulasi': dist_triangulasi_full,  
                 'dist_via_port': dist_via_port_full,        
                 'dist_direct': dist_direct,                  
-                'est_travel': time_direct,
+                'est_travel': time_bongkar_to_muat,
                 'shift': shift_needed,
                 'gap': time_gap,
                 'opsi': options,
                 'shape': route_shape,
-                'waktu_bongkar': dest_finish_time,
-                'waktu_muat': orig_start_time,
+                'waktu_bongkar': dest_arrival,
+                'waktu_muat': orig_arrival,
+                'durasi_bongkar_est': durasi_bongkar,
+                'selesai_bongkar': selesai_bongkar,
                 'dest_lat': dest_lat,
                 'dest_lon': dest_lon,
                 'orig_lat': orig_lat,
@@ -634,6 +655,8 @@ def process_optimization(
             "OPSI_SISI_DEST": opsi_dest,
             "WAKTU_BONGKAR_ASLI": details['waktu_bongkar'].strftime('%Y-%m-%d %H:%M:%S'),
             "WAKTU_MUAT_ASLI": details['waktu_muat'].strftime('%Y-%m-%d %H:%M:%S'),
+            "DURASI_BONGKAR_EST": details['durasi_bongkar_est'],
+            "SELESAI_BONGKAR": details['selesai_bongkar'].strftime('%Y-%m-%d %H:%M:%S'),
             "geometry": details['shape'],
             "origin_coords": [details['orig_lat'], details['orig_lon']],
             "dest_coords": [details['dest_lat'], details['dest_lon']],

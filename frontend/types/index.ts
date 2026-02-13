@@ -23,6 +23,8 @@ export interface OptimizationResult {
   REKOMENDASI_TINDAKAN: string;
   WAKTU_BONGKAR_ASLI: string;
   WAKTU_MUAT_ASLI: string;
+  DURASI_BONGKAR_EST?: number;
+  SELESAI_BONGKAR?: string;
   OPSI_SISI_ORIGIN?: string | null;
   OPSI_SISI_DEST?: string | null;
   

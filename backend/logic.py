@@ -142,6 +142,34 @@ def get_customer_duration(
         return DURATION_LOOKUP.get("global_default", DEFAULT_DURASI_MUAT_JAM)
 
 
+def get_customer_time_profile(customer_id: str, cabang: str, tipe: str = "bongkar") -> Dict[str, Any]:
+    composite = f"{customer_id}__{cabang}"
+    cust_data = DURATION_LOOKUP.get("customers", {}).get(composite, {})
+
+    mode_key = f"mode_hour_{tipe}"
+    dist_key = f"hour_distribution_{tipe}"
+    count_key = f"count_hours_{tipe}"
+
+    if mode_key in cust_data:
+        return {
+            "mode_hour": cust_data[mode_key],
+            "distribution": cust_data.get(dist_key, {}),
+            "sample_count": cust_data.get(count_key, 0),
+            "source": "customer"
+        }
+
+    cabang_data = DURATION_LOOKUP.get("cabang_defaults", {}).get(cabang, {})
+    if mode_key in cabang_data:
+        return {
+            "mode_hour": cabang_data[mode_key],
+            "distribution": {},
+            "sample_count": 0,
+            "source": "cabang_default"
+        }
+
+    return {"mode_hour": None, "distribution": {}, "sample_count": 0, "source": "none"}
+
+
 NOMINATIM_URL = "https://nominatim.openstreetmap.org/search"
 NOMINATIM_USER_AGENT = "roundtrip_mapping_optimization_v2"
 
@@ -549,9 +577,10 @@ def process_optimization(
             if saving_km <= 0:
                 continue
             
-            # Lookup durasi bongkar dari duration_lookup.json
             dest_cust_id = str(dest_row.get('CUST ID', '')).strip()
+            orig_cust_id = str(orig_row.get('CUST ID', '')).strip()
             durasi_bongkar = get_customer_duration(dest_cust_id, dest_cabang, tipe='bongkar')
+            durasi_muat = get_customer_duration(orig_cust_id, dest_cabang, tipe='muat')
 
             # Waktu selesai bongkar = tiba di customer + durasi bongkar
             selesai_bongkar = dest_arrival + timedelta(hours=durasi_bongkar)
@@ -603,7 +632,10 @@ def process_optimization(
                 'waktu_bongkar': dest_arrival,
                 'waktu_muat': orig_arrival,
                 'durasi_bongkar_est': durasi_bongkar,
+                'durasi_muat_est': durasi_muat,
                 'selesai_bongkar': selesai_bongkar,
+                'dest_cust_id': dest_cust_id,
+                'orig_cust_id': orig_cust_id,
                 'dest_lat': dest_lat,
                 'dest_lon': dest_lon,
                 'orig_lat': orig_lat,
@@ -656,7 +688,16 @@ def process_optimization(
             "WAKTU_BONGKAR_ASLI": details['waktu_bongkar'].strftime('%Y-%m-%d %H:%M:%S'),
             "WAKTU_MUAT_ASLI": details['waktu_muat'].strftime('%Y-%m-%d %H:%M:%S'),
             "DURASI_BONGKAR_EST": details['durasi_bongkar_est'],
+            "DURASI_MUAT_EST": details['durasi_muat_est'],
             "SELESAI_BONGKAR": details['selesai_bongkar'].strftime('%Y-%m-%d %H:%M:%S'),
+            "DEST_CUST_ID": details['dest_cust_id'],
+            "ORIG_CUST_ID": details['orig_cust_id'],
+            "DEST_TIME_PROFILE": get_customer_time_profile(
+                details['dest_cust_id'], details['cabang'], "bongkar"
+            ),
+            "ORIG_TIME_PROFILE": get_customer_time_profile(
+                details['orig_cust_id'], details['cabang'], "muat"
+            ),
             "geometry": details['shape'],
             "origin_coords": [details['orig_lat'], details['orig_lon']],
             "dest_coords": [details['dest_lat'], details['dest_lon']],

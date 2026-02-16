@@ -79,7 +79,9 @@ export default function ResultsTable({
             <thead className="text-xs text-slate-500 uppercase bg-slate-50 border-b border-slate-200">
               <tr>
                 <th className="px-6 py-4">ID SOPT Destination</th>
+                <th className="px-6 py-4">Cust ID Dest</th>
                 <th className="px-6 py-4">ID SOPT Origin</th>
+                <th className="px-6 py-4">Cust ID Orig</th>
                 <th className="px-6 py-4">Cabang</th>
                 <th className="px-6 py-4">Waktu Bongkar</th>
                 <th className="px-6 py-4">Waktu Muat</th>
@@ -94,7 +96,17 @@ export default function ResultsTable({
                     <div className="font-bold text-slate-800">{row.DEST_ID}</div>
                   </td>
                   <td className="px-6 py-4">
+                    <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-red-50 text-red-700 border border-red-200 font-mono">
+                      {row.DEST_CUST_ID || '-'}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4">
                     <div className="font-bold text-slate-800">{row.ORIG_ID}</div>
+                  </td>
+                  <td className="px-6 py-4">
+                    <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200 font-mono">
+                      {row.ORIG_CUST_ID || '-'}
+                    </span>
                   </td>
                   <td className="px-6 py-4">
                     <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-purple-100 text-purple-700 border border-purple-200">

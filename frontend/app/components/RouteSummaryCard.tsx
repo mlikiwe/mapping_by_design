@@ -15,7 +15,7 @@ export default function RouteSummaryCard({ item }: RouteSummaryCardProps) {
         <StatusBadge status={item.KATEGORI_POOL} />
       </div>
 
-      <div className="grid grid-cols-3 gap-4 mb-4">
+      <div className="grid grid-cols-3 grid-rows-2 gap-4 mb-4">
         <div className="bg-red-50 border border-red-100 rounded-lg p-3">
           <div className="text-xs font-bold text-red-600 uppercase tracking-wide">
             DESTINATION
@@ -32,12 +32,28 @@ export default function RouteSummaryCard({ item }: RouteSummaryCardProps) {
             {item.ORIG_ID}
           </div>
         </div>
-        <div className="bg-purple-50 border border-purple-100 rounded-lg p-3">
-          <div className="text-xs font-bold text-purple-600 uppercase tracking-wide">
+        <div className="bg-purple-50 border border-purple-100 rounded-lg p-3 row-span-2 flex flex-col justify-center">
+          <div className="text-xs font-bold text-purple-600 uppercase tracking-wide text-center">
             CABANG
           </div>
-          <div className="text-sm font-bold text-slate-800 mt-1">
+          <div className="text-sm font-bold text-slate-800 mt-1 text-center">
             {item.CABANG}
+          </div>
+        </div>
+        <div className="bg-red-50 border border-red-100 rounded-lg p-3">
+          <div className="text-xs font-bold text-red-600 uppercase tracking-wide">
+            CUST ID DESTINATION
+          </div>
+          <div className="text-sm font-bold text-slate-800 mt-1 font-mono">
+            {item.DEST_CUST_ID || '-'}
+          </div>
+        </div>
+        <div className="bg-blue-50 border border-blue-100 rounded-lg p-3">
+          <div className="text-xs font-bold text-blue-600 uppercase tracking-wide">
+            CUST ID ORIGIN
+          </div>
+          <div className="text-sm font-bold text-slate-800 mt-1 font-mono">
+            {item.ORIG_CUST_ID || '-'}
           </div>
         </div>
       </div>

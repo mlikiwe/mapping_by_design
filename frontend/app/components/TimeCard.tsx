@@ -36,7 +36,7 @@ export default function TimeCard({ item }: TimeCardProps) {
           Waktu Order
         </div>
         <div className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider text-center">
-          Karakteristik (Mode)
+          Karakteristik Waktu
         </div>
         <div className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider text-right">
           Lead Time

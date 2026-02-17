@@ -1,7 +1,8 @@
+#Buat semua file yang berformat .xlsx atau format excel yang lain dimasukkan ke dalam gitignore agar menghindari kebocoran dataset ke publik
+*.xlsx
+*.csv
 .vscode/
 .env
-backend/generate_duration_lookup.py
-backend/orig.xlsx
-backend/dest.xlsx
 backend/.env.example
+backend/generate_duration_lookup.py
 DEPLOYMENT.md

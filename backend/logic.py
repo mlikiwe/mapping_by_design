@@ -409,7 +409,7 @@ def build_recommendation_text(
             )
             main_text += f"\n-> Opsi Origin: {origin_text}"
         else:
-            origin_text = f"Tidak bisa mundurkan muat (melebihi batas {MAX_MUNDURKAN_MUAT} jam)"
+            origin_text = f"Tidak dapat memundurkan muat (melebihi batas {MAX_MUNDURKAN_MUAT} jam)"
         
         if "MAJU_BONGKAR" in options:
             new_time = unload_time - timedelta(hours=shift_hours)
@@ -419,7 +419,7 @@ def build_recommendation_text(
             )
             main_text += f"\n-> Opsi Dest: {dest_text}"
         else:
-            dest_text = f"Tidak bisa percepat bongkar (melebihi batas {MAX_MAJUKAN_BONGKAR} jam)"
+            dest_text = f"Tidak dapat mempercepat bongkar (melebihi batas {MAX_MAJUKAN_BONGKAR} jam)"
             
     elif pool_category == "IDLE_REDUCE_POSSIBLE":
         main_text = f"IDLE TINGGI ({time_gap:.1f} Jam). Bisa dikurangi dengan penyesuaian."
@@ -432,17 +432,17 @@ def build_recommendation_text(
             )
             main_text += f"\n-> Opsi Origin: {origin_text}"
         else:
-            origin_text = f"Tidak bisa majukan muat (melebihi batas {MAX_MAJUKAN_MUAT} jam)"
+            origin_text = f"Tidak dapat memajukan muat (melebihi batas {MAX_MAJUKAN_MUAT} jam)"
         
         if "MUNDUR_BONGKAR" in options:
             new_time = unload_time + timedelta(hours=shift_hours)
             dest_text = (
-                f"Tahan truk/mundur bongkar dari {unload_time.strftime(date_format)} "
+                f"Mundurkan bongkar dari {unload_time.strftime(date_format)} "
                 f"ke {new_time.strftime(date_format)} (+{shift_hours:.1f} jam)"
             )
             main_text += f"\n-> Opsi Dest: {dest_text}"
         else:
-            dest_text = f"Tidak bisa mundurkan bongkar (melebihi batas {MAX_MUNDURKAN_BONGKAR} jam)"
+            dest_text = f"Tidak dapat memundurkan bongkar (melebihi batas {MAX_MUNDURKAN_BONGKAR} jam)"
     
     else:
         main_text = "Status tidak diketahui"

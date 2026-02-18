@@ -34,68 +34,232 @@ WEIGHT_SAVING = 1000
 PENALTY_PER_HOUR = 500      
 
 PORT_LOCATIONS: Dict[str, Dict[str, float]] = {
-    'MKS': {'lat': -5.113802573807123, 'lon': 119.41037950498233},
-    'SMG': {'lat': -6.942867577132296, 'lon': 110.42457707933995},
-    'SEMARANG': {'lat': -6.942867577132296, 'lon': 110.42457707933995},
-    'JYP': {'lat': -2.544847344680502, 'lon': 140.71329620822493},
-    'PNK': {'lat': -0.018584509467722148, 'lon': 109.33400183258493},
-    'SDA': {'lat': -0.5755879460602218, 'lon': 117.2067604145952},
-    'KDR': {'lat': -3.9895283429207495, 'lon': 122.6190354078469},
+    'AMB': {'lat':-3.6936513307915373, 'lon': 128.1781638108562},
+    'BAU': {'lat':-5.455903265878138, 'lon': 122.60938584960972},
+    'BIA': {'lat':-1.1851603736014757, 'lon': 136.07682156714358},
+    'BIT': {'lat':1.442401944168893, 'lon': 125.19794740287165},
+    'BKS': {'lat':-3.9071848201989816, 'lon': 102.30519879122947},
+    'BMS': {'lat':-3.3327669305844285, 'lon': 114.55564290033476},
+    'BOE': {'lat':-4.785618909408796, 'lon': 121.58287938017267},
     'BPN': {'lat': -1.1568616485972183, 'lon': 116.78528031499359},
+    'BRU': {'lat':2.157605639533901, 'lon': 117.49494602063376},
+    'BTL': {'lat':-3.4314766905578593, 'lon': 116.00777973943374},
+    'BTM': {'lat':1.1629469531427101, 'lon': 104.00468304195515},
+    'FAK': {'lat':-2.932392940033229, 'lon': 132.3096808628934},
+    'GTO': {'lat':0.5101940472432188, 'lon': 123.06327209675729},
+    'JYP': {'lat': -2.544847344680502, 'lon': 140.71329620822493},
+    'KAI': {'lat':-3.6628405435755065, 'lon': 133.76092774448097},
+    'KDR': {'lat': -3.9895283429207495, 'lon': 122.6190354078469},
+    'KTG': {'lat': -5.113802573807123, 'lon': 119.41037950498233},
+    'KTJ': {'lat':3.3619660255236283, 'lon': 99.44941303103899},
+    'MDN': {'lat':3.787506344211553, 'lon': 98.71314917267185},
+    'MKE': {'lat':-8.478256116269572, 'lon': 140.39305845664322},
+    'MKS': {'lat': -5.113802573807123, 'lon': 119.41037950498233},
+    'MRI': {'lat':-0.8675417506615584, 'lon': 134.07615720492146},
+    'NBR': {'lat':-3.238797960851654, 'lon': 135.58323888258386},
+    'NNK': {'lat':4.142988216468162, 'lon': 117.66599727361431},
+    'PAL': {'lat':-0.5812817099682415, 'lon': 119.79329655793101},
+    'PDG': {'lat':-0.9981727894996993, 'lon': 100.36979280361531},
+    'PLM': {'lat':-2.9798136965465556, 'lon': 104.78229673306087},
+    'PNK': {'lat': -0.018584509467722148, 'lon': 109.33400183258493},
+    'PRW': {'lat':0.6832287747358564, 'lon': 101.65075633957173},
+    'SDA': {'lat': -0.5755879460602218, 'lon': 117.2067604145952},
+    'SMG': {'lat': -6.942867577132296, 'lon': 110.42457707933995},
+    'SPT': {'lat':-2.5408470599064956, 'lon': 112.96458506972988},
+    'SRG': {'lat':-0.8775088266820529, 'lon': 131.24542609539967},
+    'SRI': {'lat':-1.881488025976306, 'lon': 136.243383575054},
+    'TGK': {'lat':-1.209244825216147, 'lon': 122.62847485731344},
+    'TIM': {'lat':-4.802100356221503, 'lon': 136.76805472331185},
+    'TRK': {'lat':3.284967648005647, 'lon': 117.59585253796989},
+    'TTE': {'lat':0.7817073187610769, 'lon': 127.38794865150044},
+    'TUA': {'lat':-5.633732846975406, 'lon': 132.7426128381603},
     'SBY': {'lat': -7.218371647800905, 'lon': 112.72841955208024},
-    'SURABAYA': {'lat': -7.218371647800905, 'lon': 112.72841955208024},
     'JKT': {'lat': -6.108317688297046, 'lon': 106.87547242239924},
-    'JAKARTA': {'lat': -6.108317688297046, 'lon': 106.87547242239924},
 }
 
 CABANG_ALIASES: Dict[str, str] = {
-    'SEMARANG': 'SMG',
-    'SURABAYA': 'SBY',
-    'JAKARTA': 'JKT',
-    'MAKASSAR': 'MKS',
-    'PONTIANAK': 'PNK',
-    'SAMARINDA': 'SDA',
-    'BALIKPAPAN': 'BPN',
-    'KENDARI': 'KDR',
-    'JAYAPURA': 'JYP',
+'AMBON': 'AMB',
+'BAU-BAU': 'BAU',
+'BIAK': 'BIA',
+'BITUNG': 'BIT',
+'BANJARMASIN': 'BMS',
+'BALIKPAPAN': 'BPN',
+'BERAU': 'BRU',
+'BATULICIN': 'BTL',
+'BATAM': 'BTM',
+'FAKFAK': 'FAK',
+'GORONTALO': 'GTO',
+'JAYAPURA': 'JYP',
+'KAIMANA': 'KAI',
+'KENDARI': 'KDR',
+'KETAPANG': 'KTG',
+'KUALA TANJUNG': 'KTJ',
+'MEDAN': 'MDN',
+'MERAUKE': 'MKE',
+'MAKASSAR': 'MKS',
+'MANOKWARI': 'MRI',
+'NABIRE': 'NBR',
+'NUNUKAN': 'NNK',
+'PALU': 'PAL',
+'PADANG': 'PDG',
+'PONTIANAK': 'PNK',
+'PERAWANG': 'PRW',
+'SAMARINDA': 'SDA',
+'SEMARANG': 'SMG',
+'SAMPIT': 'SPT',
+'SORONG': 'SRG',
+'SERUI': 'SRI',
+'TANGKIANG': 'TGK',
+'TIMIKA': 'TIM',
+'TARAKAN': 'TRK',
+'TERNATE': 'TTE',
+'TUAL': 'TUA'
 }
 
 TRUCKING_COST_MODEL: Dict[str, Dict[int, Dict[str, int]]] = {
-    'SBY': {
-        20: {'base': 1012092, 'per_km': 13225},   
-        40: {'base': 1151394, 'per_km': 15489},   
+    'AMB': {
+        20: {'base': 1614033, 'per_km': 79722},   # R²=0.934, n=33
+        40: {'base': 3886774, 'per_km': 13556},   # R²=0.012, n=7
     },
-    'MKS': {
-        20: {'base': 1191595, 'per_km': 15765},   
-        40: {'base': 1650161, 'per_km': 30059},   
+    'BAU': {
+        20: {'base': 1119186, 'per_km': 52230},   # R²=0.885, n=48
+        40: {'base': 2589798, 'per_km': 108403},   # R²=0.984, n=8
     },
-    'SMG': {
-        20: {'base': 1126369, 'per_km': 13724},   
-        40: {'base': 1504052, 'per_km': 12384},   
+    'BIA': {
+        20: {'base': 2359216, 'per_km': 147538},   # R²=0.11, n=6
+        40: {'base': 1000000, 'per_km': 50000},   # R²=0, n=0
     },
-    'JKT': {
-        20: {'base': 1066635, 'per_km': 15201},   
-        40: {'base': 842506, 'per_km': 20348},    
+    'BIT': {
+        20: {'base': 1260803, 'per_km': 20888},   # R²=0.335, n=182
+        40: {'base': 1524331, 'per_km': 28734},   # R²=0.23, n=61
+    },
+    'BMS': {
+        20: {'base': 594371, 'per_km': 31275},   # R²=0.671, n=268
+        40: {'base': 894914, 'per_km': 42427},   # R²=0.531, n=97
     },
     'BPN': {
-        20: {'base': 974899, 'per_km': 67692},    
-        40: {'base': 2165839, 'per_km': 84821},   
+        20: {'base': 974899, 'per_km': 67692},   # R²=0.646, n=236
+        40: {'base': 2165839, 'per_km': 84821},   # R²=0.459, n=91
     },
-    'SDA': {
-        20: {'base': 1268345, 'per_km': 68670},   
-        40: {'base': 1887260, 'per_km': 91306},   
+    'BRU': {
+        20: {'base': 3406990, 'per_km': 52272},   # R²=0.8, n=151
+        40: {'base': 1000000, 'per_km': 50000},   # R²=0, n=0
     },
-    'PNK': {
-        20: {'base': 1720838, 'per_km': 31480},   
-        40: {'base': 2715683, 'per_km': 44559},   
+    'BTL': {
+        20: {'base': 1660287, 'per_km': 40460},   # R²=0.615, n=28
+        40: {'base': 1000000, 'per_km': 50000},   # R²=0, n=0
     },
-    'KDR': {
-        20: {'base': 1062738, 'per_km': 31920},   
-        40: {'base': 1240141, 'per_km': 57552},   
+    'BTM': {
+        20: {'base': 987645, 'per_km': 12517},   # R²=0.041, n=157
+        40: {'base': 929887, 'per_km': 27891},   # R²=0.605, n=65
+    },
+    'FAK': {
+        20: {'base': 3239105, 'per_km': -121225},   # R²=0.086, n=5
+        40: {'base': 1000000, 'per_km': 2506266},   # R²=0, n=1
+    },
+    'GTO': {
+        20: {'base': 853478, 'per_km': 25364},   # R²=0.902, n=111
+        40: {'base': 1573261, 'per_km': 43556},   # R²=0.838, n=27
     },
     'JYP': {
-        20: {'base': 2147488, 'per_km': 13825},   
-        40: {'base': 4404528, 'per_km': 277301},  
+        20: {'base': 2147488, 'per_km': 13825},   # R²=0.05, n=59
+        40: {'base': 4404528, 'per_km': 277301},   # R²=0.762, n=10
+    },
+    'KAI': {
+        20: {'base': 3734979, 'per_km': 44806},   # R²=0.188, n=5
+        40: {'base': 1000000, 'per_km': 50000},   # R²=0, n=0
+    },
+    'KDR': {
+        20: {'base': 1062738, 'per_km': 31920},   # R²=0.718, n=159
+        40: {'base': 1240141, 'per_km': 57552},   # R²=0.84, n=59
+    },
+    'KTG': {
+        20: {'base': 1185780, 'per_km': 66563},   # R²=0.804, n=129
+        40: {'base': 2328730, 'per_km': 119520},   # R²=0.926, n=35
+    },
+    'KTJ': {
+        20: {'base': 1000000, 'per_km': 15843},   # R²=0, n=1
+        40: {'base': 1000000, 'per_km': 50000},   # R²=0, n=0
+    },
+    'MDN': {
+        20: {'base': 1137761, 'per_km': 19972},   # R²=0.809, n=441
+        40: {'base': 1418268, 'per_km': 25977},   # R²=0.785, n=159
+    },
+    'MKE': {
+        20: {'base': 2753493, 'per_km': 69972},   # R²=0.797, n=32
+        40: {'base': 5368136, 'per_km': 170874},   # R²=0.611, n=12
+    },
+    'MKS': {
+        20: {'base': 1191595, 'per_km': 15765},   # R²=0.692, n=449
+        40: {'base': 1650161, 'per_km': 30059},   # R²=0.519, n=145
+    },
+    'MRI': {
+        20: {'base': 2068758, 'per_km': 61628},   # R²=0.872, n=29
+        40: {'base': 3978182, 'per_km': 54214},   # R²=0.14, n=6
+    },
+    'NBR': {
+        20: {'base': 1267122, 'per_km': 68983},   # R²=0.841, n=22
+        40: {'base': 3507323, 'per_km': 112545},   # R²=0.85, n=6
+    },
+    'NNK': {
+        20: {'base': 3323953, 'per_km': 152794},   # R²=0.473, n=21
+        40: {'base': 1000000, 'per_km': 50000},   # R²=0, n=0
+    },
+    'PAL': {
+        20: {'base': 933104, 'per_km': 33897},   # R²=0.914, n=97
+        40: {'base': 2607104, 'per_km': 36712},   # R²=0.86, n=36
+    },
+    'PDG': {
+        20: {'base': 2036944, 'per_km': 6315},   # R²=0.237, n=51
+        40: {'base': 3423013, 'per_km': 33926},   # R²=0.697, n=18
+    },
+    'PNK': {
+        20: {'base': 1720838, 'per_km': 31480},   # R²=0.651, n=183
+        40: {'base': 2715683, 'per_km': 44559},   # R²=0.741, n=68
+    },
+    'PRW': {
+        20: {'base': 1177854, 'per_km': 29299},   # R²=0.773, n=141
+        40: {'base': 1479783, 'per_km': 47751},   # R²=0.644, n=51
+    },
+    'SDA': {
+        20: {'base': 1268345, 'per_km': 68670},   # R²=0.828, n=255
+        40: {'base': 1887260, 'per_km': 91306},   # R²=0.819, n=80
+    },
+    'SMG': {
+        20: {'base': 1126369, 'per_km': 13724},   # R²=0.847, n=40
+        40: {'base': 1504052, 'per_km': 12384},   # R²=0.635, n=13
+    },
+    'SPT': {
+        20: {'base': 1996378, 'per_km': 25314},   # R²=0.608, n=91
+        40: {'base': 2938327, 'per_km': 33299},   # R²=0.58, n=19
+    },
+    'SRG': {
+        20: {'base': 1209135, 'per_km': 102230},   # R²=0.923, n=66
+        40: {'base': 3855251, 'per_km': 55001},   # R²=0.28, n=21
+    },
+    'SRI': {
+        20: {'base': 1000000, 'per_km': 6698886},   # R²=0, n=4
+        40: {'base': 1000000, 'per_km': 5019305},   # R²=0, n=1
+    },
+    'TGK': {
+        20: {'base': 912096, 'per_km': 32945},   # R²=0.665, n=39
+        40: {'base': 1175252, 'per_km': 76463},   # R²=0.806, n=10
+    },
+    'TIM': {
+        20: {'base': 2254624, 'per_km': 48206},   # R²=0.117, n=32
+        40: {'base': 1000000, 'per_km': 244138},   # R²=0, n=4
+    },
+    'TRK': {
+        20: {'base': 3287449, 'per_km': -26129},   # R²=0.025, n=51
+        40: {'base': 6286036, 'per_km': -117539},   # R²=0.272, n=12
+    },
+    'TTE': {
+        20: {'base': 2821820, 'per_km': 24319},   # R²=0.793, n=33
+        40: {'base': 6108893, 'per_km': 62815},   # R²=0.764, n=13
+    },
+    'TUA': {
+        20: {'base': 4891380, 'per_km': -131743},   # R²=0.069, n=13
+        40: {'base': 1000000, 'per_km': 2546914},   # R²=0, n=4
     },
 }
 
@@ -704,6 +868,34 @@ def process_optimization(
             "port_coords": [port_loc['lat'], port_loc['lon']]
         })
     
+    df_dest['CABANG_NORM'] = df_dest['CABANG'].apply(normalize_cabang)
+    df_origin['CABANG_NORM'] = df_origin['CABANG'].apply(normalize_cabang)
+    
+    cabang_stats = {}
+    
+    all_cabangs = set(df_dest['CABANG_NORM'].dropna().unique()) | set(df_origin['CABANG_NORM'].dropna().unique())
+    
+    for cabang in all_cabangs:
+        if not cabang: continue
+        cabang_stats[str(cabang)] = {
+            "total_origin": int(df_origin[df_origin['CABANG_NORM'] == cabang].shape[0]),
+            "total_dest": int(df_dest[df_dest['CABANG_NORM'] == cabang].shape[0]),
+            "match": 0,
+            "saving": 0,
+            "saving_cost": 0
+        }
+    
+    for res in results:
+        cbg = str(res['CABANG'])
+        if cbg in cabang_stats:
+            cabang_stats[cbg]['match'] += 1
+            cabang_stats[cbg]['saving'] += res['SAVING_KM']
+            cabang_stats[cbg]['saving_cost'] += res['SAVING_COST']
+            
+    cabang_breakdown = [
+        {"cabang": k, **v} for k, v in cabang_stats.items()
+    ]
+    
     total_saving_km = sum(r['SAVING_KM'] for r in results)
     total_saving_cost = sum(r['SAVING_COST'] for r in results)
     
@@ -711,4 +903,14 @@ def process_optimization(
     print(f"Total Penghematan Jarak: {total_saving_km:,.2f} km")
     print(f"Total Penghematan Biaya: Rp {total_saving_cost:,.0f}")
     
-    return results
+    return {
+        "results": results,
+        "stats": {
+            "total_match": len(results),
+            "total_origin": num_origin,
+            "total_dest": num_dest,
+            "saving": total_saving_km,
+            "saving_cost": total_saving_cost,
+            "cabang_breakdown": cabang_breakdown
+        }
+    }

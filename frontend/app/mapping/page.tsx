@@ -9,15 +9,15 @@ import { OptimizationResult } from '@/types';
 
 export default function MappingPage() {
   const router = useRouter();
-  const { 
-    stats, 
-    results, 
+  const {
+    stats,
+    results,
     appMode,
     isHydrated,
     isDBLoading,
     setAppMode,
     saveToStorage,
-    handleReset 
+    handleReset
   } = useMappingContext();
 
   const [fileDest, setFileDest] = useState<File | null>(null);
@@ -49,28 +49,21 @@ export default function MappingPage() {
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
       const res = await axios.post(`${apiUrl}/api/optimize`, fd);
-      const data: OptimizationResult[] = res.data;
 
-      const totalSaving = data.reduce(
-        (acc, curr) => acc + (curr.SAVING_KM || 0),
-        0
-      );
-      const totalSavingCost = data.reduce(
-        (acc, curr) => acc + (curr.SAVING_COST || 0),
-        0
-      );
+      const { results: data, stats: backendStats } = res.data;
 
-      const newStats = { 
-        match: data.length, 
-        saving: totalSaving, 
-        savingCost: totalSavingCost 
+      const newStats = {
+        match: backendStats.total_match,
+        saving: backendStats.saving,
+        savingCost: backendStats.saving_cost,
+        total_origin: backendStats.total_origin,
+        total_dest: backendStats.total_dest,
+        cabang_breakdown: backendStats.cabang_breakdown
       };
 
-      // Save to context and IndexedDB
       saveToStorage(data, newStats);
       setAppMode('mapping');
 
-      // Navigate to download page
       router.push('/download');
 
     } catch (e: unknown) {
@@ -85,7 +78,6 @@ export default function MappingPage() {
     }
   };
 
-  // Loading state
   if (!isHydrated || isDBLoading) {
     return (
       <div className="min-h-screen bg-slate-50 flex items-center justify-center">
@@ -114,7 +106,7 @@ export default function MappingPage() {
           </svg>
           Kembali ke Menu Utama
         </button>
-        
+
         <UploadView
           fileDest={fileDest}
           fileOrig={fileOrig}

@@ -9,15 +9,15 @@ import { OptimizationResult } from '@/types';
 
 export default function SimulationPage() {
   const router = useRouter();
-  const { 
-    stats, 
-    results, 
+  const {
+    stats,
+    results,
     appMode,
     isHydrated,
     isDBLoading,
     setAppMode,
     saveToStorage,
-    handleReset 
+    handleReset
   } = useMappingContext();
 
   const [file, setFile] = useState<File | null>(null);
@@ -51,29 +51,23 @@ export default function SimulationPage() {
     try {
       const data = await file.arrayBuffer();
       const workbook = XLSX.read(data, { type: 'array' });
-      
-      // Get first sheet
+
       const sheetName = workbook.SheetNames[0];
       const worksheet = workbook.Sheets[sheetName];
-      
-      // Convert to JSON
+
       const jsonData = XLSX.utils.sheet_to_json(worksheet) as OptimizationResult[];
-      
-      // Validate required fields
+
       if (jsonData.length === 0) {
         throw new Error('File tidak memiliki data');
       }
-
-      // Check if it's a valid mapping result file
       const requiredFields = ['DEST_ID', 'ORIG_ID', 'CABANG', 'STATUS'];
       const firstRow = jsonData[0];
       const missingFields = requiredFields.filter(field => !(field in firstRow));
-      
+
       if (missingFields.length > 0) {
         throw new Error(`File tidak valid. Kolom yang diperlukan tidak ditemukan: ${missingFields.join(', ')}`);
       }
 
-      // Helper function to parse coordinate strings back to arrays
       const parseCoords = (value: unknown): [number, number] | undefined => {
         if (!value) return undefined;
         if (Array.isArray(value) && value.length === 2) {
@@ -88,7 +82,20 @@ export default function SimulationPage() {
         return undefined;
       };
 
-      // Parse numeric fields and coordinate fields
+      const parseTimeProfile = (value: unknown): any | undefined => {
+        if (!value) return undefined;
+        if (typeof value === 'object') return value;
+        if (typeof value === 'string') {
+          try {
+            return JSON.parse(value);
+          } catch (e) {
+            console.warn('Failed to parse TimeProfile:', value);
+            return undefined;
+          }
+        }
+        return undefined;
+      };
+
       const parsedResults: OptimizationResult[] = jsonData.map((row) => ({
         ...row,
         JARAK_TRIANGULASI: Number(row.JARAK_TRIANGULASI) || 0,
@@ -101,21 +108,57 @@ export default function SimulationPage() {
         SCORE_FINAL: Number(row.SCORE_FINAL) || 0,
         EST_PERJALANAN_JAM: Number(row.EST_PERJALANAN_JAM) || 0,
         GAP_WAKTU_ASLI: Number(row.GAP_WAKTU_ASLI) || 0,
-        // Parse coordinate strings back to arrays
         origin_coords: parseCoords(row.origin_coords),
         dest_coords: parseCoords(row.dest_coords),
         port_coords: parseCoords(row.port_coords),
+        DEST_TIME_PROFILE: parseTimeProfile(row.DEST_TIME_PROFILE),
+        ORIG_TIME_PROFILE: parseTimeProfile(row.ORIG_TIME_PROFILE),
       }));
 
-      const totalSaving = parsedResults.reduce((acc, curr) => acc + (curr.SAVING_KM || 0), 0);
-      const totalSavingCost = parsedResults.reduce((acc, curr) => acc + (curr.SAVING_COST || 0), 0);
-      const newStats = { match: parsedResults.length, saving: totalSaving, savingCost: totalSavingCost };
+      const stats: any = {
+        match: parsedResults.length,
+        saving: parsedResults.reduce((acc, curr) => acc + (Number(curr.SAVING_KM) || 0), 0),
+        savingCost: parsedResults.reduce((acc, curr) => acc + (Number(curr.SAVING_COST) || 0), 0),
+        total_origin: 0,
+        total_dest: 0
+      };
 
-      // Save to context and IndexedDB
-      saveToStorage(parsedResults, newStats);
+      if (workbook.SheetNames.includes('Stats')) {
+        const statsSheet = workbook.Sheets['Stats'];
+        const statsData = XLSX.utils.sheet_to_json(statsSheet) as any[];
+        if (statsData.length > 0) {
+          const s = statsData[0];
+          stats.total_origin = Number(s.total_origin) || 0;
+          stats.total_dest = Number(s.total_dest) || 0;
+          if (s.match) stats.match = Number(s.match);
+          if (s.saving) stats.saving = Number(s.saving);
+          if (s.savingCost) stats.savingCost = Number(s.savingCost);
+        }
+      } else {
+        const uniqueOrig = new Set(parsedResults.map(r => r.ORIG_ID)).size;
+        const uniqueDest = new Set(parsedResults.map(r => r.DEST_ID)).size;
+        stats.total_origin = uniqueOrig;
+        stats.total_dest = uniqueDest;
+      }
+
+      if (workbook.SheetNames.includes('CabangStats')) {
+        const cabangSheet = workbook.Sheets['CabangStats'];
+        const cabangData = XLSX.utils.sheet_to_json(cabangSheet) as any[];
+
+        if (cabangData.length > 0) {
+          stats.cabang_breakdown = cabangData.map((row: any) => ({
+            cabang: row.Cabang,
+            total_origin: Number(row.Total_Origin) || 0,
+            total_dest: Number(row.Total_Dest) || 0,
+            match: Number(row.Matches) || 0,
+            saving: Number(row.Saving_KM) || 0,
+            saving_cost: Number(row.Saving_Cost) || 0
+          }));
+        }
+      }
+
+      saveToStorage(parsedResults, stats);
       setAppMode('simulation');
-
-      // Navigate to results
       router.push('/results');
 
     } catch (err) {
@@ -126,7 +169,6 @@ export default function SimulationPage() {
     }
   };
 
-  // Loading state
   if (!isHydrated || isDBLoading) {
     return (
       <div className="min-h-screen bg-slate-50 flex items-center justify-center">
@@ -147,7 +189,6 @@ export default function SimulationPage() {
 
       <main className="flex-1 p-6 w-full max-w-480 mx-auto">
         <div className="max-w-2xl mx-auto mt-16 animate-in fade-in slide-in-from-bottom-8">
-          {/* Back Button */}
           <button
             onClick={handleBackToLanding}
             className="mb-6 text-slate-500 hover:text-slate-700 text-sm font-medium flex items-center gap-2"
@@ -197,11 +238,10 @@ export default function SimulationPage() {
             <button
               onClick={handleLoadFile}
               disabled={loading || !file}
-              className={`w-full py-4 rounded-xl font-bold text-white text-lg transition-all shadow-lg ${
-                loading || !file
-                  ? 'bg-slate-400 cursor-not-allowed'
-                  : 'bg-linear-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 shadow-emerald-500/30'
-              }`}
+              className={`w-full py-4 rounded-xl font-bold text-white text-lg transition-all shadow-lg ${loading || !file
+                ? 'bg-slate-400 cursor-not-allowed'
+                : 'bg-linear-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 shadow-emerald-500/30'
+                }`}
             >
               {loading ? 'Memuat Data...' : 'Lihat Hasil Mapping'}
             </button>

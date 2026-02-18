@@ -46,20 +46,24 @@ export interface OptimizationResult {
   geometry?: string;
 }
 
+export interface CabangStats {
+  cabang: string;
+  total_origin: number;
+  total_dest: number;
+  match: number;
+  saving: number;
+  saving_cost: number;
+}
+
 export interface OptimizationStats {
   match: number;
   saving: number;
   savingCost: number;
+  total_origin?: number;
+  total_dest?: number;
+  cabang_breakdown?: CabangStats[];
 }
 
-export interface CabangStats {
-  cabang: string;
-  count: number;
-  saving: number;
-  savingCost?: number;
-}
-
-// Route-based views (for Header display)
 export type ViewState = 'landing' | 'upload' | 'simulation-upload' | 'download' | 'list' | 'detail';
 
 export type AppMode = 'mapping' | 'simulation';

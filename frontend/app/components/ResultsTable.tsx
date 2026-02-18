@@ -28,33 +28,84 @@ export default function ResultsTable({
   onBackToUpload,
   appMode,
 }: ResultsTableProps) {
+  const currentStats = (() => {
+    if (selectedCabang === 'all') {
+      return cabangStats.reduce(
+        (acc, curr) => ({
+          total_origin: acc.total_origin + curr.total_origin,
+          total_dest: acc.total_dest + curr.total_dest,
+          match: acc.match + curr.match,
+        }),
+        { total_origin: 0, total_dest: 0, match: 0 }
+      );
+    } else {
+      const s = cabangStats.find(c => c.cabang === selectedCabang);
+      return s || { total_origin: 0, total_dest: 0, match: 0 };
+    }
+  })();
+
+  const successRate =
+    Math.min(currentStats.total_origin, currentStats.total_dest) > 0
+      ? Math.round((currentStats.match / Math.min(currentStats.total_origin, currentStats.total_dest)) * 100)
+      : 0;
+
   return (
     <div className="animate-in fade-in duration-500">
-      <div className="flex justify-between items-end mb-4">
-        <div>
-          <h2 className="text-2xl font-bold text-slate-800">Hasil Optimasi</h2>
-          <p className="text-slate-500 text-sm">
-            Menampilkan {filteredResults.length} dari {results.length} kandidat rute.
-          </p>
-        </div>
-
-        {uniqueCabangs.length > 1 && (
-          <div className="flex items-center gap-3">
-            <label className="text-sm font-medium text-slate-600">Filter Cabang:</label>
-            <select
-              value={selectedCabang}
-              onChange={(e) => onSelectCabang(e.target.value)}
-              className="px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-medium text-slate-700 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 cursor-pointer"
-            >
-              <option value="all">Semua Cabang ({results.length})</option>
-              {cabangStats.map(({ cabang, count, saving }) => (
-                <option key={cabang} value={cabang}>
-                  {cabang} ({count} rute • {formatNumber(saving)} km saving)
-                </option>
-              ))}
-            </select>
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 mb-6 transition-all">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="bg-blue-50 p-4 rounded-xl border border-blue-100 flex items-center justify-between">
+            <div>
+              <div className="text-sm text-blue-600/70 font-medium mb-1">Target Pasangan (Data Awal)</div>
+              <div className="text-2xl font-bold text-blue-700">
+                {formatNumber(Math.min(currentStats.total_origin, currentStats.total_dest))}
+              </div>
+            </div>
+            <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+              </svg>
+            </div>
           </div>
-        )}
+
+          <div className="bg-purple-50 p-4 rounded-xl border border-purple-100 flex items-center justify-between">
+            <div>
+              <div className="text-sm text-purple-600/70 font-medium mb-1">Berhasil Mapping</div>
+              <div className="text-2xl font-bold text-purple-700">
+                {formatNumber(currentStats.match)}
+              </div>
+            </div>
+            <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+          </div>
+
+          <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100 flex items-center justify-between">
+            <div>
+              <div className="text-sm text-emerald-600/70 font-medium mb-1">Success Rate</div>
+              <div className="text-2xl font-bold text-emerald-700">
+                {successRate}%
+              </div>
+            </div>
+            <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center text-emerald-600">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex justify-between items-center mb-6">
+        <div>
+          <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
+            Hasil Optimasi
+            <span className="px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600 text-xs font-medium border border-slate-200">
+              {filteredResults.length} Rute Match
+            </span>
+          </h2>
+        </div>
 
         <button
           onClick={onBackToUpload}
@@ -67,11 +118,36 @@ export default function ResultsTable({
         </button>
       </div>
 
-      <CabangFilter
-        cabangStats={cabangStats}
-        selectedCabang={selectedCabang}
-        onSelectCabang={onSelectCabang}
-      />
+      {uniqueCabangs.length > 1 && (
+        <div className="flex flex-wrap gap-2 mb-6">
+          <button
+            onClick={() => onSelectCabang('all')}
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${selectedCabang === 'all'
+              ? 'bg-blue-600 text-white shadow-md shadow-blue-500/30'
+              : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
+              }`}
+          >
+            Semua Cabang
+          </button>
+
+          {cabangStats.map((stat) => (
+            <button
+              key={stat.cabang}
+              onClick={() => onSelectCabang(stat.cabang)}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all flex items-center gap-2 ${selectedCabang === stat.cabang
+                ? 'bg-blue-600 text-white shadow-md shadow-blue-500/30'
+                : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
+                }`}
+            >
+              {stat.cabang}
+              <span className={`px-1.5 py-0.5 rounded-full text-[10px] ${selectedCabang === stat.cabang ? 'bg-blue-500/30 text-white' : 'bg-slate-100 text-slate-500'
+                }`}>
+                {stat.match} ({Math.min(stat.total_origin, stat.total_dest) > 0 ? Math.round((stat.match / Math.min(stat.total_origin, stat.total_dest)) * 100) : 0}%)
+              </span>
+            </button>
+          ))}
+        </div>
+      )}
 
       <div className="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden">
         <div className="overflow-x-auto">

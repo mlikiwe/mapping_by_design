@@ -1,31 +1,25 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect, ReactNode, useCallback } from 'react';
-import { OptimizationResult, OptimizationStats, AppMode } from '@/types';
+import { OptimizationResult, OptimizationStats, AppMode, CabangStats } from '@/types';
 import { useIndexedDB, STORAGE_KEYS, clearAllMappingData } from '@/hooks';
 
 interface MappingContextType {
-  // Data State
   results: OptimizationResult[];
   stats: OptimizationStats;
   appMode: AppMode | null;
   selectedItem: OptimizationResult | null;
-  
-  // Loading State
   isHydrated: boolean;
   isDBLoading: boolean;
-  
-  // Setters
+
   setResults: (results: OptimizationResult[]) => void;
   setStats: (stats: OptimizationStats) => void;
   setAppMode: (mode: AppMode | null) => void;
   setSelectedItem: (item: OptimizationResult | null) => void;
-  
-  // Derived State
+
   uniqueCabangs: string[];
-  cabangStats: { cabang: string; count: number; saving: number; savingCost: number }[];
-  
-  // Actions
+  cabangStats: CabangStats[];
+
   handleReset: () => Promise<void>;
   saveToStorage: (data: OptimizationResult[], stats: OptimizationStats) => void;
 }
@@ -33,7 +27,6 @@ interface MappingContextType {
 const MappingContext = createContext<MappingContextType | undefined>(undefined);
 
 export function MappingProvider({ children }: { children: ReactNode }) {
-  // IndexedDB persistence
   const [storedResults, setStoredResults, clearStoredResults, isLoadingResults] = useIndexedDB<OptimizationResult[]>(
     STORAGE_KEYS.MAPPING_RESULTS,
     []
@@ -47,7 +40,6 @@ export function MappingProvider({ children }: { children: ReactNode }) {
     null
   );
 
-  // Local state
   const [results, setResultsState] = useState<OptimizationResult[]>([]);
   const [stats, setStatsState] = useState<OptimizationStats>({ match: 0, saving: 0, savingCost: 0 });
   const [appMode, setAppModeState] = useState<AppMode | null>(null);
@@ -56,7 +48,6 @@ export function MappingProvider({ children }: { children: ReactNode }) {
 
   const isDBLoading = isLoadingResults || isLoadingStats || isLoadingMode;
 
-  // Clean up old localStorage data
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const oldKeys = ['roundtrip_mapping_results', 'roundtrip_mapping_stats', 'roundtrip_view_state'];
@@ -64,13 +55,11 @@ export function MappingProvider({ children }: { children: ReactNode }) {
         try {
           window.localStorage.removeItem(key);
         } catch {
-          // Ignore errors
         }
       });
     }
   }, []);
 
-  // Hydrate from IndexedDB
   useEffect(() => {
     if (isDBLoading) return;
 
@@ -82,17 +71,20 @@ export function MappingProvider({ children }: { children: ReactNode }) {
     setIsHydrated(true);
   }, [isDBLoading, storedResults, storedStats, storedMode]);
 
-  // Derived state
   const uniqueCabangs = Array.from(new Set(results.map((r) => r.CABANG))).sort();
-  
-  const cabangStats = uniqueCabangs.map((cabang) => ({
-    cabang,
-    count: results.filter((r) => r.CABANG === cabang).length,
-    saving: results.filter((r) => r.CABANG === cabang).reduce((acc, r) => acc + (r.SAVING_KM || 0), 0),
-    savingCost: results.filter((r) => r.CABANG === cabang).reduce((acc, r) => acc + (r.SAVING_COST || 0), 0),
-  }));
 
-  // Setters with persistence
+  const cabangStats = stats.cabang_breakdown || uniqueCabangs.map((cabang) => {
+    const cabangResults = results.filter((r) => r.CABANG === cabang);
+    return {
+      cabang,
+      total_origin: new Set(cabangResults.map(r => r.ORIG_ID)).size,
+      total_dest: new Set(cabangResults.map(r => r.DEST_ID)).size,
+      match: cabangResults.length,
+      saving: cabangResults.reduce((acc, r) => acc + (r.SAVING_KM || 0), 0),
+      saving_cost: cabangResults.reduce((acc, r) => acc + (r.SAVING_COST || 0), 0),
+    };
+  });
+
   const setResults = useCallback((newResults: OptimizationResult[]) => {
     setResultsState(newResults);
     setStoredResults(newResults);
@@ -108,7 +100,6 @@ export function MappingProvider({ children }: { children: ReactNode }) {
     setStoredMode(mode);
   }, [setStoredMode]);
 
-  // Save results and stats together
   const saveToStorage = useCallback((data: OptimizationResult[], newStats: OptimizationStats) => {
     setResultsState(data);
     setStatsState(newStats);
@@ -116,7 +107,6 @@ export function MappingProvider({ children }: { children: ReactNode }) {
     setStoredStats(newStats);
   }, [setStoredResults, setStoredStats]);
 
-  // Reset handler
   const handleReset = useCallback(async () => {
     await clearAllMappingData();
     clearStoredResults();

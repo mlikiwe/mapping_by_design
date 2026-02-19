@@ -663,6 +663,10 @@ def process_optimization(
             print(f"  Warning: DEST {dest_id} memiliki cabang kosong, dilewati.")
             continue
         
+        dest_service = str(dest_row.get('SERVICE TYPE', '')).strip().upper()
+        if dest_service == 'STRIPPING':
+            continue
+            
         port = get_port_location(dest_cabang)
         
         dist_port_to_dest, _, _ = get_valhalla_route(
@@ -685,6 +689,10 @@ def process_optimization(
             orig_cabang = normalize_cabang(orig_row['CABANG'])
 
             if dest_cabang != orig_cabang:
+                continue
+
+            orig_service = str(orig_row.get('SERVICE TYPE', '')).strip().upper()
+            if orig_service == 'STRIPPING':
                 continue
             
             if dest_row['SIZE CONT'] != orig_row['SIZE CONT']:

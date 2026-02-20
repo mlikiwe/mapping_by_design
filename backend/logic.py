@@ -439,7 +439,7 @@ def get_valhalla_route(
             {"lat": lat_start, "lon": lon_start},
             {"lat": lat_end, "lon": lon_end}
         ],
-        "costing": "auto",
+        "costing": "truck",
         "units": "km"
     }
     

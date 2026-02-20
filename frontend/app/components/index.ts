@@ -12,3 +12,5 @@ export { default as DetailView } from './DetailView';
 export { default as LandingView } from './LandingView';
 export { default as DownloadView } from './DownloadView';
 export { default as SimulationUploadView } from './SimulationUploadView';
+export { default as DataPreviewEditor } from './DataPreviewEditor';
+export { default as PlanningInputView } from './PlanningInputView';

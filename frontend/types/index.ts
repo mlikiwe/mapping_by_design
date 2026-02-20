@@ -66,4 +66,16 @@ export interface OptimizationStats {
 
 export type ViewState = 'landing' | 'upload' | 'simulation-upload' | 'download' | 'list' | 'detail';
 
-export type AppMode = 'mapping' | 'simulation';
+export type AppMode = 'mapping' | 'simulation' | 'planning';
+
+export interface PlanningRow {
+  'NO SOPT': string;
+  'CABANG': string;
+  'ACT. LOAD DATE': string;
+  'CUST ID': string;
+  'ALAMAT': string;
+  'SIZE CONT': string;
+  'SERVICE TYPE': string;
+  'GRADE CONT': string;
+  [key: string]: string | undefined;
+}

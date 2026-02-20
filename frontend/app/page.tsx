@@ -8,17 +8,16 @@ import { AppMode } from '@/types';
 
 export default function Home() {
   const router = useRouter();
-  const { 
-    stats, 
-    results, 
-    appMode, 
-    isHydrated, 
+  const {
+    stats,
+    results,
+    appMode,
+    isHydrated,
     isDBLoading,
     setAppMode,
-    handleReset 
+    handleReset
   } = useMappingContext();
 
-  // Redirect to results if there are existing results
   useEffect(() => {
     if (isHydrated && !isDBLoading && results.length > 0) {
       router.push('/results');
@@ -27,8 +26,10 @@ export default function Home() {
 
   const handleSelectMode = (mode: AppMode) => {
     setAppMode(mode);
-    
-    if (mode === 'mapping') {
+
+    if (mode === 'planning') {
+      router.push('/planning');
+    } else if (mode === 'mapping') {
       router.push('/mapping');
     } else {
       router.push('/simulation');

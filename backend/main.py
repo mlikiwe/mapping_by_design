@@ -1,8 +1,9 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from logic import process_optimization
+from validate import validate_data, geocode_single_address
 from pydantic import BaseModel
-from typing import List
+from typing import List, Optional
 import pandas as pd
 import io
 import os
@@ -20,6 +21,9 @@ class ValhallaRequest(BaseModel):
     locations: List[ValhallaLocation]
     costing: str = "auto"
     units: str = "km"
+
+class GeocodeSingleRequest(BaseModel):
+    address: str
 
 app.add_middleware(
     CORSMiddleware,
@@ -58,6 +62,39 @@ async def valhalla_proxy(request: ValhallaRequest):
         raise HTTPException(status_code=503, detail="Tidak dapat terhubung ke Valhalla server")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/api/validate")
+async def validate_endpoint(
+    file_dest: UploadFile = File(...),
+    file_orig: UploadFile = File(...)
+):
+    try:
+        content_dest = await file_dest.read()
+        content_orig = await file_orig.read()
+
+        df_d = pd.read_excel(io.BytesIO(content_dest))
+        df_o = pd.read_excel(io.BytesIO(content_orig))
+
+        result = validate_data(df_d, df_o)
+        return result
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/api/geocode-single")
+async def geocode_single_endpoint(request: GeocodeSingleRequest):
+    try:
+        result = geocode_single_address(request.address)
+        return result
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.post("/api/optimize")
 async def optimize_endpoint(

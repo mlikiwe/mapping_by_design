@@ -113,7 +113,9 @@ CABANG_ALIASES: Dict[str, str] = {
 'TIMIKA': 'TIM',
 'TARAKAN': 'TRK',
 'TERNATE': 'TTE',
-'TUAL': 'TUA'
+'TUAL': 'TUA',
+'SURABAYA': 'SBY',
+'JAKARTA': 'JKT'
 }
 
 TRUCKING_COST_MODEL: Dict[str, Dict[int, Dict[str, int]]] = {

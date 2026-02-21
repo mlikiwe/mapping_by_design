@@ -2,7 +2,7 @@ export interface TimeProfile {
   mode_hour: number | null;
   distribution: Record<string, number>;
   sample_count: number;
-  source: string;  // "customer" | "cabang_default" | "none"
+  source: string;
 }
 
 export interface OptimizationResult {
@@ -78,4 +78,49 @@ export interface PlanningRow {
   'SERVICE TYPE': string;
   'GRADE CONT': string;
   [key: string]: string | undefined;
+}
+
+// --- Validation Types ---
+
+export interface ValidationValueWarning {
+  column: string;
+  value: string;
+  message: string;
+}
+
+export interface ValidationRowResult {
+  index: number;
+  datetime_parsed: string | null;
+  datetime_error: string | null;
+  geocode_lat: number | null;
+  geocode_lon: number | null;
+  geocode_error: string | null;
+  value_warnings: ValidationValueWarning[];
+}
+
+export interface ValidationColumnIssue {
+  original: string;
+  suggestion: string;
+  type: 'missing' | 'renamed';
+}
+
+export interface ValidationSummary {
+  total_rows: number;
+  geocode_success: number;
+  geocode_failed: number;
+  datetime_success: number;
+  datetime_failed: number;
+  value_warnings: number;
+  missing_required: number;
+}
+
+export interface DataValidationResult {
+  column_issues: ValidationColumnIssue[];
+  rows: ValidationRowResult[];
+  summary: ValidationSummary;
+}
+
+export interface FullValidationResult {
+  dest: DataValidationResult;
+  orig: DataValidationResult;
 }

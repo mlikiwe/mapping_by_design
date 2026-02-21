@@ -2,7 +2,8 @@
 
 import { useState, useCallback } from 'react';
 import * as XLSX from 'xlsx';
-import { PlanningRow } from '@/types';
+import axios from 'axios';
+import { PlanningRow, DataValidationResult, FullValidationResult } from '@/types';
 import DataPreviewEditor from './DataPreviewEditor';
 
 const REQUIRED_COLUMNS = ['NO SOPT', 'CABANG', 'ACT. LOAD DATE', 'CUST ID', 'ALAMAT', 'SIZE CONT', 'SERVICE TYPE', 'GRADE CONT'];
@@ -48,17 +49,52 @@ function parseExcelDate(value: unknown): string {
                 const pad = (n: number) => n.toString().padStart(2, '0');
                 return `${date.y}-${pad(date.m)}-${pad(date.d)}T${pad(date.H)}:${pad(date.M)}`;
             }
-        } catch {}
+        } catch { }
     }
     const str = String(value).trim();
     if (!str) return '';
-    try {
-        const d = new Date(str);
-        if (!isNaN(d.getTime())) {
-            const pad = (n: number) => n.toString().padStart(2, '0');
-            return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+
+    const pad = (n: number) => n.toString().padStart(2, '0');
+
+    const ddmmyyyy = str.match(
+        /^(\d{1,2})[/\-](\d{1,2})[/\-](\d{4})(?:\s+(\d{1,2}):(\d{2})(?::(\d{2}))?)?$/
+    );
+    if (ddmmyyyy) {
+        const day = parseInt(ddmmyyyy[1], 10);
+        const month = parseInt(ddmmyyyy[2], 10);
+        const year = parseInt(ddmmyyyy[3], 10);
+        const hour = ddmmyyyy[4] ? parseInt(ddmmyyyy[4], 10) : 0;
+        const min = ddmmyyyy[5] ? parseInt(ddmmyyyy[5], 10) : 0;
+
+        if (month >= 1 && month <= 12 && day >= 1 && day <= 31) {
+            return `${year}-${pad(month)}-${pad(day)}T${pad(hour)}:${pad(min)}`;
         }
-    } catch {}
+    }
+
+    const iso = str.match(
+        /^(\d{4})[/\-](\d{1,2})[/\-](\d{1,2})(?:[T\s](\d{1,2}):(\d{2})(?::(\d{2}))?)?$/
+    );
+    if (iso) {
+        const year = parseInt(iso[1], 10);
+        const month = parseInt(iso[2], 10);
+        const day = parseInt(iso[3], 10);
+        const hour = iso[4] ? parseInt(iso[4], 10) : 0;
+        const min = iso[5] ? parseInt(iso[5], 10) : 0;
+
+        if (month >= 1 && month <= 12 && day >= 1 && day <= 31) {
+            return `${year}-${pad(month)}-${pad(day)}T${pad(hour)}:${pad(min)}`;
+        }
+    }
+
+    if (!/^\d{1,2}[/\-]\d{1,2}[/\-]\d{2,4}/.test(str)) {
+        try {
+            const d = new Date(str);
+            if (!isNaN(d.getTime())) {
+                return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+            }
+        } catch { }
+    }
+
     return str;
 }
 
@@ -115,6 +151,14 @@ function parseTSV(text: string): PlanningRow[] {
     });
 }
 
+function rowsToExcelBlob(rows: PlanningRow[]): Blob {
+    const wb = XLSX.utils.book_new();
+    const ws = XLSX.utils.json_to_sheet(rows);
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+    const wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+    return new Blob([wbout], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+}
+
 export default function PlanningInputView({
     onSubmitData,
     onBackToLanding,
@@ -131,6 +175,11 @@ export default function PlanningInputView({
 
     const [pasteDest, setPasteDest] = useState('');
     const [pasteOrig, setPasteOrig] = useState('');
+
+    const [destValidation, setDestValidation] = useState<DataValidationResult | null>(null);
+    const [origValidation, setOrigValidation] = useState<DataValidationResult | null>(null);
+    const [isValidating, setIsValidating] = useState(false);
+    const [isValidated, setIsValidated] = useState(false);
 
     const handleSubmit = useCallback(() => {
         onSubmitData(destData, origData);
@@ -156,12 +205,49 @@ export default function PlanningInputView({
         return convertToRows(jsonData);
     };
 
+    const handleValidate = useCallback(async () => {
+        if (destData.length === 0 || origData.length === 0) {
+            setError('Kedua data (bongkar dan muat) harus terisi sebelum validasi.');
+            return;
+        }
+
+        setIsValidating(true);
+        setError(null);
+
+        try {
+            const destBlob = rowsToExcelBlob(destData);
+            const origBlob = rowsToExcelBlob(origData);
+
+            const formData = new FormData();
+            formData.append('file_dest', destBlob, 'dest.xlsx');
+            formData.append('file_orig', origBlob, 'orig.xlsx');
+
+            const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
+            const res = await axios.post<FullValidationResult>(`${apiUrl}/api/validate`, formData);
+
+            setDestValidation(res.data.dest);
+            setOrigValidation(res.data.orig);
+            setIsValidated(true);
+        } catch (err) {
+            if (axios.isAxiosError(err)) {
+                setError(`Validasi gagal: ${err.response?.data?.detail || err.message}`);
+            } else {
+                setError('Validasi gagal: kesalahan tidak terduga');
+            }
+        } finally {
+            setIsValidating(false);
+        }
+    }, [destData, origData]);
+
     const handleLoadExcel = async () => {
         if (!fileDest || !fileOrig) {
             setError('Pilih kedua file (bongkar dan muat) terlebih dahulu');
             return;
         }
         setError(null);
+        setIsValidated(false);
+        setDestValidation(null);
+        setOrigValidation(null);
         try {
             const dest = await parseExcelFile(fileDest);
             const orig = await parseExcelFile(fileOrig);
@@ -190,6 +276,9 @@ export default function PlanningInputView({
             return;
         }
         setError(null);
+        setIsValidated(false);
+        setDestValidation(null);
+        setOrigValidation(null);
         try {
             const dest = parseTSV(pasteDest);
             const orig = parseTSV(pasteOrig);
@@ -221,13 +310,19 @@ export default function PlanningInputView({
         setError(null);
         setDestData([]);
         setOrigData([]);
+        setIsValidated(false);
+        setDestValidation(null);
+        setOrigValidation(null);
         setShowPreview(true);
     };
 
     const handleBackFromPreview = () => {
         setShowPreview(false);
+        setIsValidated(false);
+        setDestValidation(null);
+        setOrigValidation(null);
     };
-    
+
     if (showPreview) {
         return (
             <div className="animate-in fade-in duration-300">
@@ -242,11 +337,75 @@ export default function PlanningInputView({
                 </button>
 
                 <div className="mb-4">
-                    <h2 className="text-2xl font-bold text-slate-800">📊 Preview & Edit Data</h2>
+                    <h2 className="text-2xl font-bold text-slate-800">Preview & Edit Data</h2>
                     <p className="text-slate-500 text-sm mt-1">
-                        Review data sebelum menjalankan mapping. Klik cell untuk edit.
+                        Review data, validasi, lalu jalankan mapping. Klik cell untuk edit.
                     </p>
                 </div>
+
+                {!isValidated && (
+                    <div className="mb-4">
+                        <button
+                            onClick={handleValidate}
+                            disabled={isValidating || destData.length === 0 || origData.length === 0}
+                            className={`w-full py-3 rounded-xl font-bold text-white text-base transition-all shadow-lg flex items-center justify-center gap-2 ${isValidating || destData.length === 0 || origData.length === 0
+                                ? 'bg-slate-400 cursor-not-allowed'
+                                : 'bg-linear-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 shadow-emerald-500/30'
+                                }`}
+                        >
+                            {isValidating ? (
+                                <>
+                                    <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                                    </svg>
+                                    Memvalidasi data... (Geocoding alamat, parsing tanggal)
+                                </>
+                            ) : (
+                                <>
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    🔍 Validasi Data (Geocoding + Format)
+                                </>
+                            )}
+                        </button>
+                        <p className="text-xs text-center text-slate-400 mt-2">
+                            Validasi akan mengecek alamat, format tanggal, dan kelengkapan data sebelum mapping
+                        </p>
+                    </div>
+                )}
+
+                {isValidated && (
+                    <div className="mb-4">
+                        <button
+                            onClick={handleValidate}
+                            disabled={isValidating}
+                            className="w-full py-2 rounded-lg font-medium text-emerald-700 text-sm bg-emerald-50 border border-emerald-200 hover:bg-emerald-100 transition-all flex items-center justify-center gap-2"
+                        >
+                            {isValidating ? (
+                                <>
+                                    <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                                    </svg>
+                                    Memvalidasi ulang...
+                                </>
+                            ) : (
+                                <>Validasi Ulang Semua Data</>
+                            )}
+                        </button>
+                    </div>
+                )}
+
+                {error && (
+                    <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm whitespace-pre-line flex items-start gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>{error}</span>
+                    </div>
+                )}
 
                 <DataPreviewEditor
                     destData={destData}
@@ -255,6 +414,11 @@ export default function PlanningInputView({
                     onOrigDataChange={setOrigData}
                     onSubmit={handleSubmit}
                     loading={loading}
+                    destValidation={destValidation}
+                    origValidation={origValidation}
+                    onDestValidationChange={setDestValidation}
+                    onOrigValidationChange={setOrigValidation}
+                    isValidated={isValidated}
                 />
             </div>
         );
